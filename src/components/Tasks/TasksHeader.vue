@@ -5,16 +5,30 @@
             <span class="tasks__count">({{count}})</span>
         </div>
         <div class="tasks__right">
-            <BaseButton>Sort</BaseButton>
+
+            <Dropdown :isOpened="isDropdownOpen">
+                <BaseButton @click.native="toggleDropdown">Sort</BaseButton>
+                <template #dropdown-items>
+                    <BaseButton>Sort</BaseButton>
+                    <BaseButton>Sort</BaseButton>
+                </template>
+            </Dropdown>
         </div>
+
     </header>
 </template>
 
 <script>
 import BaseButton from '@/components/app/BaseButton.vue';
+import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
     export default {
         name: 'TasksHeader',
+        data() {
+            return {
+                isDropdownOpen: false,
+            }
+        },
         props: {
             count: {
                 type: Number,
@@ -22,7 +36,13 @@ import BaseButton from '@/components/app/BaseButton.vue';
             }
         },
         components: {
-            BaseButton
+            BaseButton,
+            Dropdown,
+        },
+        methods: {
+            toggleDropdown() {
+                this.isDropdownOpen = !this.isDropdownOpen
+            }
         }
     }
 </script>

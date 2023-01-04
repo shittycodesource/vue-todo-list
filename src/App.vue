@@ -1,23 +1,23 @@
 <template>
     <div id="app">
         <main class="main">
-            <Container>
+            <BaseContainer>
                 <TheTaskTextInput/>
                 <Tasks/>
-            </Container>
+            </BaseContainer>
         </main>
     </div>
 </template>
 
 <script>
-import Container from './components/app/Container.vue';
+import BaseContainer from './components/app/BaseContainer.vue';
 import TheTaskTextInput from './components/TheTaskTextInput.vue';
 import Tasks from './components/Tasks/Tasks.vue';
 
 export default {
     name: "App",
     components: {
-        Container,
+        BaseContainer,
         TheTaskTextInput,
         Tasks
     }
