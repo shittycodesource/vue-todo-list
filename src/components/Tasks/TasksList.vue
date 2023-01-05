@@ -1,7 +1,6 @@
 <template>
     <div class="tasks__list">
         <template v-if="list.length">
-
             <template  v-for="task_data, index in list" >
 
                  <template v-if="index == 0 || task_data.dayValue != list[index - 1].dayValue">
@@ -9,13 +8,11 @@
                 </template>
 
                 <Task
-                    :text="task_data.text"
-                    :id="task_data.id"
+                    :data="task_data"
                     :key="task_data.id"
                 />
 
             </template>
-            
         </template>
         <template v-else>
             <p class="center">Empty</p>
@@ -24,19 +21,28 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Task from './Task.vue';
 
     export default {
         name: 'TasksList',
-        props: {
-            list: {
-                type: Array,
-                default: [],
-            }
-        },
         components: {
             Task
         },
+        computed: {
+            ...mapGetters([
+                'getTasks',
+                'getSortedTasks',
+                'isTasksSorted'
+            ]),
+            list() {
+                if (this.isTasksSorted) {
+                    return this.getSortedTasks
+                };
+
+                return this.getTasks;
+            }
+        }
     }
 </script>
 <style lang="scss">

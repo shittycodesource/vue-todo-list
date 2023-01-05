@@ -1,10 +1,11 @@
 <template>
-    <div class="task">
+    <div class="task" :class="{'completed': data.completed}">
         <div class="task__content">
-            {{text}}
+            {{data.text}}
         </div>
         <div class="task__actions">
             <BaseButton>Open</BaseButton>
+            <BaseButton @click.native="completeThisTask">Complete</BaseButton>
             <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
         </div>
     </div>
@@ -17,13 +18,9 @@
     export default {
         name: 'Task',
         props: {
-            text: {
-                type: String,
-                default: 'Empty',
-            },
-            id: {
-                type: Number,
-                default: 0,
+            data: {
+                type: Object,
+                default: {},
                 required: true
             }
         },
@@ -32,10 +29,14 @@
         },
         methods: {
             ...mapActions([
-                'deleteTask'
+                'deleteTask',
+                'completeTask'
             ]),
             deleteThisTask() {
-                this.deleteTask(this.id);
+                this.deleteTask(this.data.id);
+            },
+            completeThisTask() {
+                this.completeTask(this.data);
             }
         }
     }
@@ -73,5 +74,15 @@
             align-content: center;
             justify-content: space-between;
         }
+
+        &.completed {
+            box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, .1);
+            opacity: .8;
+        }      
+
+        &.completed &__content {
+            text-decoration: line-through;
+            color: #464646;
+        } 
     }
 </style>

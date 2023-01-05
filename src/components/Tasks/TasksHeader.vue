@@ -7,10 +7,11 @@
         <div class="tasks__right">
 
             <Dropdown :isOpened="isDropdownOpen">
-                <BaseButton @click.native="toggleDropdown">Sort</BaseButton>
+                <BaseButton @click.native="toggleDropdown">Sort by</BaseButton>
                 <template #dropdown-items>
-                    <BaseButton>Sort</BaseButton>
-                    <BaseButton>Sort</BaseButton>
+                    <BaseButton @click.native="sortTasksByDate">Date</BaseButton>
+                    <BaseButton @click.native="sortTasksByComplete">Complete</BaseButton>
+                    <BaseButton @click.native="sortTasksByIncomplete">Incomplete</BaseButton>
                 </template>
             </Dropdown>
         </div>
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import BaseButton from '@/components/app/BaseButton.vue';
 import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
@@ -40,9 +42,14 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
             Dropdown,
         },
         methods: {
+            ...mapActions([
+                'sortTasksByDate',
+                'sortTasksByComplete',
+                'sortTasksByIncomplete'
+            ]),
             toggleDropdown() {
                 this.isDropdownOpen = !this.isDropdownOpen
-            }
+            },
         }
     }
 </script>
