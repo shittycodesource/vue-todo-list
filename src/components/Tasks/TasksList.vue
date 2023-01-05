@@ -1,12 +1,21 @@
 <template>
     <div class="tasks__list">
         <template v-if="list.length">
-            <Task
-                v-for="task_data in list"
-                :text="task_data.text"
-                :id="task_data.id"
-                :key="task_data.id"
-            />
+
+            <template  v-for="task_data, index in list" >
+
+                 <template v-if="index == 0 || task_data.dayValue != list[index - 1].dayValue">
+                    <div class="tasks__separator" :key="index">{{ task_data.dayValue }}</div>
+                </template>
+
+                <Task
+                    :text="task_data.text"
+                    :id="task_data.id"
+                    :key="task_data.id"
+                />
+
+            </template>
+            
         </template>
         <template v-else>
             <p class="center">Empty</p>
@@ -27,7 +36,7 @@ import Task from './Task.vue';
         },
         components: {
             Task
-        }
+        },
     }
 </script>
 <style lang="scss">
@@ -37,6 +46,11 @@ import Task from './Task.vue';
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+        }
+
+        &__separator {
+            width: 100%;
+            color: #7a7a7a;
         }
     }
 </style>
