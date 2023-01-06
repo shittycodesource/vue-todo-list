@@ -35,7 +35,7 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
-        background-color: #FAFAFA;
+        background-color: $mainBackground;
     }
 
     *,*::before,*::after {

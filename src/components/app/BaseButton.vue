@@ -35,5 +35,9 @@
         &:hover {
             box-shadow: $baseBoxShadowHover;
         }
+        
+        &.active {
+            background: darken(#fff, 10%);
+        }
     }
 </style>

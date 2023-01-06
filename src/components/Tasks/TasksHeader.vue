@@ -9,9 +9,14 @@
             <Dropdown :isOpened="isDropdownOpen">
                 <BaseButton @click.native="toggleDropdown">Sort by</BaseButton>
                 <template #dropdown-items>
-                    <BaseButton @click.native="sortTasksByDate">Date</BaseButton>
-                    <BaseButton @click.native="sortTasksByComplete">Complete</BaseButton>
-                    <BaseButton @click.native="sortTasksByIncomplete">Incomplete</BaseButton>
+                    <BaseButton
+                        v-for="btn in buttons"
+                        :key="btn.name" 
+                        @click.native="btn.handler"
+                        :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
+                    >
+                        {{ btn.name }}
+                    </BaseButton>
                 </template>
             </Dropdown>
         </div>
@@ -20,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import BaseButton from '@/components/app/BaseButton.vue';
 import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
@@ -28,6 +33,11 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
         name: 'TasksHeader',
         data() {
             return {
+                buttons: [
+                    { name: 'Date', handler: () => this.sortTaskBy('date') },
+                    { name: 'Complete', handler: () => this.sortTaskBy('complete') },
+                    { name: 'Incomplete', handler: () => this.sortTaskBy('incomplete') },
+                ],
                 isDropdownOpen: false,
             }
         },
@@ -41,12 +51,18 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
             BaseButton,
             Dropdown,
         },
+        computed: {
+            ...mapGetters([
+                'getTasksSortType'
+            ]),
+        },
         methods: {
             ...mapActions([
-                'sortTasksByDate',
-                'sortTasksByComplete',
-                'sortTasksByIncomplete'
+                'sortTasks'
             ]),
+            sortTaskBy(name) {
+                this.sortTasks(name);
+            },
             toggleDropdown() {
                 this.isDropdownOpen = !this.isDropdownOpen
             },

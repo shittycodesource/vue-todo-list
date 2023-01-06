@@ -84,5 +84,13 @@
             text-decoration: line-through;
             color: #464646;
         } 
+
+        @media (max-width: $tabletBP) {
+            width: calc(50% - 15px);
+        }
+
+        @media (max-width: $mobileBP) {
+            width: 100%;
+        }
     }
 </style>

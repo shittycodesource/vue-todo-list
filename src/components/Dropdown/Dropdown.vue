@@ -46,6 +46,8 @@
         left: 50%;
         transform: translate(-50%, 100%);
 
+        z-index: 100;
+
         background: #fff;
         box-shadow: $baseBoxShadow;
 

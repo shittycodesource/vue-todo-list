@@ -61,20 +61,10 @@ export default new Vuex.Store({
         DELETE_TASK(state, id) {
             state.tasks = state.tasks.filter(item => item.id != id);
         },
-        SORT_TASKS_BY_DATE(state) {
-            state.sortTasksBy == 'date'
+        SORT_TASKS(state, name) {
+            state.sortTasksBy == name
                 ? state.sortTasksBy = false
-                : state.sortTasksBy = 'date';
-        },
-        SORT_TASKS_BY_COMPLETE(state) {
-            state.sortTasksBy == 'complete'
-                ? state.sortTasksBy = false
-                : state.sortTasksBy = 'complete';
-        },
-        SORT_TASKS_BY_INCOMPLETE(state) {
-            state.sortTasksBy == 'incomplete'
-                ? state.sortTasksBy = false
-                : state.sortTasksBy = 'incomplete';
+                : state.sortTasksBy = name;
         },
         COMPLETE_TASK(state, obj) {
             const index = state.tasks.indexOf(obj);
@@ -90,14 +80,8 @@ export default new Vuex.Store({
         deleteTask({commit}, id) {
             commit('DELETE_TASK', id);
         },
-        sortTasksByDate({commit}) {
-            commit('SORT_TASKS_BY_DATE');
-        },
-        sortTasksByComplete({commit}) {
-            commit('SORT_TASKS_BY_COMPLETE');
-        },
-        sortTasksByIncomplete({commit}) {
-            commit('SORT_TASKS_BY_INCOMPLETE');
+        sortTasks({commit}, name) {
+            commit('SORT_TASKS', name);
         },
         completeTask({commit}, obj) {
             commit('COMPLETE_TASK', obj);
@@ -112,14 +96,11 @@ export default new Vuex.Store({
             switch (state.sortTasksBy) {
                 case 'date':
                     return getters.getSortedByDateTasks;
-                    break;
                 case 'complete':
                     return getters.getSortedByCompleteTasks;
-                    break;
                 case 'incomplete':
                     return getters.getSortedByIncompleteTasks;
-                    break;
-            }
+            };
         },
         getSortedByDateTasks(state) {
             const arr = [...state.tasks];
@@ -133,6 +114,6 @@ export default new Vuex.Store({
             const arr = [...state.tasks];
             return arr.sort((x, y) => Number(x.completed) - Number(y.completed));
         },
-        isTasksSorted: (state) => state.sortTasksBy
+        getTasksSortType: (state) => state.sortTasksBy
     }
 }); 

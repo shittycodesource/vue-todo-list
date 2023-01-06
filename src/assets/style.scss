@@ -1,6 +1,11 @@
 $baseBoxShadow: 4px 4px 10px 0px rgba(0, 0, 0, .2);
 $baseBoxShadowHover: 4px 4px 10px -4px rgba(0, 0, 0, .2);
 
+$mainBackground: #FAFAFA;
+
+$tabletBP: 990px;
+$mobileBP: 670px;
+
 .center {
     display: block;
     margin-left: auto;
