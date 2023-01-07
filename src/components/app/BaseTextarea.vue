@@ -1,13 +1,14 @@
 <template>
     <BaseInputWrapper>
-        <input
-            :value="value"
+    	<textarea class="textarea"
+    		:value="value"
             @input="$emit('input', $event.target.value)"
             :placeholder="placeHolder"
-            class="input"
-            type="text"
-        />
-        <slot></slot>
+            v-textarea
+    	></textarea>
+    	
+
+    	<slot></slot>
     </BaseInputWrapper>
 </template>
 
@@ -15,7 +16,7 @@
 import BaseInputWrapper from './BaseInputWrapper.vue';
 
 export default {
-    name: "BaseInput",
+    name: "BaseTextarea",
     components: {
         BaseInputWrapper
     },
@@ -28,24 +29,26 @@ export default {
             type: String,
             default: "",
         },
-    }
+    },
 };
 </script>
 
 <style lang="scss">
-    .input {
-        background: none;
-        border: none;
+	.textarea {
+		background: none;
+		border: none;
+		resize: none;
 
-        color: #000;
-        font-size: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		color: #000;
 
-        &::placeholder {
+		&::placeholder {
             color: #767676;
         }
 
-        &:focus {
-            outline: none;
-        }
-    }
+		&:focus {
+			outline: none;
+		}
+	}
 </style>

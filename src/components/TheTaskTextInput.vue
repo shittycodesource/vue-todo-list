@@ -1,16 +1,17 @@
 <template>
-    <BaseInput
+    <BaseTextarea
         class="task-text-input w100p" 
         placeHolder="Add new task"
+        ref="textarea"
         v-model.trim="inputValue" 
     >
         <BaseButton @click.native="createTask">Create</BaseButton>
-    </BaseInput>
+    </BaseTextarea>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import BaseInput from './app/BaseInput.vue';
+import BaseTextarea from './app/BaseTextarea.vue';
 import BaseButton from './app/BaseButton.vue';
 
     export default {
@@ -21,7 +22,7 @@ import BaseButton from './app/BaseButton.vue';
             }
         },
         components: {
-            BaseInput,
+            BaseTextarea,
             BaseButton
         },
         methods: {
@@ -31,23 +32,26 @@ import BaseButton from './app/BaseButton.vue';
             createTask() {
                 this.addTask(this.inputValue);
                 this.inputValue = '';
+
+                this.$refs.textarea.$el.children[0].removeAttribute('style');
             }
-        }
+        },
     }
 </script>
 
 <style lang="scss">
     .task-text-input {
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-between;
 
         margin: 0 auto 80px;
 
-        .input {
-            height: fit-content;
+        .textarea {
+            height: 23px;
+            margin-bottom: 5px;
             width: 100%;
-            padding-right: 20px;
+            margin-right: 20px;
         }
     }
 </style>
