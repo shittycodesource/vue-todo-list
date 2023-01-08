@@ -1,34 +1,13 @@
 <template>
-    <BaseInputWrapper>
-        <input
-            :value="value"
-            @input="$emit('input', $event.target.value)"
-            :placeholder="placeHolder"
-            class="input"
-            type="text"
-        />
-        <slot></slot>
-    </BaseInputWrapper>
+    <input
+        class="input"
+        type="text"
+    />
 </template>
 
 <script>
-import BaseInputWrapper from './BaseInputWrapper.vue';
-
 export default {
     name: "BaseInput",
-    components: {
-        BaseInputWrapper
-    },
-    props: {
-        value: {
-            type: String,
-            default: "",
-        },
-        placeHolder: {
-            type: String,
-            default: "",
-        },
-    }
 };
 </script>
 

@@ -13,7 +13,7 @@ export default {
 <style lang="scss">
     .input-wrapper {
         display: block;
-        width: fit-content;
+        width: 100%;
 
         padding: 20px;
 

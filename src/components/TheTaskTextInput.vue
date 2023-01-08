@@ -1,16 +1,33 @@
 <template>
-    <BaseTextarea
-        class="task-text-input w100p" 
-        placeHolder="Add new task"
-        ref="textarea"
-        v-model.trim="inputValue" 
-    >
-        <BaseButton @click.native="createTask">Create</BaseButton>
-    </BaseTextarea>
+    <BaseInputWrapper class="task-text-input">
+        <BaseTextarea
+            placeholder="Add new task"
+            ref="textarea"
+            v-model:value="inputValue"
+            :maxlength="
+                isMaxLines 
+                    ? inputValue.length 
+                    : maxCharacters
+            "
+        ></BaseTextarea>
+
+        <div class="task-text-input__btn">
+            
+            <span v-if="inputValue.length">
+                {{ inputValue.length }} / {{ maxCharacters }}
+                {{ isMaxLines ? maxLinesMessage : '' }}
+            </span>
+            <span v-else></span>
+
+            <BaseButton @click.native="createTask">Create</BaseButton>
+        </div>
+
+    </BaseInputWrapper>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import BaseInputWrapper from './app/BaseInputWrapper';
 import BaseTextarea from './app/BaseTextarea.vue';
 import BaseButton from './app/BaseButton.vue';
 
@@ -18,10 +35,13 @@ import BaseButton from './app/BaseButton.vue';
         name: 'TheTaskTextInput',
         data() {
             return {
-                inputValue: ''
+                inputValue: '',
+                maxCharacters: 2048,
+                maxLines: 48
             }
         },
         components: {
+            BaseInputWrapper,
             BaseTextarea,
             BaseButton
         },
@@ -36,22 +56,38 @@ import BaseButton from './app/BaseButton.vue';
                 this.$refs.textarea.$el.children[0].removeAttribute('style');
             }
         },
+        computed: {
+            lineCount() {
+                return this.inputValue.split('\n').length;
+            },
+            isMaxLines() {
+                return this.lineCount == this.maxLines;
+            },
+            maxLinesMessage() {
+                return '(' + this.maxLines + ' lines max)';
+            }
+        }
     }
 </script>
 
 <style lang="scss">
     .task-text-input {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+        flex-direction: column;
 
         margin: 0 auto 80px;
 
         .textarea {
             height: 23px;
-            margin-bottom: 5px;
             width: 100%;
             margin-right: 20px;
+        }
+
+        &__btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
     }
 </style>

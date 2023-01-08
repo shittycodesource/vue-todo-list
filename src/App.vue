@@ -1,25 +1,18 @@
 <template>
     <div id="app">
         <main class="main">
-            <BaseContainer>
-                <TheTaskTextInput/>
-                <Tasks/>
-            </BaseContainer>
+            <router-view></router-view>
         </main>
     </div>
 </template>
 
 <script>
 import BaseContainer from './components/app/BaseContainer.vue';
-import TheTaskTextInput from './components/TheTaskTextInput.vue';
-import Tasks from './components/Tasks/Tasks.vue';
 
 export default {
     name: "App",
     components: {
-        BaseContainer,
-        TheTaskTextInput,
-        Tasks
+        BaseContainer
     }
 };
 </script>

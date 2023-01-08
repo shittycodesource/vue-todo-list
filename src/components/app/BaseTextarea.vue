@@ -1,35 +1,21 @@
 <template>
-    <BaseInputWrapper>
-    	<textarea class="textarea"
-    		:value="value"
-            @input="$emit('input', $event.target.value)"
-            :placeholder="placeHolder"
-            v-textarea
-    	></textarea>
-    	
-
-    	<slot></slot>
-    </BaseInputWrapper>
+	<textarea
+        :value="value"
+        @input="$emit('input', $event.target.value)" 
+        class="textarea"
+        v-textarea
+	></textarea>
 </template>
 
 <script>
-import BaseInputWrapper from './BaseInputWrapper.vue';
-
 export default {
     name: "BaseTextarea",
-    components: {
-        BaseInputWrapper
-    },
     props: {
         value: {
             type: String,
-            default: "",
-        },
-        placeHolder: {
-            type: String,
-            default: "",
-        },
-    },
+            default: ''
+        }
+    }
 };
 </script>
 
