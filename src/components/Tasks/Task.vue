@@ -3,10 +3,13 @@
         <div class="task__content">
             {{data.text}}
         </div>
-        <div class="task__actions">
-            <BaseButton>Open</BaseButton>
-            <BaseButton @click.native="completeThisTask">Complete</BaseButton>
-            <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
+        <div class="task__footer">
+            <slot name="task-date"></slot>
+            <div class="task__actions">
+                <BaseButton>Open</BaseButton>
+                <BaseButton @click.native="completeThisTask">Complete</BaseButton>
+                <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
+            </div>
         </div>
     </div>
 </template>
@@ -69,10 +72,19 @@
             -webkit-box-orient: vertical;
         }
 
+        &__footer,
         &__actions {
             display: flex;
             align-content: center;
             justify-content: space-between;
+        }
+
+        &__actions {
+            width: 100%;
+        }
+
+        &__date {
+            color: $gray;
         }
 
         &.completed {
@@ -84,6 +96,16 @@
             text-decoration: line-through;
             color: #464646;
         } 
+
+        &--page-task {
+            width: 100%;
+            height: unset;
+
+            .task__actions {
+                width: unset;
+                gap: 20px;
+            }
+        }
 
         @media (max-width: $tabletBP) {
             width: calc(50% - 15px);

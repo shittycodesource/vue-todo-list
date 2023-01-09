@@ -8,6 +8,13 @@ export default new Vuex.Store({
     state: {
         tasks: [
             {
+                text:"a task",
+                completed:false,
+                dayValue:"9 January 2023",
+                date:1673268394753,
+                id: 0
+            },
+            {
                 text: 'first task',
                 completed: false,
                 dayValue: '3 March 2007',
@@ -114,6 +121,7 @@ export default new Vuex.Store({
             const arr = [...state.tasks];
             return arr.sort((x, y) => Number(x.completed) - Number(y.completed));
         },
-        getTasksSortType: (state) => state.sortTasksBy
+        getTasksSortType: (state) => state.sortTasksBy,
+        getTask: (state) => (id) => state.tasks.find(el => el.id == id),
     }
 }); 

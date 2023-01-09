@@ -4,7 +4,9 @@
             <template  v-for="(task_data, index) in list" >
 
                  <template v-if="index == 0 || task_data.dayValue != list[index - 1].dayValue">
-                    <div class="tasks__separator" :key="index"><span>{{ task_data.dayValue }}</span></div>
+                    <div class="tasks__separator" :key="index">
+                        <span>{{ task_data.dayValue }}</span>
+                    </div>
                 </template>
 
                 <Task

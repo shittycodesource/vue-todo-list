@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import HomePage from '@/pages/HomePage';
 import TaskPage from '@/pages/TaskPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,10 @@ const routes = [
 		name: 'task',
 		path: '/task',
 		component: TaskPage
+	},
+	{
+		path: '*',
+		component: NotFoundPage
 	}
 
 ];
