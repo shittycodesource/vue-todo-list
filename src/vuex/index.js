@@ -12,7 +12,7 @@ export default new Vuex.Store({
                 completed:false,
                 dayValue:"9 January 2023",
                 date:1673268394753,
-                id: 0
+                id: 1673268394753
             },
             {
                 text: 'first task',

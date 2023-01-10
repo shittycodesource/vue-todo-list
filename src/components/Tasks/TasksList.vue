@@ -12,7 +12,19 @@
                 <Task
                     :data="task_data"
                     :key="task_data.id"
-                />
+                >
+                    <template #task-action>
+                        <router-link 
+                            class="btn" 
+                            :to="{
+                                 name: 'task', 
+                                 params: { taskID: task_data.id } 
+                            }"
+                        >
+                            Open
+                        </router-link>
+                    </template>
+                </Task>
 
             </template>
         </template>

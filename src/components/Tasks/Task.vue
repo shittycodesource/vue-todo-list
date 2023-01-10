@@ -6,7 +6,7 @@
         <div class="task__footer">
             <slot name="task-date"></slot>
             <div class="task__actions">
-                <BaseButton>Open</BaseButton>
+                <slot name="task-action"></slot>
                 <BaseButton @click.native="completeThisTask">Complete</BaseButton>
                 <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
             </div>
@@ -25,7 +25,7 @@
                 type: Object,
                 default: {},
                 required: true
-            }
+            },
         },
         components: {
             BaseButton
@@ -104,6 +104,10 @@
             .task__actions {
                 width: unset;
                 gap: 20px;
+            }
+
+            .task__content {
+                -webkit-line-clamp: unset;
             }
         }
 

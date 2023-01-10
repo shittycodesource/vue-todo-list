@@ -3,7 +3,7 @@
         <BaseTextarea
             placeholder="Add new task"
             ref="textarea"
-            v-model:value="inputValue"
+            v-model="inputValue"
             :maxlength="
                 isMaxLines 
                     ? inputValue.length 
@@ -11,16 +11,18 @@
             "
         ></BaseTextarea>
 
-        <div class="task-text-input__btn">
+        <transition name="fade">
+            <div class="task-text-input__btn" v-if="inputValue">
             
-            <span v-if="inputValue.length">
-                {{ inputValue.length }} / {{ maxCharacters }}
-                {{ isMaxLines ? maxLinesMessage : '' }}
-            </span>
-            <span v-else></span>
+                <span v-if="inputValue.length">
+                    {{ inputValue.length }} / {{ maxCharacters }}
+                    {{ isMaxLines ? maxLinesMessage : '' }}
+                </span>
+                <span v-else></span>
 
-            <BaseButton @click.native="createTask">Create</BaseButton>
-        </div>
+                <BaseButton @click.native="createTask">Create</BaseButton>
+            </div>
+        </transition>
 
     </BaseInputWrapper>
 </template>
@@ -43,7 +45,7 @@ import BaseButton from './app/BaseButton.vue';
         components: {
             BaseInputWrapper,
             BaseTextarea,
-            BaseButton
+            BaseButton,
         },
         methods: {
             ...mapActions([
@@ -53,7 +55,7 @@ import BaseButton from './app/BaseButton.vue';
                 this.addTask(this.inputValue);
                 this.inputValue = '';
 
-                this.$refs.textarea.$el.children[0].removeAttribute('style');
+                this.$refs.textarea.$el.removeAttribute('style');
             }
         },
         computed: {

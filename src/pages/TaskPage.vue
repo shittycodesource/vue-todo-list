@@ -33,9 +33,9 @@
 				'getTask'
 			]),
 			theTask() {
-				return this.getTask(0);
+				return this.getTask(this.$route.params.taskID);
 			}
-		}
+		},
 	}
 </script>
 

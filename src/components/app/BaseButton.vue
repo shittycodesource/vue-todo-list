@@ -24,6 +24,7 @@
         font-family: inherit;
         font-size: inherit;
         color: #000;
+        text-decoration: none;
 
         transition: box-shadow .2s linear;
 
