@@ -14,27 +14,23 @@
     .btn {
         display: block;
 
-        padding: 10px 20px;
+        padding: 8px 25px;
 
-        border: none;
+        border: 1px solid $mainColor;
         background: #fff;
-        box-shadow: $baseBoxShadow;
+        border-radius: 8px;
         cursor: pointer;
 
         font-family: inherit;
-        font-size: inherit;
+        font-size: 16px  ;
         color: #000;
         text-decoration: none;
 
-        transition: box-shadow .2s linear;
-
-        &--delete {
-            background: #FFCACA;
-            color: #FF0000;
-        }
+        transition: background .2s linear, color .2s linear;
 
         &:hover {
-            box-shadow: $baseBoxShadowHover;
+            background: $mainColor;
+            color: invert($mainColor);
         }
         
         &.active {

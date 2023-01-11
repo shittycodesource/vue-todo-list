@@ -1,16 +1,20 @@
 <template>
     <div class="task" :class="{'completed': data.completed}">
+        <header class="task__header">
+            <h3 class="task__title">12312312312</h3>
+            <time class="task__date" datetime="1231231231">12:07 | 3 January 2023</time>
+        </header>
         <div class="task__content">
             {{data.text}}
         </div>
-        <div class="task__footer">
+        <footer class="task__footer">
             <slot name="task-date"></slot>
             <div class="task__actions">
                 <slot name="task-action"></slot>
                 <BaseButton @click.native="completeThisTask">Complete</BaseButton>
                 <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
             </div>
-        </div>
+        </footer>
     </div>
 </template>
 
@@ -51,40 +55,55 @@
         justify-content: space-between;
         flex-direction: column;
 
-        width: calc(33.3333333% - 15px);
-        min-height: 160px;
+        width: 900px;
+        min-height: 180px;
 
-        padding: 10px;
+        margin: 0 auto;
+        padding: 15px;
 
-        background: #fff;
+        background: $blockBackgroundColor;
         box-shadow: $baseBoxShadow;
+        border-radius: 18px;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__title {
+            line-height: 0;
+        }
 
         &__content {
             margin-bottom: 10px;
 
             line-height: 1.4;
             overflow: hidden;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 3;
             text-overflow: ellipsis;
             word-break: break-word;
             white-space: pre-line;
             display: -webkit-box;
             -webkit-box-orient: vertical;
+
+            font-size: 12px;
+            line-height: 1.8;
         }
 
         &__footer,
         &__actions {
             display: flex;
             align-content: center;
-            justify-content: space-between;
         }
 
         &__actions {
             width: 100%;
+            gap: 20px;
         }
 
         &__date {
-            color: $gray;
+            color: $mainColor;
         }
 
         &.completed {

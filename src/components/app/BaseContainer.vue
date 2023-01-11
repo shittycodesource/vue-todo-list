@@ -12,7 +12,7 @@
 
 <style lang="scss">
     .container {
-        max-width: 1030px;
+        max-width: $containerWidth;
         padding: 0 15px;
         margin: 0 auto;
     }

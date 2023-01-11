@@ -77,7 +77,7 @@ import Task from './Task.vue';
             span {
                 position: relative;
                 z-index: 1;
-                background: $mainBackground;
+                background: $mainBackgroundColor;
                 padding-right: 20px;
             }
 

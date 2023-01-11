@@ -28,7 +28,7 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
-        background-color: $mainBackground;
+        background-color: $mainBackgroundColor;
     }
 
     *,*::before,*::after {
@@ -37,5 +37,6 @@ export default {
 
     .main {
         padding-top: 50px;
+        padding-bottom: 50px;
     }
 </style>

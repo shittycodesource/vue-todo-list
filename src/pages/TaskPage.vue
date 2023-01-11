@@ -45,7 +45,7 @@
 			margin-bottom: 80px;
 
 			a {
-				color: $gray;
+				color: $mainColor;
 				text-decoration: none;
 
 				&:hover {
