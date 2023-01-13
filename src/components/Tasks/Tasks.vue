@@ -1,6 +1,6 @@
 <template>
-    <div class="tasks">
-        <TasksHeader :count="getTasks.length"/>
+    <div class="tasks" v-once>
+        <TasksHeader :count="getIncompleteTasksNumber"/>
         <TasksList :list="getTasks"/>
     </div>
 </template>
@@ -18,7 +18,8 @@ import TasksList from './TasksList.vue';
         },
         computed: {
             ...mapGetters([
-                'getTasks'
+                'getTasks',
+                'getIncompleteTasksNumber'
             ])
         }
     }

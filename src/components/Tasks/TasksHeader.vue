@@ -1,23 +1,28 @@
 <template>
     <header class="tasks__header">
         <div class="tasks__left">
-            <h3 class="tasks__title">ACTIVE TASKS</h3>
-            <span class="tasks__count">({{count}})</span>
+            <h3 class="tasks__title">Welcome back,
+                <template v-if="getIncompleteTasksNumber"><br/>you have {{count}} tasks left</template>
+                <template v-else><br/>you haven't incomplete tasks</template>
+            </h3>
         </div>
         <div class="tasks__right">
 
             <Dropdown :isOpened="isDropdownOpen">
-                <BaseButton @click.native="toggleDropdown">Sort by</BaseButton>
+                <div @click="toggleDropdown" class="dropdown-title">Sort by</div>
+
                 <template #dropdown-items>
-                    <BaseButton
+                    <button
+                        class="dropdown__btn"
                         v-for="btn in buttons"
                         :key="btn.name" 
-                        @click.native="btn.handler"
+                        @click="btn.handler"
                         :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
                     >
                         {{ btn.name }}
-                    </BaseButton>
+                    </button>
                 </template>
+
             </Dropdown>
         </div>
 
@@ -53,7 +58,8 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
         },
         computed: {
             ...mapGetters([
-                'getTasksSortType'
+                'getTasksSortType',
+                'getIncompleteTasksNumber'
             ]),
         },
         methods: {
@@ -86,12 +92,29 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
         }
 
         &__title {
+            font-size: 20px;
+            color: $textColor;
+
             font-weight: 400;
             margin-right: 5px;
         }
 
         &__count {
             color: #767676;
+        }
+    }
+
+    .dropdown {
+        border-radius: 8px;
+        overflow: hidden;
+
+        &-title {
+            color: $textColor;
+            cursor: pointer;
+
+            &:hover {
+                color: darken($textColor, 10%);
+            }
         }
     }
 </style>

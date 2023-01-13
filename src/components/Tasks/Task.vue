@@ -1,27 +1,21 @@
 <template>
     <div class="task" :class="{'completed': data.completed}">
         <header class="task__header">
-            <h3 class="task__title">12312312312</h3>
-            <time class="task__date" datetime="1231231231">12:07 | 3 January 2023</time>
+            <h3 class="task__title">{{ data.title }}</h3>
+            <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
         </header>
         <div class="task__content">
             {{data.text}}
         </div>
         <footer class="task__footer">
-            <slot name="task-date"></slot>
             <div class="task__actions">
-                <slot name="task-action"></slot>
-                <BaseButton @click.native="completeThisTask">Complete</BaseButton>
-                <BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
+                <slot name="task-actions"></slot>
             </div>
         </footer>
     </div>
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
-    import BaseButton from '@/components/app/BaseButton.vue';
-
     export default {
         name: 'Task',
         props: {
@@ -31,21 +25,6 @@
                 required: true
             },
         },
-        components: {
-            BaseButton
-        },
-        methods: {
-            ...mapActions([
-                'deleteTask',
-                'completeTask'
-            ]),
-            deleteThisTask() {
-                this.deleteTask(this.data.id);
-            },
-            completeThisTask() {
-                this.completeTask(this.data);
-            }
-        }
     }
 </script>
 
@@ -73,12 +52,12 @@
 
         &__title {
             line-height: 0;
+            font-weight: 500;
         }
 
         &__content {
             margin-bottom: 10px;
 
-            line-height: 1.4;
             overflow: hidden;
             -webkit-line-clamp: 3;
             text-overflow: ellipsis;
@@ -87,8 +66,10 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
 
-            font-size: 12px;
-            line-height: 1.8;
+            font-size: 14px;
+            line-height: calc(14 * 1.5 / 10);
+
+            color: $textColor;
         }
 
         &__footer,
@@ -108,12 +89,11 @@
 
         &.completed {
             box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, .1);
-            opacity: .8;
+            opacity: .6;
         }      
 
         &.completed &__content {
             text-decoration: line-through;
-            color: #464646;
         } 
 
         &--page-task {

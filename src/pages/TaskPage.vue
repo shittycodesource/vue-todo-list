@@ -6,10 +6,9 @@
 			</div>
 			<div class="task-page__content">
 				<Task class="task--page-task" :data="theTask">
-					<template #task-date>
-						<div class="task__date">
-							{{ theTask.dayValue }}
-						</div>
+					<template #task-actions>
+						<BaseButton @click.native="completeThisTask">Complete</BaseButton>
+                    	<BaseButton class="btn--delete" @click.native="deleteThisTask">Delete</BaseButton>
 					</template>
 				</Task>
 			</div>
@@ -18,24 +17,39 @@
 </template>
 
 <script>
-	import { mapGetters } from 'vuex';
 	import BaseContainer from '@/components/app/BaseContainer.vue';
 	import Task from '@/components/Tasks/Task.vue';
+	import BaseButton from '@/components/app/BaseButton.vue';
+	import { mapActions, mapGetters } from 'vuex';
 
 	export default {
 		name: 'TaskPage',
 		components: {
 	        BaseContainer,
-			Task
+			Task,
+			BaseButton
 	    },
 		computed: {
 			...mapGetters([
 				'getTask'
 			]),
 			theTask() {
-				return this.getTask(this.$route.params.taskID);
+				return this.getTask(this.$route.query.id);
 			}
 		},
+		methods: {
+            ...mapActions([
+                'deleteTask',
+                'completeTask'
+            ]),
+            deleteThisTask() {
+                this.deleteTask(this.theTask.id);
+				this.$router.push('/');
+            },
+            completeThisTask() {
+                this.completeTask(this.theTask);
+            }
+        }
 	}
 </script>
 

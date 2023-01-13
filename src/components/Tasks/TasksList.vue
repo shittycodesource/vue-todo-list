@@ -13,35 +13,39 @@
                     :data="task_data"
                     :key="task_data.id"
                 >
-                    <template #task-action>
+                    <template #task-actions>
                         <router-link 
                             class="btn" 
                             :to="{
                                  name: 'task', 
-                                 params: { taskID: task_data.id } 
+                                 query: { id: task_data.id } 
                             }"
                         >
                             Open
                         </router-link>
+                        <BaseButton @click.native="completeThisTask(task_data)">Complete</BaseButton>
+                        <BaseButton class="btn--delete" @click.native="deleteThisTask(task_data.id)">Delete</BaseButton>
                     </template>
                 </Task>
 
             </template>
         </template>
         <template v-else>
-            <p class="center">Empty</p>
+            <p class="center">Seems like you've finished all your tasks. Well done</p>
         </template>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Task from './Task.vue';
+import BaseButton from '../app/BaseButton.vue';
 
     export default {
         name: 'TasksList',
         components: {
-            Task
+            Task,
+            BaseButton
         },
         computed: {
             ...mapGetters([
@@ -55,6 +59,18 @@ import Task from './Task.vue';
                 };
 
                 return this.getTasks;
+            }
+        },
+        methods: {
+            ...mapActions([
+                'deleteTask',
+                'completeTask'
+            ]),
+            deleteThisTask(id) {
+                this.deleteTask(id);
+            },
+            completeThisTask(data) {
+                this.completeTask(data);
             }
         }
     }
@@ -72,38 +88,7 @@ import Task from './Task.vue';
             margin: 10px 0;
             width: 100%;
             color: #7a7a7a;
-            position: relative;
-
-            span {
-                position: relative;
-                z-index: 1;
-                background: $mainBackgroundColor;
-                padding-right: 20px;
-            }
-
-            &::after {
-                content: '';
-                width: 100%;
-                height: 1px;
-
-                background: #7a7a7a;
-                
-                position: absolute;
-                right: 0;
-                top: 50%;
-
-                transform: translateY(-50%);
-            }
-        }
-
-        @media (max-width: $tabletBP) {
-            &__separator {
-                text-align: center; 
-
-                span {
-                    padding-left: 20px;
-                }
-            }
+            text-align: center;
         }
     }
 </style>

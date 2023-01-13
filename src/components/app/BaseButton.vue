@@ -14,10 +14,10 @@
     .btn {
         display: block;
 
-        padding: 8px 25px;
+        padding: 5px 20px;
 
         border: 1px solid $mainColor;
-        background: #fff;
+        background: transparent;
         border-radius: 8px;
         cursor: pointer;
 

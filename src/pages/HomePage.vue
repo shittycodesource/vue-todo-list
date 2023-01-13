@@ -1,6 +1,6 @@
 <template>
 	<BaseContainer>
-		<TheTaskTextInput/>
+		<!-- <TheTaskTextInput/> -->
         <Tasks/>	
     </BaseContainer>
 </template>
