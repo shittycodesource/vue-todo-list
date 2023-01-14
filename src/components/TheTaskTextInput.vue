@@ -1,6 +1,6 @@
 <template>
-    <BaseInputWrapper class="task-text-input">
-        <BaseTextarea
+    <v-input-wrapper class="task-text-input">
+        <vTextarea
             placeholder="Add new task"
             ref="textarea"
             v-model="inputValue"
@@ -9,7 +9,7 @@
                     ? inputValue.length 
                     : maxCharacters
             "
-        ></BaseTextarea>
+        ></vTextarea>
 
         <transition name="fade">
             <div class="task-text-input__btn" v-if="inputValue">
@@ -20,18 +20,18 @@
                 </span>
                 <span v-else></span>
 
-                <BaseButton @click.native="createTask">Create</BaseButton>
+                <v-button @click.native="createTask">Create</v-button>
             </div>
         </transition>
 
-    </BaseInputWrapper>
+    </v-input-wrapper>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import BaseInputWrapper from './app/BaseInputWrapper';
-import BaseTextarea from './app/BaseTextarea.vue';
-import BaseButton from './app/BaseButton.vue';
+    import { mapActions } from 'vuex';
+    import vInputWrapper from './app/vInputWrapper';
+    import vTextarea from './app/vTextarea.vue';
+    import vButton from './app/vButton.vue';
 
     export default {
         name: 'TheTaskTextInput',
@@ -43,9 +43,9 @@ import BaseButton from './app/BaseButton.vue';
             }
         },
         components: {
-            BaseInputWrapper,
-            BaseTextarea,
-            BaseButton,
+            vInputWrapper,
+            vTextarea,
+            vButton,
         },
         methods: {
             ...mapActions([

@@ -1,19 +1,19 @@
 <template>
-	<BaseContainer>
+	<v-container>
 		<!-- <TheTaskTextInput/> -->
         <Tasks/>	
-    </BaseContainer>
+    </v-container>
 </template>
 
 <script>
-	import BaseContainer from '@/components/app/BaseContainer.vue';
-	import TheTaskTextInput from '@/components/TheTaskTextInput.vue';
-	import Tasks from '@/components/Tasks/Tasks.vue';
+	import TheTaskTextInput from '../components/TheTaskTextInput.vue';
+	import Tasks from '../components/Tasks/Tasks.vue';
+	import vContainer from '../components/app/vContainer.vue';
 
 	export default {
 		name: 'HomePage',
 		components: {
-	        BaseContainer,
+	        vContainer,
 	        TheTaskTextInput,
 	        Tasks
 	    }

@@ -1,18 +1,21 @@
 <template>
     <div id="app">
+        <v-sidebar/>
         <main class="main">
-            <router-view></router-view>
+            <transition name="page" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </main>
     </div>
 </template>
 
 <script>
-import BaseContainer from './components/app/BaseContainer.vue';
+import vSidebar from './components/app/vSidebar.vue';
 
 export default {
     name: "App",
     components: {
-        BaseContainer
+        vSidebar
     }
 };
 </script>

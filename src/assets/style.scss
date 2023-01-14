@@ -1,7 +1,12 @@
 @import "_vars";
+@import "_transitions";
 
 .mb0 {
 	margin-bottom: 0;
+}
+
+.mb20px {
+    margin-bottom: 20px;
 }
 
 .center {
@@ -25,5 +30,3 @@
 .items-center {
     align-items: center;
 }
-
-@import "_transitions";

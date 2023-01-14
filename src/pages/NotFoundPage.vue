@@ -1,19 +1,19 @@
 <template>
-    <BaseContainer>
+    <v-container>
         <div class="not-found">
             <h2>This page is not found</h2>
             <router-link to="/">Main Page</router-link>
         </div>
-    </BaseContainer>
+    </v-container>
 </template>
 
 <script>
-    import BaseContainer from '@/components/app/BaseContainer.vue';
+    import vContainer from '../components/app/vContainer.vue';
 
     export default {
         name: 'NotFoundPage',
         components: {
-            BaseContainer
+            vContainer
         }
     }
 </script>

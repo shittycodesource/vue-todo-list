@@ -23,8 +23,8 @@
                         >
                             Open
                         </router-link>
-                        <BaseButton @click.native="completeThisTask(task_data)">Complete</BaseButton>
-                        <BaseButton class="btn--delete" @click.native="deleteThisTask(task_data.id)">Delete</BaseButton>
+                        <v-button @click.native="completeThisTask(task_data)">Complete</v-button>
+                        <v-button class="btn--delete" @click.native="deleteThisTask(task_data.id)">Delete</v-button>
                     </template>
                 </Task>
 
@@ -39,13 +39,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Task from './Task.vue';
-import BaseButton from '../app/BaseButton.vue';
+import vButton from '../app/vButton.vue';
 
     export default {
         name: 'TasksList',
         components: {
             Task,
-            BaseButton
+            vButton
         },
         computed: {
             ...mapGetters([

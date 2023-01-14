@@ -31,7 +31,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import BaseButton from '@/components/app/BaseButton.vue';
 import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
     export default {
@@ -53,7 +52,6 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
             }
         },
         components: {
-            BaseButton,
             Dropdown,
         },
         computed: {

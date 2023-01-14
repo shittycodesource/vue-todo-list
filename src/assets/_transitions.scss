@@ -1,6 +1,9 @@
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .2s;
+.page-enter-active, .page-leave-active {
+    transition: opacity .2s linear, transform .2s linear;
+    transform: translateY(0px);
 }
-.fade-enter, .fade-leave-to{
+
+.page-enter, .page-leave-to {
     opacity: 0;
+    transform: translateY(-10px);
 }

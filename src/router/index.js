@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import HomePage from '@/pages/HomePage';
 import TaskPage from '@/pages/TaskPage';
+import CreatePage from '@/pages/CreatePage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 Vue.use(VueRouter);
@@ -17,6 +18,11 @@ const routes = [
 		name: 'task',
 		path: '/task',
 		component: TaskPage
+	},
+	{
+		name: 'create',
+		path: '/create',
+		component: CreatePage
 	},
 	{
 		path: '*',

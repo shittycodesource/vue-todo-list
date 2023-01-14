@@ -1,5 +1,5 @@
 <template>
-    <div class="tasks" v-once>
+    <div class="tasks">
         <TasksHeader :count="getIncompleteTasksNumber"/>
         <TasksList :list="getTasks"/>
     </div>
