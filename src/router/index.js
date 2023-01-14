@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import HomePage from '@/pages/HomePage';
 import TaskPage from '@/pages/TaskPage';
 import CreatePage from '@/pages/CreatePage';
+import EditPage from '@/pages/EditPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 Vue.use(VueRouter);
@@ -23,6 +24,11 @@ const routes = [
 		name: 'create',
 		path: '/create',
 		component: CreatePage
+	},
+	{
+		name: 'edit',
+		path: '/edit',
+		component: EditPage
 	},
 	{
 		path: '*',

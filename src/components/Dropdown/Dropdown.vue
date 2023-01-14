@@ -80,25 +80,4 @@
         }
     }
 
-    .dropdown-transition {
-        &-leave-active {
-            animation: dropdownAnimation .2s ease reverse;
-        }
-
-        &-enter-active {
-            animation: dropdownAnimation .2s ease;
-        }
-    }
-    
-    @keyframes dropdownAnimation {
-        0% {
-            opacity: 0;
-            transform: translate(-50%, calc(100% - 10px));
-        }    
-
-        100% {
-            opacity: 1;
-            transform: translate(-50%, 100%);
-        }
-    }
 </style>

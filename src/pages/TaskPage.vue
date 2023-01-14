@@ -1,12 +1,16 @@
 <template>
 	<v-container>
 		<v-page-header/>
-		<Task class="task--page-task" :data="theTask">
+		<Task class="task--page-task" :data="theTask" v-if="theTask">
 			<template #task-actions>
 				<v-button @click.native="completeThisTask">Complete</v-button>
-				<v-button class="btn--delete" @click.native="deleteThisTask">Delete</v-button>
+				<router-link class="btn" :to="{ name: 'edit',  query: { id: theTask.id } }">
+                    Edit
+                </router-link>
+				<v-button @click.native="deleteThisTask">Delete</v-button>
 			</template>
 		</Task>
+		<p v-else>This task is not found or deleted</p>
     </v-container>
 </template>
 

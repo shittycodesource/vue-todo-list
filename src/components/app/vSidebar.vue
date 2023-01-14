@@ -4,13 +4,15 @@
             <div class="sidebar__header">
                 <v-burger-menu @click.native="toggleSidebar"/>
             </div>
-            <transition name="fade">
-                <div class="sidebar__content" v-if="isOpen">
-                    <v-nav :links="links" @linkClick="toggleSidebar"/>
-                </div>
-            </transition>
+            <div class="sidebar__content">
+                <transition name="fade">
+                    <v-nav v-if="isOpen" :links="links" @linkClick="toggleSidebar"/>
+                </transition>
+            </div>
             <div class="sidebar__footer">
-
+                <transition name="fade">
+                    <router-link to="/create" v-if="!isOpen">+</router-link>
+                </transition>
             </div>
         </div>
     </aside>
@@ -84,6 +86,16 @@
             display: flex;
             align-items: center;
             flex-grow: 1;
+        }
+
+        &__footer {
+            a {
+                padding-left: 4px;
+                font-weight: 600;
+                color: $mainColor;
+                font-size: 25px;
+                text-decoration: none;
+            }
         }
 
         &.open {

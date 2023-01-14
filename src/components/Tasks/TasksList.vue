@@ -14,17 +14,11 @@
                     :key="task_data.id"
                 >
                     <template #task-actions>
-                        <router-link 
-                            class="btn" 
-                            :to="{
-                                 name: 'task', 
-                                 query: { id: task_data.id } 
-                            }"
-                        >
+                        <router-link class="btn" :to="{ name: 'task',  query: { id: task_data.id } }">
                             Open
                         </router-link>
                         <v-button @click.native="completeThisTask(task_data)">Complete</v-button>
-                        <v-button class="btn--delete" @click.native="deleteThisTask(task_data.id)">Delete</v-button>
+                        <v-button @click.native="deleteThisTask(task_data.id)">Delete</v-button>
                     </template>
                 </Task>
 

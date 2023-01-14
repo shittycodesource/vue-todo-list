@@ -60,16 +60,7 @@ export default new Vuex.Store({
     },
     mutations: {
         ADD_TASK(state, data) {
-            const dateNow = Date.now();
-            const dayValue = format(new Date(), 'd MMMM yyyy');
-
-            state.tasks.push({
-                text: data, 
-                date: dateNow,
-                completed: false,
-                id: dateNow, 
-                dayValue: dayValue
-            });
+            state.tasks.push(data);
         },
         DELETE_TASK(state, id) {
             state.tasks = state.tasks.filter(item => item.id != id);
@@ -87,7 +78,18 @@ export default new Vuex.Store({
     actions: {
         addTask({commit}, data) {
             if (data) {
-                commit('ADD_TASK', data);
+                const dateNow = Date.now();
+                const dayValue = format(new Date(), 'd MMMM yyyy');
+
+                const obj = {
+                    ...data, 
+                    date: dateNow, 
+                    dayValue,
+                    completed: false,
+                    id: dateNow, 
+                };
+
+                commit('ADD_TASK', obj);
             }
         },
         deleteTask({commit}, id) {
