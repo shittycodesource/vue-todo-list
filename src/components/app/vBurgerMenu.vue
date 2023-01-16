@@ -1,12 +1,18 @@
 <template>
-    <button class="burger" type="button">
+    <button class="burger" type="button" :class="{'active': isActive}">
         <span></span>
     </button>
 </template>
 
 <script>
     export default {
-        name: 'vBurgerMenu'
+        name: 'vBurgerMenu',
+		props: {
+			isActive: {
+				type: Boolean,
+				default: false
+			}
+		}
     }
 </script>
 
@@ -35,17 +41,32 @@
             background: #000;
 
             position: absolute;
-            top: 50%;
             left: 0;
             transform: translateY(-50%);
+			
+			transition: transform .2s linear, opacity .2s linear;
         }
 
         &::before {
-            top: 0;
+            top: 0px;
         }
 
         &::after {
-            top: 100%;
+            top: 12px;
         }
+		
+		&.active {
+			span {
+				opacity: 0;
+			}
+			
+			&::before {
+				transform: translateY(5px) rotate(45deg);
+			}
+			
+			&::after {
+				transform: translateY(-7px) rotate(-45deg);
+			}
+		}
     }
 </style>

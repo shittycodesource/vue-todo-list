@@ -39,14 +39,13 @@
 </template>
 
 <script>
-    import vPageHeader from '@/components/app/vPageHeader.vue';
-    import vContainer from '@/components/app/vContainer.vue';
-    import vInput from '@/components/app/vInput.vue';
-    import vTextarea from '@/components/app/vTextarea.vue';
-    import { mapActions } from 'vuex';
+    import vPageHeader from '../app/vPageHeader.vue';
+    import vContainer from '../app/vContainer.vue';
+    import vInput from '../Inputs/vInput.vue';
+    import vTextarea from '../Inputs/vTextarea.vue';
 
     export default {
-        name: 'vEditTaskPage',
+        name: 'EditTaskPage',
         data() {
             return {
                 maxCharacters: 2048,
@@ -91,7 +90,7 @@
                 return this.textValue.split('\n').length;
             },
             isMaxLines() {
-                return this.lineCount == this.maxLines;
+                return this.lineCount >= this.maxLines;
             },
             linesMessage() {
                 if (this.textValue.length) {

@@ -1,5 +1,5 @@
 <template>
-    <v-edit-task-page 
+    <edit-task-page 
         ref="editPage"
         :title="title" 
         :text="text"
@@ -9,11 +9,11 @@
         <template #button>
             <v-button @click.native="createTask">Create</v-button>
         </template>
-    </v-edit-task-page>
+    </edit-task-page>
 </template>
 
 <script>
-    import vEditTaskPage from '../components/app/vEditTaskPage.vue';
+    import EditTaskPage from '../components/Tasks/EditTaskPage.vue';
     import vButton from '../components/app/vButton.vue';
     import { mapActions } from 'vuex';
 
@@ -26,7 +26,7 @@
             }
         },
         components: {
-            vEditTaskPage,
+            EditTaskPage,
             vButton
         },
         methods: {

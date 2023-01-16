@@ -2,15 +2,15 @@
     <aside class="sidebar" :class="{'open': isOpen}">
         <div class="sidebar__inner">
             <div class="sidebar__header">
-                <v-burger-menu @click.native="toggleSidebar"/>
+                <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/>
             </div>
             <div class="sidebar__content">
-                <transition name="fade">
+                <transition name="nav">
                     <v-nav v-if="isOpen" :links="links" @linkClick="toggleSidebar"/>
                 </transition>
             </div>
             <div class="sidebar__footer">
-                <transition name="fade">
+                <transition name="nav">
                     <router-link to="/create" v-if="!isOpen">+</router-link>
                 </transition>
             </div>
@@ -89,7 +89,10 @@
         }
 
         &__footer {
+            min-height: 40px;
+
             a {
+				display: block;
                 padding-left: 4px;
                 font-weight: 600;
                 color: $mainColor;

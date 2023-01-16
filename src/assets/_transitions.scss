@@ -18,7 +18,14 @@
     opacity: 0;
 }
 
+.nav-enter-active, .nav-leave-active {
+	transition: opacity .1s linear, transform .2s linear;
+}
 
+.nav-enter, .nav-leave-to {
+	opacity: 0;
+	transform: translateX(25px);
+}
 
 .dropdown-transition {
     &-leave-active {
