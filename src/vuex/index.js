@@ -62,6 +62,14 @@ export default new Vuex.Store({
         ADD_TASK(state, data) {
             state.tasks.push(data);
         },
+        UPDATE_TASK(state, data) {
+            state.tasks.forEach(el => {
+                if (el.id == data.id) {
+                    el.title = data.title;
+                    el.text = data.text;
+                }
+            });
+        },
         DELETE_TASK(state, id) {
             state.tasks = state.tasks.filter(item => item.id != id);
         },
@@ -91,6 +99,9 @@ export default new Vuex.Store({
 
                 commit('ADD_TASK', obj);
             }
+        },
+        updateTask({commit}, data) {
+            commit('UPDATE_TASK', data);
         },
         deleteTask({commit}, id) {
             commit('DELETE_TASK', id);

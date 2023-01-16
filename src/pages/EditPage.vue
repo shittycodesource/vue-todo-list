@@ -1,10 +1,11 @@
 <template>
     <v-edit-task-page 
         ref="editPage"
+        :notFound="notFound"
         :title="title" 
         :text="text"
         @emitInput="(newTitle) => title = newTitle"
-        @emitextarea="(newText) => text = newText"
+        @emitTextarea="(newText) => text = newText"
     >
         <template #button>
             <v-button @click.native="editTask">Edit</v-button>
@@ -23,6 +24,7 @@
             return {
                 title: '',
                 text: '',
+                notFound: false
             }
         },
         components: {
@@ -39,24 +41,26 @@
         },
         methods: {
             ...mapActions([
-                'addTask'
+                'updateTask'
             ]),
             editTask() {
                 const data = {
                     title: this.title,
-                    text: this.text
+                    text: this.text,
+                    id: this.theTask.id
                 };
 
                 this.updateTask(data);
-                this.title = '';
-                this.text = '';
-
-                this.$refs.editPage.reset();
+                this.$router.push({ name: 'task', query: { id: data.id }});
             }
         },
         created() {
-            this.title = this.theTask.title;
-            this.text = this.theTask.text;
+            if (this.theTask) {
+                this.title = this.theTask.title;
+                this.text = this.theTask.text;
+            } else {
+                this.notFound = true;
+            }
         }
     }
 </script>
