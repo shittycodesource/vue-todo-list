@@ -1,6 +1,9 @@
 <template>
-    <label class="input-wrapper">
-        <slot></slot>
+    <label class="input-block">
+        <slot name="label"></slot>
+        <span class="input-wrapper">
+            <slot name="input"></slot>
+        </span>
     </label>
 </template>
 
@@ -11,7 +14,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .input-wrapper {
+    .input-block {
         display: block;
         width: 100%;
 
@@ -20,5 +23,26 @@ export default {
             color: $textColor;
             margin-bottom: 10px;
         }
+
+        &--tags {
+            .input-wrapper {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+
+    .input-wrapper {
+        display: block;
+
+        width: 100%;
+
+        padding: 13px 15px;
+
+        background: #fff;
+        border: none;
+        border: 1px solid #F5F5F5;
+        border-radius: 18px;
+        box-shadow: $baseBoxShadow;
     }
 </style>

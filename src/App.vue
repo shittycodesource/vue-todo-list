@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <v-icons-sprites/>
         <v-sidebar/>
         <main class="main">
             <transition name="page" mode="out-in">
@@ -11,11 +12,13 @@
 
 <script>
 import vSidebar from './components/app/vSidebar.vue';
+import vIconsSprites from './components/app/vIconsSprites.vue';
 
 export default {
     name: "App",
     components: {
-        vSidebar
+        vSidebar,
+        vIconsSprites
     }
 };
 </script>

@@ -4,8 +4,10 @@
         :notFound="notFound"
         :title="title" 
         :text="text"
+        :tags="tags"
         @emitInput="(newTitle) => title = newTitle"
         @emitTextarea="(newText) => text = newText"
+        @emitTags="(newTagsew) => tags = newTags"
     >
         <template #button>
             <v-button @click.native="editTask">Edit</v-button>
@@ -24,6 +26,7 @@
             return {
                 title: '',
                 text: '',
+                tags: [],
                 notFound: false
             }
         },

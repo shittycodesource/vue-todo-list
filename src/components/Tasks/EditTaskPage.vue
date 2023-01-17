@@ -30,6 +30,11 @@
                         : linesMessage
                 "
             />
+            <v-tags-input 
+                :tags="tags" 
+                placeholder="Your tags here..."
+                @addTag="emitTags"
+            />
             <slot name="button"></slot>
         </template>
         <template v-else>
@@ -43,6 +48,7 @@
     import vContainer from '../app/vContainer.vue';
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
+    import vTagsInput from '../Inputs/vTagsInput.vue';
 
     export default {
         name: 'EditTaskPage',
@@ -66,6 +72,10 @@
             text: {
                 type: String,
                 default: '',
+            },
+            tags: {
+                type: Array,
+                required: true
             }
         },
         components: {
@@ -73,6 +83,7 @@
             vPageHeader,
             vInput,
             vTextarea,
+            vTagsInput
         },
         methods: {
             reset() {
@@ -83,6 +94,9 @@
             },
             update() {
                 this.$forceUpdate();
+            },
+            emitTags(arr) {
+                this.$emit('throwTags', arr);
             }
         },
         computed: {

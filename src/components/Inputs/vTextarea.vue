@@ -1,20 +1,24 @@
 <template>
     <v-input-wrapper>
-        <span v-if="label">{{ label }}</span>
+        <template #label>
+            <span v-if="label">{{ label }}</span>
+        </template>
     
-        <textarea
-            class="input input--textarea"
-            :class="{'input--with-message': message}"
-            :placeholder="placeholder"
-            :value="value" 
-            :maxlength="maxLength"
-            @input="onInput"
-            v-textarea
-            ref="input"
-        ></textarea>
-        <transition name="fade">
-            <div class="input-message" v-if="message">{{ message }}</div>
-        </transition>
+        <template #input>
+            <textarea
+                class="input input--textarea"
+                :class="{'input--with-message': message}"
+                :placeholder="placeholder"
+                :value="value" 
+                :maxlength="maxLength"
+                @input="onInput"
+                v-textarea
+                ref="input"
+            ></textarea>
+            <transition name="fade">
+                <div class="input-message" v-if="message">{{ message }}</div>
+            </transition>
+        </template>
     </v-input-wrapper>
 </template>
 
@@ -23,11 +27,6 @@ import vInputWrapper from './vInputWrapper.vue';
 
 export default {
     name: "vTextarea",
-    data() {
-        return {
-            text: ''
-        }
-    },
     components: {
         vInputWrapper
     },
@@ -72,7 +71,7 @@ export default {
     .input--textarea {
         margin: 0;
 
-		height: 51px;
+		height: 25px;
         overflow: hidden;
         resize: none;
 

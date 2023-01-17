@@ -1,16 +1,20 @@
 <template>
     <v-input-wrapper>
-        <span v-if="label">{{ label }}</span>
+        <template #label>
+            <span v-if="label">{{ label }}</span>
+        </template>
     
-        <input
-            class="input"
-            :class="{'input--with-message': message}"
-            type="text"
-            :placeholder="placeholder"
-            :value="value" 
-            @input="onInput"
-        />
-        <div class="input-message" v-if="message">{{ message }}</div>
+        <template #input>
+            <input
+                class="input"
+                :class="{'input--with-message': message}"
+                type="text"
+                :placeholder="placeholder"
+                :value="value" 
+                @input="onInput"
+            />
+            <div class="input-message" v-if="message">{{ message }}</div>
+        </template>
     </v-input-wrapper>
 </template>
 
@@ -19,11 +23,6 @@ import vInputWrapper from './vInputWrapper.vue';
 
 export default {
     name: "vInput",
-    data() {
-        return {
-            text: '',
-        }
-    },
     components: {
         vInputWrapper
     },
@@ -60,13 +59,8 @@ export default {
 
         width: 100%;
 
-        padding: 13px 15px;
-
-        background: #fff;
+        background: none;
         border: none;
-        border: 1px solid #F5F5F5;
-        border-radius: 18px;
-        box-shadow: $baseBoxShadow;
 
         font-family: inherit;
         color: $textColor;
@@ -82,23 +76,11 @@ export default {
             outline: none;
         }
         
-        &--with-message {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
         &-message {
             display: flex;
             align-items: center;
 
-            padding: 4px 13px;
-
-            border-bottom-right-radius: 18px;
-            border-bottom-left-radius: 18px;
-            background: $blockBackgroundColor;
-            box-shadow: $baseBoxShadow;
-            
-            position: relative;
+            padding: 8px 0px;
 
             color: $textColor;
             font-weight: 400;

@@ -3,8 +3,10 @@
         ref="editPage"
         :title="title" 
         :text="text"
+        :tags="tags"
         @emitInput="(newTitle) => title = newTitle"
         @emitTextarea="(newText) => text = newText"
+        @emitTags="(newTags) => tags = newTags"
     >
         <template #button>
             <v-button @click.native="createTask">Create</v-button>
@@ -23,6 +25,7 @@
             return {
                 title: '',
                 text: '',
+                tags: []
             }
         },
         components: {
