@@ -43,14 +43,16 @@
                 if (_title.trim().length && _text.trim().length) {
                     const data = {
                         title: this.title,
-                        text: this.text
+                        text: this.text,
+                        tags: this.tags
                     };
 
                     this.addTask(data);
                     this.title = '';
                     this.text = '';
+                    this.tags = [];
 
-                    this.$refs.editPage.reset();
+                    this.$refs.editPage.update();
                 }
             }
         },

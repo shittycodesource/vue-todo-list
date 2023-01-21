@@ -13,6 +13,7 @@ export default new Vuex.Store({
                 title: 'Lorem ipsum dolor',
                 dayValue:"9 January 2023",
                 date:1673268394753,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1673268394753
             },
             {
@@ -21,6 +22,7 @@ export default new Vuex.Store({
                 title: 'First task',
                 dayValue: '3 March 2007',
                 date: 1172810970320,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1172810970320
             },
             {
@@ -29,6 +31,7 @@ export default new Vuex.Store({
                 title: 'Before First task',
                 dayValue: '7 July 2005',
                 date: 1122790970320,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1122790970320
             },
             {
@@ -37,6 +40,7 @@ export default new Vuex.Store({
                 completed: false,
                 dayValue: '12 December 2022',
                 date: 1672310952752,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1672310952752,
             },
             { 
@@ -45,6 +49,7 @@ export default new Vuex.Store({
                 title: 'Lastest task',
                 dayValue: '1 January 2023',
                 date: 1672810784122,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1672810784122,
             },
             {
@@ -53,6 +58,7 @@ export default new Vuex.Store({
                 title: 'Before Last task',
                 dayValue: '1 January 2023',
                 date: 1672610961888,
+                tags: ['lorem ipsum', 'fdsfsdf', '324324324'],
                 id: 1672610961888,
             },
         ],
@@ -65,8 +71,9 @@ export default new Vuex.Store({
         UPDATE_TASK(state, data) {
             state.tasks.forEach(el => {
                 if (el.id == data.id) {
-                    el.title = data.title;
-                    el.text = data.text;
+                    // el.title = data.title;
+                    // el.text = data.text;
+                    el = {...data}
                 }
             });
         },

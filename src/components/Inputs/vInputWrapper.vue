@@ -18,7 +18,7 @@ export default {
         display: block;
         width: 100%;
 
-        span {
+        & > span {
             display: block;
             color: $textColor;
             margin-bottom: 10px;

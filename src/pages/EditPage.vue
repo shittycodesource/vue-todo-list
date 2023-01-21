@@ -50,6 +50,7 @@
                 const data = {
                     title: this.title,
                     text: this.text,
+                    tags: this.tags,
                     id: this.theTask.id
                 };
 
@@ -61,6 +62,7 @@
             if (this.theTask) {
                 this.title = this.theTask.title;
                 this.text = this.theTask.text;
+                this.tags = this.theTask.tags;
             } else {
                 this.notFound = true;
             }

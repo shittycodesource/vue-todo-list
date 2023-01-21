@@ -11,13 +11,28 @@
             <div class="task__actions">
                 <slot name="task-actions"></slot>
             </div>
+            <div class="task__tags" v-if="data.tags.length">
+                <tags :tags="data.tags" :show="tagsShow"/>
+                <span 
+                    v-if="data.tags.length > tagsShow" class="task__open-tags" 
+                    @click="tagsShow = 6">
+                    +{{ data.tags.length - tagsShow }}...
+                </span> 
+            </div>
         </footer>
     </div>
 </template>
 
 <script>
+    import Tags from '../Tags.vue';
+
     export default {
         name: 'Task',
+        data() {
+            return {
+                tagsShow: 3
+            }
+        },
         props: {
             data: {
                 type: Object,
@@ -25,6 +40,9 @@
                 required: true
             },
         },
+        components: {
+            Tags
+        }
     }
 </script>
 
@@ -78,13 +96,38 @@
             align-content: center;
         }
 
+        &__footer {
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         &__actions {
-            width: 100%;
+            // width: 100%;
             gap: 20px;
+            margin-right: 20px;
         }
 
         &__date {
             color: $mainColor;
+        }
+
+        &__tags {
+            display: flex;
+            align-items: center;
+        }
+
+        &__open-tags {
+            color: $textColor;
+            line-space: 1px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-left: 10px;
+            transition: color .2s linear;
+
+            &:hover {
+                color: $mainColor;
+            }
         }
 
         &.completed {

@@ -32,6 +32,7 @@
             />
             <v-tags-input 
                 :tags="tags" 
+                :isEditable="true"
                 placeholder="Your tags here..."
                 @addTag="emitTags"
             />

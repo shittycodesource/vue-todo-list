@@ -7,6 +7,7 @@
     	<template #input>
     		<tags 
     			:tags="tags" 
+    			:isEditable="editTags"
     			@deleteTag="deleteTag"
     		/>
 	        <input
@@ -16,6 +17,8 @@
 	            :disabled="isDisabled"
 	            :placeholder="!isDisabled ? placeholder : ''"
 	            @keydown="addTag"
+	            @keydown.delete="removePrevTag"
+	            maxlength="20"
 	        />
 	        <div class="input-message" v-if="message">{{ message }}</div>
     	</template>
@@ -50,6 +53,10 @@ export default {
             default: [],
             required: true
         },
+        editTags: {
+        	type: Boolean,
+        	default: true
+        }
     },
     methods: {
         addTag(event) {
@@ -67,6 +74,12 @@ export default {
         },
         deleteTag(index) {
         	this.tags.splice(index, 1);
+        },
+        removePrevTag(event) {
+        	if (event.target.value.length === 0 && this.tags.length) {
+        		console.log('if')
+        		this.deleteTag(this.tags.length - 1);
+        	}
         }
     },
     computed: {
