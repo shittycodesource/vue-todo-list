@@ -69,7 +69,7 @@
             color: inherit;
 
             &:hover {
-                background: lighten($mainColor, 10%);
+                background: lighten($mainColor, 15%);
                 color: #fff;
             }
 

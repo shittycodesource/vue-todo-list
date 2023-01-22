@@ -71,9 +71,9 @@ export default new Vuex.Store({
         UPDATE_TASK(state, data) {
             state.tasks.forEach(el => {
                 if (el.id == data.id) {
-                    // el.title = data.title;
-                    // el.text = data.text;
-                    el = {...data}
+                    el.title = data.title;
+                    el.text = data.text;
+                    el.tags = data.tags;
                 }
             });
         },
@@ -118,6 +118,18 @@ export default new Vuex.Store({
         },
         completeTask({commit}, obj) {
             commit('COMPLETE_TASK', obj);
+        },
+        searchByTag({getters}, tag) {
+            const tasks = getters.getTasks;
+
+            const withTheTag = tasks.filter(item => {
+                if (item.tags.includes(tag)) {
+                    return tag;
+                }
+            });
+
+            console.log(withTheTag);
+            return withTheTag;
         }
     },
     getters: {
@@ -125,26 +137,26 @@ export default new Vuex.Store({
             const arr = state.tasks.sort((a, b) => b.date - a.date);
             return arr;
         },
-        getSortedTasks(state, getters) {
+        getSortedTasks: (state, getters) => (list) => {
             switch (state.sortTasksBy) {
                 case 'date':
-                    return getters.getSortedByDateTasks;
+                    return getters.getSortedByDateTasks(list);
                 case 'complete':
-                    return getters.getSortedByCompleteTasks;
+                    return getters.getSortedByCompleteTasks(list);
                 case 'incomplete':
-                    return getters.getSortedByIncompleteTasks;
+                    return getters.getSortedByIncompleteTasks(list);
             };
         },
-        getSortedByDateTasks(state) {
-            const arr = [...state.tasks];
+        getSortedByDateTasks: () => (list) => {
+            const arr = [...list];
             return arr.reverse();
         },
-        getSortedByCompleteTasks(state) {
-            const arr = [...state.tasks];
+        getSortedByCompleteTasks: () => (list) => {
+            const arr = [...list];
             return arr.sort((x, y) => Number(y.completed) - Number(x.completed));
         },
-        getSortedByIncompleteTasks(state) {
-            const arr = [...state.tasks];
+        getSortedByIncompleteTasks: () => (list) => {
+            const arr = [...list];
             return arr.sort((x, y) => Number(x.completed) - Number(y.completed));
         },
         getTasksSortType: (state) => state.sortTasksBy,

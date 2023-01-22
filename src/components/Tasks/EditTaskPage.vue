@@ -9,6 +9,7 @@
                 :value="titleValue" 
                 v-model="titleValue" 
                 placeholder="Your title here..."
+                :maxLength="48"
             />
 
             <v-textarea
@@ -31,6 +32,8 @@
                 "
             />
             <v-tags-input 
+                label="Tags:"
+                class="mb20px"
                 :tags="tags" 
                 :isEditable="true"
                 placeholder="Your tags here..."
@@ -59,6 +62,7 @@
                 maxLines: 48,
                 titleValue: this.title,
                 textValue: this.text,
+                tagsValue: this.tags
             }
         },
         props: {
@@ -88,10 +92,14 @@
         },
         methods: {
             reset() {
+                console.log('reset')
                 this.titleValue = '';
                 this.textValue = '';
+                this.tagsValue = [];
 
-                this.$refs.textarea.$el.children[1].removeAttribute('style');
+                this.$refs.textarea.resetTextarea();
+                console.log(this.$refs.textarea.$el.children[1])
+                // this.update();
             },
             update() {
                 this.$forceUpdate();

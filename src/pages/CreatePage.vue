@@ -52,7 +52,7 @@
                     this.text = '';
                     this.tags = [];
 
-                    this.$refs.editPage.update();
+                    this.$refs.editPage.reset();
                 }
             }
         },

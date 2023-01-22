@@ -5,6 +5,7 @@
 			type="button"
 			v-for="tag, index in tags.slice(0, show)"
 			:key="index"
+			@click="$emit('tagClick', tag)"
 		>
 			<span class="tag__text">{{ tag }}</span>
 			<v-icon class="tag__icon" name="#cancel" @click.native="$emit('deleteTag', index)" v-if="isEditable"/>

@@ -1,12 +1,11 @@
 <template>
     <div class="tasks">
-        <TasksHeader :count="getIncompleteTasksNumber"/>
-        <TasksList :list="getTasks"/>
+        <TasksHeader :count="activeCount" :customHeaderText="customHeaderText"/>
+        <TasksList :list="list" :emptyListText="emptyListText"/>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import TasksHeader from './TasksHeader.vue';
 import TasksList from './TasksList.vue';
 
@@ -16,12 +15,24 @@ import TasksList from './TasksList.vue';
             TasksHeader,
             TasksList
         },
-        computed: {
-            ...mapGetters([
-                'getTasks',
-                'getIncompleteTasksNumber'
-            ])
-        }
+        props: {
+            list: {
+                type: Array,
+                default: []
+            },
+            activeCount: {
+                type: Number,
+                required: true
+            },
+            customHeaderText: {
+                type: String,
+                default: ''
+            },
+            emptyListText: {
+                type: String,
+                default: "Seems like you've finished all your tasks"
+            }
+        },
     }
 </script>
 

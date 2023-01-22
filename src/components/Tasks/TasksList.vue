@@ -1,7 +1,7 @@
 <template>
     <div class="tasks__list">
         <template v-if="list.length">
-            <template  v-for="(task_data, index) in list" >
+            <template  v-for="(task_data, index) in getTasksList" >
 
                  <template v-if="index == 0 || task_data.dayValue != list[index - 1].dayValue">
                     <div class="tasks__separator" :key="index">
@@ -25,7 +25,7 @@
             </template>
         </template>
         <template v-else>
-            <p class="center">Seems like you've finished all your tasks. Well done</p>
+            <p class="center">{{ emptyListText }}</p>
         </template>
     </div>
 </template>
@@ -41,18 +41,27 @@ import vButton from '../app/vButton.vue';
             Task,
             vButton
         },
+        props: {
+            list: {
+                type: Array,
+                default: [],
+            },
+            emptyListText: {
+                type: String,
+                default: ''
+            }
+        },
         computed: {
             ...mapGetters([
-                'getTasks',
                 'getSortedTasks',
                 'getTasksSortType'
             ]),
-            list() {
+            getTasksList() {
                 if (this.getTasksSortType) {
-                    return this.getSortedTasks
+                    return this.getSortedTasks(this.list);
                 };
 
-                return this.getTasks;
+                return this.list;
             }
         },
         methods: {

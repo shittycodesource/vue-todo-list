@@ -12,6 +12,8 @@
                 :placeholder="placeholder"
                 :value="value" 
                 @input="onInput"
+                @keydown.enter="onEnter"
+                :maxlength="maxLength ? maxLength : ''"
             />
             <div class="input-message" v-if="message">{{ message }}</div>
         </template>
@@ -44,10 +46,16 @@ export default {
             default: '',
             required: true
         },
+        maxLength: {
+            type: Number
+        }
     },
     methods: {
         onInput(event) {
             this.$emit('input', event.target.value);
+        },
+        onEnter(event) {
+            this.$emit('enter', event.target.value);
         }
     }
 };

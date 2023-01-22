@@ -11,8 +11,15 @@
             <div class="task__actions">
                 <slot name="task-actions"></slot>
             </div>
-            <div class="task__tags" v-if="data.tags.length">
-                <tags :tags="data.tags" :show="tagsShow"/>
+            <div 
+                class="task__tags" 
+                :class="{'open': tagsShow > 3}" v-if="data.tags.length"
+            >
+                <tags 
+                    :tags="data.tags" 
+                    :show="tagsShow"
+                    @tagClick="searchByTag"
+                />
                 <span 
                     v-if="data.tags.length > tagsShow" class="task__open-tags" 
                     @click="tagsShow = 6">
@@ -39,6 +46,13 @@
                 default: {},
                 required: true
             },
+        },
+        methods: {
+            searchByTag(name) {
+                if (this.$route.query.tag != name) {
+                    this.$router.push({ path: 'search', query: { tag: name } });
+                }
+            }
         },
         components: {
             Tags
@@ -115,11 +129,20 @@
         &__tags {
             display: flex;
             align-items: center;
-        }
+            
+            &.open {
+                .tags {
+                    flex-wrap: wrap;
 
+                    .tag {
+                        max-width: none;
+                    }
+                }
+            }
+        }
         &__open-tags {
             color: $textColor;
-            line-space: 1px;
+            letter-spacing: 1px;
             cursor: pointer;
             letter-spacing: 1px;
             margin-left: 10px;

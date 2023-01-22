@@ -4,7 +4,7 @@
         <v-sidebar/>
         <main class="main">
             <transition name="page" mode="out-in">
-                <router-view></router-view>
+                <router-view :key="$route.fullPath"></router-view>
             </transition>
         </main>
     </div>
