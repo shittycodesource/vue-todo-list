@@ -8,12 +8,14 @@
             :maxLength="48"
         />
         <Tasks
+            v-if="isSearchActive"
             :key="$route.fullPath"
             :activeCount="1"
             :list="tasksList"
             :customHeaderText='`${tasksList.length} tasks with tag "${$route.query.tag}" found`'
             :emptyListText="'No tasks with this tag found'"
         />
+        <p v-else class="center mt20px">Search tasks by tag</p>
     </v-container>
 </template>
 
@@ -27,6 +29,7 @@
         name: 'Search',
         data() {
             return {
+                isSearchActive: false,
                 tagName: this.$route.query.tag ,
                 tasksList: []
             }
@@ -43,17 +46,15 @@
             async search() {
                 try {
                     if (this.tagName) {
+                        this.isSearchActive = true;
                         this.tasksList = await this.searchByTag(this.tagName);
-                        console.log('taskslist', this.tasksList)
                     }
                 } catch (error) {
                     console.log(e)
                 }
             },
             changeTag(tag) {
-                console.log(tag)
                 if (tag) {
-                    console.log('tag', tag)
                     this.$router.push({ query: { tag: tag }});
                 } 
             }
@@ -61,9 +62,6 @@
         created() {
             this.search();
         },
-        // updated() {
-        //     this.search();
-        // }
         watch: {
             '$route.query.tag': {
                 handler() {
@@ -74,6 +72,6 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>

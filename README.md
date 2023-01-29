@@ -2,4 +2,4 @@
 ```
 just a small project to learn how to work with git and github
 ```
-1.0.5: page for creating tasks is finished
+1.0.6: added a search page and tags

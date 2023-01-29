@@ -62,6 +62,7 @@ export default {
         addTag(event) {
         	if (event.code == 'Comma' || event.code == 'Enter') {
         		event.preventDefault();
+        		
         		let val = event.target.value.trim();
 
         		if (val.length && !this.tags.includes(val)) {
@@ -77,7 +78,6 @@ export default {
         },
         removePrevTag(event) {
         	if (event.target.value.length === 0 && this.tags.length) {
-        		console.log('if')
         		this.deleteTag(this.tags.length - 1);
         	}
         }
