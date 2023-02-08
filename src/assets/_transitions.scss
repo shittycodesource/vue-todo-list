@@ -29,11 +29,11 @@
 
 .dropdown-transition {
     &-leave-active {
-        animation: dropdownAnimation .2s ease reverse;
+        animation: dropdownAnimation .3s ease-in-out reverse;
     }
 
     &-enter-active {
-        animation: dropdownAnimation .2s ease;
+        animation: dropdownAnimation .3s ease-in-out;
     }
 }
 
@@ -41,10 +41,15 @@
     0% {
         opacity: 0;
         transform: translate(-50%, calc(100% - 10px)) scale(0.8);
-    }    
+    }   
+
+    80% {
+        opacity: 1;
+        transform: translate(-50%, 100%) scale(1.1);
+    }
 
     100% {
         opacity: 1;
-        transform: translate(-50%, 100%) scale(1) ;
+        transform: translate(-50%, 100%) scale(1);
     }
 }

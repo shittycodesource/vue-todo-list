@@ -30,7 +30,8 @@
                 links: [
                     { name: 'Home', to: '/', exact: true },
                     { name: 'Create New Task', to: "/create", exact: false },
-                    { name: 'Search', to: "/search", exact: false }
+                    { name: 'Search', to: "/search", exact: false },
+                    { name: 'Lists', to: "/lists", exact: false }
                 ]
             }
         },

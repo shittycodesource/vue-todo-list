@@ -6,6 +6,7 @@ import TaskPage from '@/pages/TaskPage';
 import CreatePage from '@/pages/CreatePage';
 import EditPage from '@/pages/EditPage';
 import SearchPage from '@/pages/SearchPage';
+import ListsPage from '@/pages/ListsPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 Vue.use(VueRouter);
@@ -35,6 +36,11 @@ const routes = [
 		name: 'search',
 		path: '/search',
 		component: SearchPage
+	},
+	{
+		name: 'lists',
+		path: '/lists',
+		component: ListsPage
 	},
 	{
 		path: '*',

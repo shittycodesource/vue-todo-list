@@ -2,7 +2,7 @@
     <div class="dropdown-wrapper">
         <slot></slot>
         <transition name="dropdown-transition">
-            <div class="dropdown" v-if="isOpen">
+            <div class="dropdown" v-if="isOpen" v-click-outside="emitClick">
                 <slot name="dropdown-items"></slot>
             </div>
         </transition>
@@ -22,6 +22,11 @@
                 type: Boolean,
                 default: false
             },
+        },
+        methods: {
+            emitClick() {
+                this.$emit('clickOutside');
+            }
         },
         watch: {
             isOpened() {
