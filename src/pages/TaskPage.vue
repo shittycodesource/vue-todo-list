@@ -34,7 +34,7 @@
 				'getTask'
 			]),
 			theTask() {
-				return this.getTask(this.$route.query.id);
+				return this.getTask(this.$route.query.listId, this.$route.query.id);
 			}
 		},
 		methods: {

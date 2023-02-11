@@ -1,28 +1,32 @@
 <template>
 	<v-container>
-        <Tasks 
-			:activeCount="getIncompleteTasksNumber"
-			:list="getTasks"
-		/>	
-    </v-container>
+		<lists-grid>
+			<list-card 
+				v-for="list in getLists"
+				:list="list"
+				:key="list.id"
+			/>
+		</lists-grid>
+	</v-container>
 </template>
 
 <script>
-	import Tasks from '../components/Tasks/Tasks.vue';
 	import vContainer from '../components/app/vContainer.vue';
+	import ListsGrid from '../components/Lists/ListsGrid.vue';
+	import ListCard from '../components/Lists/ListCard.vue';
 	import { mapGetters } from 'vuex';
 
 	export default {
 		name: 'HomePage',
 		components: {
-	        vContainer,
-	        Tasks
-	    },
+			vContainer,
+			ListsGrid,
+			ListCard
+		},
 		computed: {
-            ...mapGetters([
-                'getTasks',
-                'getIncompleteTasksNumber'
-            ])
-        }
+			...mapGetters([
+				'getLists'
+			])
+		}
 	}
 </script>

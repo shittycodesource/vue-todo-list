@@ -2,41 +2,39 @@
 	<div class="list-card">
 		<header class="list-card__header">
 			<div class="list-card__title">
-				Gym
+				{{ list.name }}
 			</div>
 
 			<Dropdown :isOpened="isDropdownOpen" @clickOutside="closeDropdown">
-                <v-icon 
+				<v-icon 
 					class="list-card__icon" 
 					name="#vertical-menu"
 					@click.native="isDropdownOpen = !isDropdownOpen"
 				></v-icon>
 
-                <template #dropdown-items>
-                    <button
-                        class="dropdown__btn"
-                    >
-                        435435435
-                    </button>
-                    <button
-                        class="dropdown__btn"
-                    >
-                        435435435
-                    </button>
-                    <button
-                        class="dropdown__btn"
-                    >
-                        435435435
-                    </button>
-                </template>
+				<template #dropdown-items>
+					<div class="dropdown__items">
+						<button
+							class="dropdown__btn"
+						>
+							Edit
+						</button>
+						<button
+							class="dropdown__btn"
+						>
+							Delete
+						</button>
+					</div>
+				</template>
 
-            </Dropdown>
+			</Dropdown>
 		</header>
 		<div class="list-card__description">
-			gym goals, results
+			{{ list.description }}
 		</div>
 		<div class="list-card__footer">
-			3 Active Tasks
+			<div class="list-card__num">{{ getIncompleteTasksNumber(list.tasks) }} Active Tasks</div>
+			<router-link class="list-card__link" :to="{ name: 'tasks', query: { list_id: list.id } }">Open</router-link>
 		</div>
 	</div>
 </template>
@@ -44,6 +42,7 @@
 <script>
 	import vIcon from '../app/vIcon.vue';
 	import Dropdown from '../Dropdown/Dropdown.vue';
+	import { mapGetters } from 'vuex';
 
 	export default {
 		name: 'ListCard',
@@ -52,19 +51,25 @@
 				isDropdownOpen: false
 			}
 		},
-		props: {
-			id: {
-				type: Number
-			}
-		},
 		methods: {
 			closeDropdown() {
 				this.isDropdownOpen = false
 			}
 		},
+		computed: {
+			...mapGetters([
+				'getIncompleteTasksNumber'
+			])
+		},
+		props: {
+			list: {
+				type: Object,
+				required: true,
+			}
+		},
 		components: {
 			vIcon,
-			Dropdown
+			Dropdown,
 		}
 	}
 </script>
@@ -114,8 +119,21 @@
 		}
 
 		&__footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
 			font-size: 13px;
 			color: $textColor;
+		}
+
+		&__link {
+			color: $textColor;
+			text-decoration: none;
+
+			&:hover {
+				color: darken($textColor, 10%);
+			}
 		}
 
 		&:hover {

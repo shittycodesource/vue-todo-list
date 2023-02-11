@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown-wrapper">
+    <div class="dropdown-wrapper" ref="wrapper">
         <slot></slot>
         <transition name="dropdown-transition">
             <div class="dropdown" v-if="isOpen" v-click-outside="emitClick">
@@ -24,7 +24,11 @@
             },
         },
         methods: {
-            emitClick() {
+            emitClick(event) {
+                if (this.$refs.wrapper.contains(event.target)) {
+                    return;
+                }
+                    
                 this.$emit('clickOutside');
             }
         },
@@ -56,7 +60,7 @@
         background: #fff;
         box-shadow: $baseBoxShadow;
 
-        button, div, span {
+        button, span {
             display: block;
 
             width: 100%;

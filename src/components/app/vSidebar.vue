@@ -49,7 +49,7 @@
 
 <style lang="scss">
     .sidebar {
-        max-width: 60px;
+        max-width: $sidebarWidth;
         width: 100%;
         height: 100vh;
 

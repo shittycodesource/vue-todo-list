@@ -1,6 +1,9 @@
-import tasks from './state_tasks.js';
+// import tasks from './state_tasks.js';
+import lists from './state_lists.js';
+
 
 export default {
-    tasks: tasks,
+    lists: lists,
+    // tasks: tasks,
     sortTasksBy: false,
 }

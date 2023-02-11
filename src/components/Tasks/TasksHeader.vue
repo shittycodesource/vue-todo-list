@@ -1,16 +1,15 @@
 <template>
     <header class="tasks__header">
         <div class="tasks__left">
-            <h3 class="tasks__title" v-if="!customHeaderText">
-                Welcome back,
-                <template v-if="count"><br/>you have {{count}} tasks left</template>
-                <template v-else><br/>you haven't incomplete tasks</template>
+            <h3 class="tasks__title">
+                {{ title }}
+                <template v-if="count"><br/>{{count}} Tasks Left</template>
+                <template v-else><br/>You haven't got incomplete tasks</template>
             </h3>
-            <h3 class="tasks__title" v-else>{{customHeaderText}}</h3>
         </div>
         <div class="tasks__right">
 
-            <Dropdown :isOpened="isDropdownOpen">
+            <Dropdown :isOpened="isDropdownOpen" @clickOutside="isDropdownOpen = !isDropdownOpen">
                 <div @click="toggleDropdown" class="dropdown-title">Sort by</div>
 
                 <template #dropdown-items>
@@ -48,7 +47,7 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
             }
         },
         props: {
-            customHeaderText: {
+            title: {
                 type: String,
                 default: ''
             },

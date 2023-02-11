@@ -44,5 +44,6 @@ export default {
     .main {
         padding-top: 50px;
         padding-bottom: 50px;
+        padding-left: $sidebarWidth;
     }
 </style>

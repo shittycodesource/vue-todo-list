@@ -1,7 +1,7 @@
 <template>
     <div class="tasks">
-        <TasksHeader :count="activeCount" :customHeaderText="customHeaderText"/>
-        <TasksList :list="list" :emptyListText="emptyListText"/>
+        <TasksHeader :count="activeCount" :title="list.name"/>
+        <TasksList :list="list.tasks" :emptyListText="emptyListText"/>
     </div>
 </template>
 
@@ -17,8 +17,8 @@ import TasksList from './TasksList.vue';
         },
         props: {
             list: {
-                type: Array,
-                default: []
+                type: Object,
+                default: {}
             },
             activeCount: {
                 type: Number,
