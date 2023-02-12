@@ -53,7 +53,7 @@
                         listId: this.selectedOption.id
                     };
 
-                    // this.addTask(data);
+                    this.addTask(data);
                     this.title = '';
                     this.text = '';
                     this.tags = [];
@@ -61,12 +61,27 @@
 
                     this.$refs.editPage.reset();
                 }
+            },
+            autoSelectList(id) {
+                this.selectedOption = this.getList(id);
             }
         },
         computed: {
             ...mapGetters([
+                'getList',
                 'getListsNamesAndIdArray'
             ])
+        },
+        beforeRouteEnter(to, from, next) {
+            if (from.query.listId) {
+                next(vm => {
+                    vm.autoSelectList(from.query.listId);
+                });
+                
+                return;
+            }
+
+            next();
         }
     }
 </script>

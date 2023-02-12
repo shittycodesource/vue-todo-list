@@ -7,6 +7,7 @@
             placeholder="Type tag here..."
             :maxLength="48"
         />
+        <v-select/>
         <Tasks
             v-if="isSearchActive"
             :key="$route.fullPath"
@@ -23,6 +24,7 @@
     import vContainer from '../components/app/vContainer.vue';
     import Tasks from '../components/Tasks/Tasks.vue';
     import vInput from '../components/Inputs/vInput.vue';
+    import vSelect from '../components/Inputs/vSelect.vue';
     import { mapActions } from 'vuex';
 
     export default {
@@ -37,7 +39,8 @@
         components: {
             vContainer,
             Tasks,
-            vInput
+            vInput,
+            vSelect
         },
         methods: {
             ...mapActions([

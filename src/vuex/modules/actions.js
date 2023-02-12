@@ -1,8 +1,10 @@
 import { format } from 'date-fns'; 
 
 export default {
-    addTask({commit}, data) {
+    addTask({commit, getters}, data) {
         if (data) {
+            const listIndex = getters.getListIndex(data.listId);
+
             const dateNow = Date.now();
             const dayValue = format(new Date(), 'd MMMM yyyy');
 
@@ -11,10 +13,10 @@ export default {
                 date: dateNow, 
                 dayValue,
                 completed: false,
-                id: dateNow, 
+                id: dateNow,
             };
 
-            commit('ADD_TASK', obj);
+            commit('ADD_TASK', {obj, listIndex});
         }
     },
     

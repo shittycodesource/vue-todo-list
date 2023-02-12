@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-page-header/>
+        <v-page-header :link="link"/>
         <template v-if="!notFound">
             <v-input 
                 @input="$emit('emitInput', titleValue)"
@@ -77,6 +77,9 @@
             }
         },
         props: {
+            link: {
+                type: [String, Object]
+            },
             notFound: {
                 type: Boolean,
                 default: false
@@ -114,13 +117,11 @@
         },
         methods: {
             reset() {
-                console.log('reset')
                 this.titleValue = '';
                 this.textValue = '';
                 this.tagsValue = [];
 
                 this.$refs.textarea.resetTextarea();
-                console.log(this.$refs.textarea.$el.children[1])
                 // this.update();
             },
             update() {

@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<v-page-header/>
+		<v-page-header :link="{ name: 'tasks', query: { listId: $route.query.listId } }"  />
 		<Task class="task--page-task" :data="theTask" v-if="theTask">
 			<template #task-actions>
 				<v-button @click.native="completeThisTask">Complete</v-button>

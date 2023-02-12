@@ -23,6 +23,7 @@
                     <div 
                         v-for="option in options"
                         class="select__option" 
+                        :class="{'active': selectedOption == option}"
                         @click="selectOption(option)"
                     >
                         {{ option.name }}
@@ -86,6 +87,10 @@
     .select {
         // position: relative;
 
+        &__active {
+            cursor: pointer;
+        }
+
         &__options {
             display: flex;
             flex-direction: column;    
@@ -118,6 +123,11 @@
             text-align: left;
 
             transition: background .2s ease-in-out, color .2s ease-in-out;
+
+            &.active {
+                background: #1f1f1f;
+                color: #fff;
+            }
 
             &:hover {
                 background: #000;

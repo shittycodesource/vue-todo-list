@@ -1,13 +1,19 @@
 <template>
     <header class="page-header">
-        <router-link :to="{ name: 'tasks', query: { listId: $route.query.listId } }" class="page-header__link">&lt; Back</router-link>
+        <router-link :to="link" class="page-header__link">&lt; Back</router-link>
         <slot></slot>
     </header>
 </template>
 
 <script>
     export default {
-        name: 'vPageHeader'
+        name: 'vPageHeader',
+        props: {
+            link: {
+                type: [String, Object],
+                default: '/'
+            }
+        }
     }
 </script>
 

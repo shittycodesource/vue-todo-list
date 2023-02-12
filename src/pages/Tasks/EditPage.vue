@@ -1,6 +1,7 @@
 <template>
     <edit-task-page 
         ref="editPage"
+        :link="{ name: 'task', query: { listId: $route.query.listId, id: $route.query.id } }"
         :notFound="notFound"
         :title="title" 
         :text="text"

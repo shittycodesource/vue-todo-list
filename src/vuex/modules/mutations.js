@@ -1,6 +1,6 @@
 export default {
-    ADD_TASK(state, data) {
-        state.tasks.push(data);
+    ADD_TASK(state, {obj, listIndex}) {
+        state.lists[listIndex].tasks.unshift(obj);
     },
     
     UPDATE_TASK(state, {data, listIndex, taskIndex}) {
