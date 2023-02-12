@@ -4,6 +4,7 @@
         <span class="input-wrapper">
             <slot name="input"></slot>
         </span>
+        <slot name="after-input"></slot>
     </label>
 </template>
 

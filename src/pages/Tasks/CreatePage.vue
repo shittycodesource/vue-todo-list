@@ -4,9 +4,13 @@
         :title="title" 
         :text="text"
         :tags="tags"
+        :listSelect="true"
+        :selectedOption="selectedOption"
+        :selectOptions="getListsNamesAndIdArray"
         @emitInput="(newTitle) => title = newTitle"
         @emitTextarea="(newText) => text = newText"
         @emitTags="(newTags) => tags = newTags"
+        @emitOption="(option) => selectedOption = option"
     >
         <template #button>
             <v-button @click.native="createTask">Create</v-button>
@@ -17,7 +21,7 @@
 <script>
     import EditTaskPage from '@/components/Tasks/EditTaskPage.vue';
     import vButton from '@/components/app/vButton.vue';
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
 
     export default {
         name: 'CreatePage',
@@ -25,7 +29,8 @@
             return {
                 title: '',
                 text: '',
-                tags: []
+                tags: [],
+                selectedOption: {}
             }
         },
         components: {
@@ -44,18 +49,25 @@
                     const data = {
                         title: this.title,
                         text: this.text,
-                        tags: this.tags
+                        tags: this.tags,
+                        listId: this.selectedOption.id
                     };
 
-                    this.addTask(data);
+                    // this.addTask(data);
                     this.title = '';
                     this.text = '';
                     this.tags = [];
+                    this.selectedOption = {};
 
                     this.$refs.editPage.reset();
                 }
             }
         },
+        computed: {
+            ...mapGetters([
+                'getListsNamesAndIdArray'
+            ])
+        }
     }
 </script>
 

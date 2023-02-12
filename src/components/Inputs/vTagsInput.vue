@@ -11,8 +11,8 @@
     			@deleteTag="deleteTag"
     		/>
 	        <input
-	            class="input input--tags"
-	            :class="{'input--with-message': message}"
+	            class="input"
+	            :class="{'input--with-message': message, 'input--tags': tags.length}"
 	            type="text"
 	            :disabled="isDisabled"
 	            :placeholder="!isDisabled ? placeholder : ''"

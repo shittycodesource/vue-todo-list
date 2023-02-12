@@ -3,6 +3,16 @@ export default {
 
     getList: (state) => (listId) => state.lists.find(el => el.id == listId),
 
+    getListsNamesAndIdArray: (state) => {
+        const arr = [];
+        
+        state.lists.forEach(list => {
+            arr.push({ name: list.name, id: list.id });
+        })
+
+        return arr;
+    },
+
     getListIndex: (state, getters) => (listId) => state.lists.indexOf( getters.getList(listId) ),
 
     getTasksSortType: (state) => state.sortTasksBy,

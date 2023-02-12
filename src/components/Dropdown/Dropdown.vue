@@ -89,4 +89,17 @@
         }
     }
 
+    .dropdown-wrapper--full-width {
+        width: 100%;
+        
+        .dropdown {
+            width: 100%;
+            align-items: start;
+        
+            button, span {
+                text-align: start;
+            }
+        }
+    }
+
 </style>

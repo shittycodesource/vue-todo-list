@@ -39,6 +39,16 @@
                 placeholder="Your tags here..."
                 @addTag="emitTags"
             />
+
+            <v-select
+                v-if="listSelect"
+                :options="selectOptions"
+                :selectedOption="selectedOption"
+                label="List:"
+                defaultTitle="Choose which list to put it in"
+                class="mb20px"
+                @selectOption="emitOption"
+            />
             <slot name="button"></slot>
         </template>
         <template v-else>
@@ -53,6 +63,7 @@
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
     import vTagsInput from '../Inputs/vTagsInput.vue';
+    import vSelect from '../Inputs/vSelect.vue';
 
     export default {
         name: 'EditTaskPage',
@@ -69,6 +80,16 @@
             notFound: {
                 type: Boolean,
                 default: false
+            },
+            listSelect: {
+                type: Boolean,
+                default: false,
+            },
+            selectedOption: {
+                type: Object,
+            },
+            selectOptions: {
+                type: Array
             },
             title: {
                 type: String,
@@ -88,7 +109,8 @@
             vPageHeader,
             vInput,
             vTextarea,
-            vTagsInput
+            vTagsInput,
+            vSelect
         },
         methods: {
             reset() {
@@ -106,6 +128,9 @@
             },
             emitTags(arr) {
                 this.$emit('throwTags', arr);
+            },
+            emitOption(option) {
+                this.$emit('emitOption', option)
             }
         },
         computed: {

@@ -8,7 +8,7 @@
             <h3 class="tasks__title">
                 {{ title }} : 
                 <template v-if="count">{{count}} Tasks Left</template>
-                <template v-else>You haven't got incomplete tasks</template>
+                <template v-else>You haven't incomplete tasks</template>
             </h3>
         </div>
         <div class="tasks__right">

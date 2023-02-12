@@ -1,4 +1,4 @@
-import { programmingTasks, gymTasks, booksTasks, homeTasks } from '../../tasksArray.js';
+import { programmingTasks, gymTasks, booksTasks, homeTasks } from './tasksArray.js';
 
 export default [
     { 
