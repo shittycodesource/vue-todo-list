@@ -53,7 +53,7 @@
 	    max-width: 140px;
     	width: max-content;
 
-		padding: 6px 20px;
+		padding: 5px 20px;
 
 		border: 1px solid $tagColor;
 		background: transparent;
@@ -62,7 +62,7 @@
 
 		font-family: inherit;
 		font-size: 14px;
-		line-height: 1;
+		line-height: 1.1;
 		color: $textColor;
 		text-align: center;
 

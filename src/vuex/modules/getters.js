@@ -3,13 +3,18 @@ export default {
 
     getList: (state) => (listId) => state.lists.find(el => el.id == listId),
 
+    getListIndex: (state, getters) => (listId) => state.lists.indexOf( getters.getList(listId) ),
+
     getTasksSortType: (state) => state.sortTasksBy,
 
-    getTask: (state) => (listId, id) => {
-        console.log(listId);
-        console.log(id); 
+    getTask: (state) => (listId, id, index) => {
         const list = state.lists.find(el => el.id == listId);
         const task = list.tasks.find(el => el.id == id)
+
+        if (index) {
+            return list.tasks.indexOf(task);  // returns index of task if the index in params isn't null
+        }
+
         return task;
     },
 

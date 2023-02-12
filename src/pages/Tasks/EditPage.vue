@@ -16,8 +16,8 @@
 </template>
 
 <script>
-    import EditTaskPage from '../components/Tasks/EditTaskPage.vue';
-    import vButton from '../components/app/vButton.vue';
+    import EditTaskPage from '../../components/Tasks/EditTaskPage.vue';
+    import vButton from '../../components/app/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
 
     export default {
@@ -39,7 +39,7 @@
                 'getTask'
             ]),
             theTask() {
-                return this.getTask(this.$route.query.id);
+                return this.getTask(this.$route.query.listId, this.$route.query.id);
             }
         },
         methods: {
@@ -51,11 +51,12 @@
                     title: this.title,
                     text: this.text,
                     tags: this.tags,
-                    id: this.theTask.id
+                    id: this.theTask.id,
+                    listId: this.theTask.listId
                 };
 
                 this.updateTask(data);
-                this.$router.push({ name: 'task', query: { id: data.id }});
+                this.$router.push({ name: 'task', query: { listId: data.listId, id: data.id }});
             }
         },
         created() {

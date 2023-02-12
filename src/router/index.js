@@ -2,10 +2,10 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import HomePage from '@/pages/HomePage';
-import TasksPage from '@/pages/TasksPage';
-import TaskPage from '@/pages/TaskPage';
-import CreatePage from '@/pages/CreatePage';
-import EditPage from '@/pages/EditPage';
+import TasksPage from '@/pages/Tasks/TasksPage';
+import TaskPage from '@/pages/Tasks/TaskPage';
+import CreatePage from '@/pages/Tasks/CreatePage';
+import EditPage from '@/pages/Tasks/EditPage';
 import SearchPage from '@/pages/SearchPage';
 // import ListsPage from '@/pages/ListsPage';
 import NotFoundPage from '@/pages/NotFoundPage';

@@ -15,8 +15,8 @@
 </template>
 
 <script>
-    import EditTaskPage from '../components/Tasks/EditTaskPage.vue';
-    import vButton from '../components/app/vButton.vue';
+    import EditTaskPage from '@/components/Tasks/EditTaskPage.vue';
+    import vButton from '@/components/app/vButton.vue';
     import { mapActions } from 'vuex';
 
     export default {

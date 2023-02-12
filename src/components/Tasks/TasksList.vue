@@ -3,7 +3,7 @@
         <template v-if="list.length">
             <template  v-for="(task_data, index) in getTasksList" >
 
-                 <template v-if="index == 0 || task_data.dayValue != list[index - 1].dayValue">
+                 <template v-if="index == 0 || task_data.dayValue != getTasksList[index - 1].dayValue">
                     <div class="tasks__separator" :key="index">
                         <span>{{ task_data.dayValue }}</span>
                     </div>
@@ -14,11 +14,11 @@
                     :key="task_data.id"
                 >
                     <template #task-actions>
-                        <router-link class="btn" :to="{ name: 'task',  query: { listId: $route.query.list_id, id: task_data.id } }">
+                        <router-link class="btn" :to="{ name: 'task',  query: { listId: task_data.listId, id: task_data.id } }">
                             Open
                         </router-link>
                         <v-button @click.native="completeThisTask(task_data)">Complete</v-button>
-                        <v-button @click.native="deleteThisTask(task_data.id)">Delete</v-button>
+                        <v-button @click.native="deleteThisTask(task_data)">Delete</v-button>
                     </template>
                 </Task>
 
@@ -69,11 +69,11 @@ import vButton from '../app/vButton.vue';
                 'deleteTask',
                 'completeTask'
             ]),
-            deleteThisTask(id) {
-                this.deleteTask(id);
+            deleteThisTask(taskData) {
+                this.deleteTask(taskData);
             },
-            completeThisTask(data) {
-                this.completeTask(data);
+            completeThisTask(taskData) {
+                this.completeTask(taskData);
             }
         }
     }

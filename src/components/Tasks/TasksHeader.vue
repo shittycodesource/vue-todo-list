@@ -1,10 +1,14 @@
 <template>
     <header class="tasks__header">
         <div class="tasks__left">
+            <router-link to="/" class="page-header__link">&lt; Back</router-link>
+        </div>
+
+        <div class="tasks__center">
             <h3 class="tasks__title">
-                {{ title }}
-                <template v-if="count"><br/>{{count}} Tasks Left</template>
-                <template v-else><br/>You haven't got incomplete tasks</template>
+                {{ title }} : 
+                <template v-if="count">{{count}} Tasks Left</template>
+                <template v-else>You haven't got incomplete tasks</template>
             </h3>
         </div>
         <div class="tasks__right">
@@ -88,9 +92,10 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
             margin-bottom: 30px;
         }
 
-        &__left {
+        &__center {
             display: flex;
             align-items: center;
+            text-align: center;
         }
 
         &__title {

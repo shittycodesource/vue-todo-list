@@ -1,6 +1,6 @@
 <template>
     <header class="page-header">
-        <router-link to="/" class="page-header__link">&lt; Back</router-link>
+        <router-link :to="{ name: 'tasks', query: { listId: $route.query.listId } }" class="page-header__link">&lt; Back</router-link>
         <slot></slot>
     </header>
 </template>

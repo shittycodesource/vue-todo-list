@@ -34,7 +34,7 @@
 		</div>
 		<div class="list-card__footer">
 			<div class="list-card__num">{{ getIncompleteTasksNumber(list.tasks) }} Active Tasks</div>
-			<router-link class="list-card__link" :to="{ name: 'tasks', query: { list_id: list.id } }">Open</router-link>
+			<router-link class="list-card__link" :to="{ name: 'tasks', query: { listId: list.id } }">Open</router-link>
 		</div>
 	</div>
 </template>

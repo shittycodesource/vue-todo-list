@@ -18,20 +18,28 @@ export default {
         }
     },
     
-    updateTask({commit}, data) {
-        commit('UPDATE_TASK', data);
+    updateTask({commit, getters}, data) {
+        const listIndex = getters.getListIndex(data.listId)
+        const taskIndex = getters.getTask(data.listId, data.id, true); // returns task index
+        
+        commit('UPDATE_TASK', {data, listIndex, taskIndex});
     },
 
-    deleteTask({commit}, id) {
-        commit('DELETE_TASK', id);
+    deleteTask({commit, getters}, data) {
+        const listIndex = getters.getListIndex(data.listId)
+
+        commit('DELETE_TASK', {data, listIndex});
     },
     
     sortTasks({commit}, name) {
         commit('SORT_TASKS', name);
     },
 
-    completeTask({commit}, obj) {
-        commit('COMPLETE_TASK', obj);
+    completeTask({commit, getters}, data) {
+        const listIndex = getters.getListIndex(data.listId)
+        const taskIndex = getters.getTask(data.listId, data.id, true); // returns task index
+
+        commit('COMPLETE_TASK', {listIndex, taskIndex});
     },
 
     searchByTag({getters}, tag) {

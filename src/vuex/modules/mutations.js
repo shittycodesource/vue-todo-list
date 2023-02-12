@@ -3,18 +3,24 @@ export default {
         state.tasks.push(data);
     },
     
-    UPDATE_TASK(state, data) {
-        state.tasks.forEach(el => {
-            if (el.id == data.id) {
-                el.title = data.title;
-                el.text = data.text;
-                el.tags = data.tags;
-            }
-        });
+    UPDATE_TASK(state, {data, listIndex, taskIndex}) {
+        const taskObject = state.lists[listIndex].tasks[taskIndex];
+
+        taskObject.title = data.title;
+        taskObject.text = data.text;
+        taskObject.tags = data.tags;
+
+        // state.lists.forEach(list => {
+        //     if (list.id == data.listId) {
+        //         list.tasks[index].title = data.title;
+        //         list.tasks[index].text = data.text;
+        //         list.tasks[index].tags = data.tags; 
+        //     }
+        // });
     },
 
-    DELETE_TASK(state, id) {
-        state.tasks = state.tasks.filter(item => item.id != id);
+    DELETE_TASK(state, {data, listIndex}) {
+        state.lists[listIndex].tasks = state.lists[listIndex].tasks.filter(task => task.id != data.id);
     },
 
     SORT_TASKS(state, name) {
@@ -23,9 +29,9 @@ export default {
             : state.sortTasksBy = name;
     },
 
-    COMPLETE_TASK(state, obj) {
-        const index = state.tasks.indexOf(obj);
-        state.tasks[index].completed = !state.tasks[index].completed;
+    COMPLETE_TASK(state, {listIndex, taskIndex}) {
+        const task = state.lists[listIndex].tasks[taskIndex];
+        task.completed = !task.completed;
     }
 
 }
