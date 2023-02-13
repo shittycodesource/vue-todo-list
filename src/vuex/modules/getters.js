@@ -17,6 +17,15 @@ export default {
 
     getTasksSortType: (state) => state.sortTasksBy,
 
+    getAllTasks: (state) => {
+        const tasks = [];
+        state.lists.forEach(list => {
+            list.tasks.forEach(task => tasks.push(task));
+        });
+
+        return tasks;
+    },
+
     getTask: (state) => (listId, id, index) => {
         const list = state.lists.find(el => el.id == listId);
         const task = list.tasks.find(el => el.id == id)

@@ -44,14 +44,24 @@ export default {
         commit('COMPLETE_TASK', {listIndex, taskIndex});
     },
 
-    searchByTag({getters}, tag) {
-        const tasks = getters.getTasks;
+    searchByTags({getters}, obj) {
+        const list = getters.getList(obj.listId);
+        const tasks = list.tasks;
 
-        const withTheTag = tasks.filter(item => {
-            if (item.tags.includes(tag)) {
-                return tag;
-            }
-        });
+        tasks.forEach(task => {
+            obj.tags.forEach(tag => {
+                if (task.tags.includes(tag)) {
+
+                }
+            })
+        })
+        // need to sort tags in both objects
+    
+        // const withTheTag = tasks.filter(item => {
+            // if (item.tags.includes(tag)) {
+                // return tag;
+            // }
+        // });
 
         return withTheTag;
     }

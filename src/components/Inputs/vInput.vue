@@ -44,10 +44,10 @@ export default {
         value: {
             type: String,
             default: '',
-            required: true
         },
         maxLength: {
-            type: Number
+            type: Number,
+            default: 256
         }
     },
     methods: {

@@ -50,8 +50,7 @@ export default {
         },
         tags: {
             type: Array,
-            default: [],
-            required: true
+            default: () => [],
         },
         editTags: {
         	type: Boolean,

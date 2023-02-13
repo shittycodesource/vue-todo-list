@@ -84,9 +84,9 @@ const programmingTasks = [
         completed: false,
         title: 'Learn python',
         dayValue:"9 January 2023",
-        date: 1673261394753,
+        date: 1373261394753,
         tags: ['Goals', 'Programming', 'Language', 'Python'],
-        id: 1673261394753,
+        id: 1373261394753,
         listId: 1
     },
     {
@@ -130,9 +130,9 @@ const homeTasks = [
         completed: false,
         title: 'Do cleaning',
         dayValue:"9 January 2023",
-        date: 1673261304753,
+        date: 1613261304753,
         tags: ['Home'],
-        id: 1673261304753,
+        id: 1613261304753,
         listId: 3
     },
     {

@@ -22,6 +22,7 @@
                 <div class="select__options" v-if="isOpen">
                     <div 
                         v-for="option in options"
+                        :key="option.name"
                         class="select__option" 
                         :class="{'active': selectedOption == option}"
                         @click="selectOption(option)"
@@ -47,7 +48,12 @@
         },
         props: {
             selectedOption: {
-                type: Object, 
+                type: Object,
+                default: () => {
+                    return {
+                        name: 'Default option'
+                    }
+                }
             },
             label: {
                 type: String,
@@ -55,7 +61,6 @@
             },
             options: {
                 type: Array,
-                required: true,
                 default: () => [ 
                     { name: 'first option' }, 
                     { name: 'second option' }, 
@@ -71,7 +76,7 @@
             selectOption(option) {
                 this.isOpen = false;
                 this.$emit('selectOption', option);
-            }
+            },
         },
         components: {
             vInputWrapper,
