@@ -22,12 +22,12 @@
             />
 
             <div class="text-left">
-                <v-button>Search</v-button>
+                <v-button @click.native="startSearch">Search</v-button>
             </div>
         </form>
 
         <tasks-list
-            :list="getAllTasks" 
+            :list="foundTasks" 
             emptyListText="Tasks not found"
         />
     </v-container>
@@ -40,7 +40,7 @@
     import vSelect from '../components/Inputs/vSelect.vue';
     import vButton from '../components/app/vButton.vue';
     import TasksList from '../components/Tasks/TasksList.vue';
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapActions } from 'vuex';
 
     export default {
         name: 'SearchPage',
@@ -50,6 +50,7 @@
                 text: '',
                 tags: [],
                 selectedOption: {},
+                foundTasks: []
             }
         },
         computed: {
@@ -57,6 +58,25 @@
                 'getAllTasks',
                 'getListsNamesAndIdArray'
             ])
+        },
+        methods: {
+            ...mapActions([
+                'searchTasks'
+            ]),
+            async startSearch() {
+                try {
+                    const dataForSearch = {
+                        title: this.text,
+                        tags: this.tags,
+                        list: this.selectedOption
+                    };
+    
+    
+                    this.foundTasks = await this.searchTasks(dataForSearch);
+                } catch (error) {
+                    throw error;
+                }
+            }
         }
     }
 </script>

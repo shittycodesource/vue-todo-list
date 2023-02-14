@@ -44,6 +44,28 @@ export default {
         commit('COMPLETE_TASK', {listIndex, taskIndex});
     },
 
+    searchTasks({getters}, data) {
+        let tasksList = [];
+        const foundTasks = [];
+
+        if (data.list.id) {
+            tasksList = getters.getList(data.list.id).tasks;
+        } else {
+            getters.getLists.forEach(list => tasksList = [...tasksList, ...list.tasks]);
+        }
+
+        console.log(data);
+        console.log(tasksList);
+
+        tasksList.forEach(task => {
+            if (task.title.toLowerCase().includes( data.title.toLowerCase() )) {
+                foundTasks.push(task);
+            }
+        })
+
+        return foundTasks;
+    },
+
     searchByTags({getters}, obj) {
         const list = getters.getList(obj.listId);
         const tasks = list.tasks;
