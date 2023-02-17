@@ -1,12 +1,15 @@
 <template>
 	<v-container>
-		<lists-grid>
-			<list-card 
-				v-for="list in getLists"
-				:list="list"
-				:key="list.id"
-			/>
-		</lists-grid>
+		<div class="lists">
+			<lists-grid>
+				<list-card 
+					v-for="list in getLists"
+					:list="list"
+					:key="list.id"
+				/>
+			</lists-grid>
+			<button @click="logQuery">log query</button>
+		</div>
 	</v-container>
 </template>
 
@@ -27,6 +30,12 @@
 			...mapGetters([
 				'getLists'
 			])
+		},
+		methods: {
+			logQuery() {
+				const query = JSON.parse(this.$route.query.arr);
+				console.log(query);
+			}
 		}
 	}
 </script>

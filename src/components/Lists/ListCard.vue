@@ -13,16 +13,8 @@
 				></v-icon>
 
 				<template #dropdown-items>
-					<button
-						class="dropdown__btn"
-					>
-						Edit
-					</button>
-					<button
-						class="dropdown__btn"
-					>
-						Delete
-					</button>
+					<button class="dropdown__btn">Edit</button>
+					<button class="dropdown__btn">Delete</button>
 				</template>
 
 			</Dropdown>

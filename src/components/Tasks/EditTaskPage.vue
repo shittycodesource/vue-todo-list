@@ -89,7 +89,7 @@
                 default: false,
             },
             selectedOption: {
-                type: Object,
+                type: [Object, Boolean], // if prop is boolean then sets default title
             },
             selectOptions: {
                 type: Array

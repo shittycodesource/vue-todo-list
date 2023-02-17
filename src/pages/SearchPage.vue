@@ -1,16 +1,12 @@
 <template>
     <v-container>
-        <p>( doesn't work )</p>
-
         <form class="search-form">
             <div class="flex items-center gap10px">
-                <v-input 
-                    placeholder="Title"
-                    :value="text"
-                    v-model="text"   
-                    :maxLength="48"
-                />
+
+                <v-input placeholder="Title" :value="text" v-model="text" :maxLength="48" />
+
                 <v-select
+                    defaultTitle="All Lists"
                     :selectedOption="selectedOption"
                     :options="getListsNamesAndIdArray"
                     @selectOption="(option) => selectedOption = option"
@@ -19,7 +15,8 @@
 
             <v-tags-input 
                 placeholder="Tags"
-            />
+                @addTag="(tagsArr) => tags = tagsArr"
+             />
 
             <div class="text-left">
                 <v-button @click.native="startSearch">Search</v-button>
@@ -30,6 +27,8 @@
             :list="foundTasks" 
             emptyListText="Tasks not found"
         />
+
+        <router-link :to="{ name: 'home', query: { arr: JSON.stringify(['first tag', 'second tag', 'third tag']) } } ">params</router-link>
     </v-container>
 </template>
 
@@ -49,7 +48,7 @@
             return {
                 text: '',
                 tags: [],
-                selectedOption: {},
+                selectedOption: false,
                 foundTasks: []
             }
         },
@@ -70,6 +69,8 @@
                         tags: this.tags,
                         list: this.selectedOption
                     };
+                    
+                    console.log(dataForSearch)
     
     
                     this.foundTasks = await this.searchTasks(dataForSearch);

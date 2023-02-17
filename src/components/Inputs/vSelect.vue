@@ -48,7 +48,7 @@
         },
         props: {
             selectedOption: {
-                type: Object,
+                type: [Object, Boolean], // if prop is boolean then sets default title. Made for reset after click on the same option
                 default: () => {
                     return {
                         name: 'Default option'
@@ -75,6 +75,12 @@
         methods: {
             selectOption(option) {
                 this.isOpen = false;
+
+                if (option == this.selectedOption) {
+                    this.$emit('selectOption', false);
+                    return;
+                }
+
                 this.$emit('selectOption', option);
             },
         },

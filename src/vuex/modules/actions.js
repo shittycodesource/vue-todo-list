@@ -44,47 +44,61 @@ export default {
         commit('COMPLETE_TASK', {listIndex, taskIndex});
     },
 
-    searchTasks({getters}, data) {
-        let tasksList = [];
-        const foundTasks = [];
+    async searchTasks({getters, dispatch}, data) {
+        try {
+            let tasksList = [];
+            const foundTasks = [];
+    
+            data.list
+                ? tasksList = getters.getList(data.list.id).tasks
+                : getters.getLists.forEach(list => tasksList = [...tasksList, ...list.tasks])
 
-        if (data.list.id) {
-            tasksList = getters.getList(data.list.id).tasks;
-        } else {
-            getters.getLists.forEach(list => tasksList = [...tasksList, ...list.tasks]);
-        }
+            for (let i = 0; i <= tasksList.length - 1; i++) {
+                const task = tasksList[i];
+                const data_title = data.title.toLowerCase();
+                let data_tags = [];
+                
+                if (data.tags.length) {
+                    data_tags = await dispatch('doesIncludeTags', {task: task, tags: data.tags});
+                } else {
+                    data_tags = true;
+                }
 
-        console.log(data);
-        console.log(tasksList);
+                console.log(data_tags);
 
-        tasksList.forEach(task => {
-            if (task.title.toLowerCase().includes( data.title.toLowerCase() )) {
-                foundTasks.push(task);
+                console.log(data);
+
+                if (task.title.toLowerCase().includes( data_title ) && data_tags ) {
+                    foundTasks.push(task);
+                    console.log(task)
+                }
             }
-        })
 
-        return foundTasks;
+            console.log(foundTasks);
+    
+            return foundTasks;
+        } catch (error) {
+            throw error;
+        }
     },
 
-    searchByTags({getters}, obj) {
-        const list = getters.getList(obj.listId);
-        const tasks = list.tasks;
-
-        tasks.forEach(task => {
-            obj.tags.forEach(tag => {
-                if (task.tags.includes(tag)) {
-
-                }
-            })
-        })
-        // need to sort tags in both objects
+    doesIncludeTags({}, {task, tags}) {
+        const sort = (arr) => {
+            const sorted = arr.sort((a, b) => {
+                if(a < b) { return -1; }
+                if(a > b) { return 1; }
     
-        // const withTheTag = tasks.filter(item => {
-            // if (item.tags.includes(tag)) {
-                // return tag;
-            // }
-        // });
+                return 0;
+            });
 
-        return withTheTag;
-    }
+            return sorted.map(tag => tag.toLowerCase()).join('');;
+        }
+
+        const sortedDataTags = sort(tags)
+        const sortedTaskTags = sort(task.tags)
+
+        console.log(sortedDataTags, sortedTaskTags);
+
+        sortedTaskTags.includes(sortedDataTags) ? true : false;
+    },
 }

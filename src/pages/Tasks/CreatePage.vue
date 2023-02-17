@@ -7,6 +7,7 @@
         :listSelect="true"
         :selectedOption="selectedOption"
         :selectOptions="getListsNamesAndIdArray"
+
         @emitInput="(newTitle) => title = newTitle"
         @emitTextarea="(newText) => text = newText"
         @emitTags="(newTags) => tags = newTags"
@@ -45,7 +46,7 @@
                 const _title = this.title;
                 const _text = this.text;
 
-                if (_title.trim().length && _text.trim().length) {
+                if (_title.trim().length && _text.trim().length && this.selectedOption.id) {
                     const data = {
                         title: this.title,
                         text: this.text,

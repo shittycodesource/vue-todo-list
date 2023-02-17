@@ -31,7 +31,7 @@ export default {
         const task = list.tasks.find(el => el.id == id)
 
         if (index) {
-            return list.tasks.indexOf(task);  // returns index of task if the index in params isn't null
+            return list.tasks.indexOf(task);  // returns index of task if index in the params isn't null
         }
 
         return task;
