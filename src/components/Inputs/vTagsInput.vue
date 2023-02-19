@@ -12,6 +12,7 @@
     		/>
 	        <input
 	            class="input"
+                ref="input"
 	            :class="{'input--with-message': message, 'input--tags': tags.length}"
 	            type="text"
 	            :disabled="isDisabled"
@@ -19,7 +20,7 @@
 	            @keydown="addTag"
 	            @keydown.delete="removePrevTag"
 	            maxlength="20"
-	        />
+            />
 	        <div class="input-message" v-if="message">{{ message }}</div>
     	</template>
     </v-input-wrapper>
@@ -36,6 +37,10 @@ export default {
         Tags
     },
     props: {
+        value: {
+            type: String,
+            default: ''
+        },
         message: {
             type: String,
             default: '',
@@ -60,17 +65,19 @@ export default {
     methods: {
         addTag(event) {
         	if (event.code == 'Comma' || event.code == 'Enter') {
-        		event.preventDefault();
-        		
-        		let val = event.target.value.trim();
-
-        		if (val.length && !this.tags.includes(val)) {
-        			this.tags.push(val);
-        			event.target.value = '';
-
-        			this.$emit('addTag', this.tags);
-        		}
+                event.preventDefault();
+        		this.pushTag();
         	}
+        },
+        pushTag() {
+            let val = this.$refs.input.value.trim();
+
+            if (val.length && !this.tags.includes(val)) {
+                this.tags.push(val);
+                this.$refs.input.value = '';
+
+                this.$emit('addTag', this.tags);
+            }
         },
         deleteTag(index) {
         	this.tags.splice(index, 1);
@@ -79,7 +86,7 @@ export default {
         	if (event.target.value.length === 0 && this.tags.length) {
         		this.deleteTag(this.tags.length - 1);
         	}
-        }
+        },
     },
     computed: {
     	isDisabled() {

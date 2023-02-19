@@ -16,6 +16,7 @@
             <v-tags-input 
                 placeholder="Tags"
                 @addTag="(tagsArr) => tags = tagsArr"
+                ref="tagsInput"
              />
 
             <div class="text-left">
@@ -25,10 +26,8 @@
 
         <tasks-list
             :list="foundTasks" 
-            emptyListText="Tasks not found"
+            :emptyListText="wereSearchActive ? 'Tasks not found' : '' "
         />
-
-        <router-link :to="{ name: 'home', query: { arr: JSON.stringify(['first tag', 'second tag', 'third tag']) } } ">params</router-link>
     </v-container>
 </template>
 
@@ -49,7 +48,8 @@
                 text: '',
                 tags: [],
                 selectedOption: false,
-                foundTasks: []
+                foundTasks: [],
+                wereSearchActive: false,
             }
         },
         computed: {
@@ -64,21 +64,24 @@
             ]),
             async startSearch() {
                 try {
-                    const dataForSearch = {
-                        title: this.text,
-                        tags: this.tags,
-                        list: this.selectedOption
-                    };
-                    
-                    console.log(dataForSearch)
-    
-    
-                    this.foundTasks = await this.searchTasks(dataForSearch);
+                    this.$refs.tagsInput.pushTag() // push tag if there's something in input
+
+                    if (this.text.trim('') || this.tags.length) {
+                        this.wereSearchActive = true;
+
+                        const dataForSearch = {
+                            title: this.text,
+                            tags: this.tags,
+                            list: this.selectedOption
+                        };
+                        
+                        this.foundTasks = await this.searchTasks(dataForSearch);
+                    }
                 } catch (error) {
                     throw error;
                 }
-            }
-        }
+            },
+        },
     }
 </script>
 

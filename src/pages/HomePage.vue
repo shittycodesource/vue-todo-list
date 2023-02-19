@@ -8,7 +8,6 @@
 					:key="list.id"
 				/>
 			</lists-grid>
-			<button @click="logQuery">log query</button>
 		</div>
 	</v-container>
 </template>
@@ -31,11 +30,5 @@
 				'getLists'
 			])
 		},
-		methods: {
-			logQuery() {
-				const query = JSON.parse(this.$route.query.arr);
-				console.log(query);
-			}
-		}
 	}
 </script>

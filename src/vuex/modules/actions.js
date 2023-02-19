@@ -50,25 +50,27 @@ export default {
             const foundTasks = [];
     
             data.list
-                ? tasksList = getters.getList(data.list.id).tasks
-                : getters.getLists.forEach(list => tasksList = [...tasksList, ...list.tasks])
+                ? tasksList = getters.getList(data.list.id).tasks // tasks from selected list
+                : getters.getLists.forEach(list => tasksList = [...tasksList, ...list.tasks]); // there will be all tasks
 
             for (let i = 0; i <= tasksList.length - 1; i++) {
-                const task = tasksList[i];
-                const data_title = data.title.toLowerCase();
-                let data_tags = [];
+                const task = tasksList[i]; // current task
+                const titleFromInput = data.title.toLowerCase();
+                let tagsInTheTask = [];
                 
+                console.log(data.tags.length);
                 if (data.tags.length) {
-                    data_tags = await dispatch('doesIncludeTags', {task: task, tags: data.tags});
+                    tagsInTheTask = await dispatch('doesIncludeTags', {task: task, tags: data.tags});
+                    console.log(tagsInTheTask);
                 } else {
-                    data_tags = true;
+                    tagsInTheTask = true;
+                    console.log(tagsInTheTask);
                 }
 
-                console.log(data_tags);
-
+                console.log(tagsInTheTask);
                 console.log(data);
 
-                if (task.title.toLowerCase().includes( data_title ) && data_tags ) {
+                if (task.title.toLowerCase().includes( titleFromInput ) && tagsInTheTask ) {
                     foundTasks.push(task);
                     console.log(task)
                 }
@@ -91,14 +93,17 @@ export default {
                 return 0;
             });
 
-            return sorted.map(tag => tag.toLowerCase()).join('');;
+            return sorted.map(tag => tag.toLowerCase()).join('');
         }
 
-        const sortedDataTags = sort(tags)
-        const sortedTaskTags = sort(task.tags)
+        console.log(task.tags)
+        console.log(tags)
 
-        console.log(sortedDataTags, sortedTaskTags);
+        const sortedTaskTags = sort(task.tags);
+        const sortedDataTags = sort(tags);
 
-        sortedTaskTags.includes(sortedDataTags) ? true : false;
+        console.log(sortedTaskTags, sortedDataTags);
+
+        return sortedTaskTags.includes(sortedDataTags) ? true : false;
     },
 }
