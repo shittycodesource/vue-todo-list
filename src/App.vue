@@ -1,11 +1,15 @@
 <template>
     <div id="app">
         <v-icons-sprites/>
-        <v-sidebar/>
+        <v-sidebar @openChooseModal="toggleChooseModal"/>
         <main class="main">
             <transition name="page" mode="out-in">
-                <router-view :key="$route.name"></router-view>
+                <router-view></router-view>
             </transition>
+
+            <choose-modal :isOpen="isChooseModalOpen" @closeModal="toggleChooseModal">
+                075943785943789574389
+            </choose-modal>
         </main>
     </div>
 </template>
@@ -13,12 +17,24 @@
 <script>
 import vSidebar from './components/app/vSidebar.vue';
 import vIconsSprites from './components/app/vIconsSprites.vue';
+import ChooseModal from './components/Modals/ChooseModal.vue';
 
 export default {
     name: "App",
     components: {
         vSidebar,
-        vIconsSprites
+        vIconsSprites,
+        ChooseModal
+    },
+    data() {
+        return {
+            isChooseModalOpen: false
+        }
+    },
+    methods: {
+        toggleChooseModal() {
+            this.isChooseModalOpen = !this.isChooseModalOpen;
+        }
     }
 };
 </script>

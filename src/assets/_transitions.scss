@@ -72,11 +72,31 @@
 
     80% {
         opacity: 1;
-        transform: translateY(5px)scale(1.1);
+        transform: translateY(5px)scale(1.05);
     }
 
     100% {
         opacity: 1;
         transform: translateY(0px) scale(1);;
+    }
+}
+
+.modal-transition {
+    &-leave-active {
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+
+        .modal {
+            animation: selectOptionsAnimation .3s ease-in-out reverse;
+        }
+    }
+
+    &-enter-active {
+        opacity: 1;
+        transition: opacity .3s ease-in-out;
+        
+        .modal {
+            animation: selectOptionsAnimation .3s ease-in-out;
+        }
     }
 }

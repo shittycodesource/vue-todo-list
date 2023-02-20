@@ -28,7 +28,22 @@
 
         transition: background .2s linear, color .2s linear;
 
-        &:hover {
+        &--no-border {
+            border: none;
+            border-radius: 0;
+        }
+
+        &--text-left {
+            text-align: left;
+        }
+
+        &--full-width {
+            width: 100%;
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
             background: $mainColor;
             color: invert($mainColor);
         }

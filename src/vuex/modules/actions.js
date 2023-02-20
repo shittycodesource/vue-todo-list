@@ -58,26 +58,17 @@ export default {
                 const titleFromInput = data.title.toLowerCase();
                 let tagsInTheTask = [];
                 
-                console.log(data.tags.length);
                 if (data.tags.length) {
                     tagsInTheTask = await dispatch('doesIncludeTags', {task: task, tags: data.tags});
-                    console.log(tagsInTheTask);
                 } else {
                     tagsInTheTask = true;
-                    console.log(tagsInTheTask);
                 }
-
-                console.log(tagsInTheTask);
-                console.log(data);
 
                 if (task.title.toLowerCase().includes( titleFromInput ) && tagsInTheTask ) {
                     foundTasks.push(task);
-                    console.log(task)
                 }
             }
 
-            console.log(foundTasks);
-    
             return foundTasks;
         } catch (error) {
             throw error;
@@ -96,13 +87,8 @@ export default {
             return sorted.map(tag => tag.toLowerCase()).join('');
         }
 
-        console.log(task.tags)
-        console.log(tags)
-
         const sortedTaskTags = sort(task.tags);
         const sortedDataTags = sort(tags);
-
-        console.log(sortedTaskTags, sortedDataTags);
 
         return sortedTaskTags.includes(sortedDataTags) ? true : false;
     },

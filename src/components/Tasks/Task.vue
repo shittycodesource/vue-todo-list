@@ -18,6 +18,7 @@
                 <tags 
                     :tags="data.tags" 
                     :show="tagsShow"
+                    @tagClick="searchByTag"
                 />
                 <span 
                     v-if="data.tags.length > tagsShow" class="task__open-tags" 
@@ -46,13 +47,17 @@
                 required: true
             },
         },
-        // methods: {
-        //     searchByTag(name) {
-        //         if (this.$route.query.tag != name) {
-        //             this.$router.push({ path: 'search', query: { tags: JSON.stringify([name]) } });
-        //         }
-        //     }
-        // },
+        methods: {
+            searchByTag(name) {
+                const prevTagsQuery = this.$route.query.tags ? JSON.parse(this.$route.query.tags) : [];
+
+                if (!prevTagsQuery.includes(name) && prevTagsQuery.length < 6) {
+                    const queryObject =  { text: '', tags: JSON.stringify([name, ...prevTagsQuery]) };
+
+                    this.$router.push({ path: 'search', query: queryObject });
+                }
+            }
+        },
         components: {
             Tags
         }

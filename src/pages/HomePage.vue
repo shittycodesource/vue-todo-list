@@ -23,7 +23,7 @@
 		components: {
 			vContainer,
 			ListsGrid,
-			ListCard
+			ListCard,
 		},
 		computed: {
 			...mapGetters([

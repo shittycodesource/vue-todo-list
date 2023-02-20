@@ -11,7 +11,7 @@
             </div>
             <div class="sidebar__footer">
                 <transition name="nav">
-                    <router-link to="/create" v-if="!isOpen">+</router-link>
+                    <span @click="$emit('openChooseModal')" v-if="!isOpen">+</span>
                 </transition>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     { name: 'Home', to: '/', exact: true },
                     { name: 'Create New Task', to: "/create", exact: false },
                     { name: 'Search', to: "/search", exact: false },
-                    { name: 'Lists', to: "/lists", exact: false }
+                    { name: '404 Page', to: "/404", exact: false }
                 ]
             }
         },
@@ -93,13 +93,14 @@
         &__footer {
             min-height: 40px;
 
-            a {
-				display: block;
+            span {
+                display: inline-block;
                 padding-left: 4px;
                 font-weight: 600;
                 color: $mainColor;
                 font-size: 25px;
                 text-decoration: none;
+                cursor: pointer;
             }
         }
 
