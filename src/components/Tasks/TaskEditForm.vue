@@ -66,7 +66,7 @@
     import vSelect from '../Inputs/vSelect.vue';
 
     export default {
-        name: 'EditTaskPage',
+        name: 'TaskEditForm',
         data() {
             return {
                 maxCharacters: 2048,

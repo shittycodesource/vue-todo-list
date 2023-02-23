@@ -4,8 +4,9 @@ import VueRouter from 'vue-router';
 import HomePage from '@/pages/HomePage';
 import TasksPage from '@/pages/Tasks/TasksPage';
 import TaskPage from '@/pages/Tasks/TaskPage';
-import CreatePage from '@/pages/Tasks/CreatePage';
-import EditPage from '@/pages/Tasks/EditPage';
+import CreateListPage from '@/pages/Lists/CreateListPage';
+import CreateTaskPage from '@/pages/Tasks/CreateTaskPage';
+import EditTaskPage from '@/pages/Tasks/EditTaskPage';
 import SearchPage from '@/pages/SearchPage';
 // import ListsPage from '@/pages/ListsPage';
 import NotFoundPage from '@/pages/NotFoundPage';
@@ -29,14 +30,19 @@ const routes = [
 		component: TaskPage
 	},
 	{
-		name: 'create',
-		path: '/create',
-		component: CreatePage
+		name: 'create list',
+		path: '/create-list',
+		component: CreateListPage
 	},
 	{
-		name: 'edit',
-		path: '/edit',
-		component: EditPage
+		name: 'create task',
+		path: '/create-task',
+		component: CreateTaskPage
+	},
+	{
+		name: 'edit task',
+		path: '/edit-task',
+		component: EditTaskPage
 	},
 	{
 		name: 'search',

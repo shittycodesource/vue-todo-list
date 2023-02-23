@@ -1,5 +1,5 @@
 <template>
-    <edit-task-page 
+    <task-edit-form 
         ref="editPage"
         :link="{ name: 'task', query: { listId: $route.query.listId, id: $route.query.id } }"
         :notFound="notFound"
@@ -13,16 +13,16 @@
         <template #button>
             <v-button @click.native="editTask">Edit</v-button>
         </template>
-    </edit-task-page>
+    </task-edit-form>
 </template>
 
 <script>
-    import EditTaskPage from '../../components/Tasks/EditTaskPage.vue';
+    import TaskEditForm from '../../components/Tasks/TaskEditForm.vue';
     import vButton from '../../components/app/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
 
     export default {
-        name: 'CreatePage',
+        name: 'EditTaskPage',
         data() {
             return {
                 title: '',
@@ -32,7 +32,7 @@
             }
         },
         components: {
-            EditTaskPage,
+            TaskEditForm,
             vButton
         },
         computed: {

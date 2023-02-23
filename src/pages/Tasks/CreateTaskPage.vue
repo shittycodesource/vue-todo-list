@@ -1,5 +1,5 @@
 <template>
-    <edit-task-page 
+    <task-edit-form
         ref="editPage"
         :title="title" 
         :text="text"
@@ -16,16 +16,16 @@
         <template #button>
             <v-button @click.native="createTask">Create</v-button>
         </template>
-    </edit-task-page>
+    </task-edit-form>
 </template>
 
 <script>
-    import EditTaskPage from '@/components/Tasks/EditTaskPage.vue';
+    import TaskEditForm from '@/components/Tasks/TaskEditForm.vue';
     import vButton from '@/components/app/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
 
     export default {
-        name: 'CreatePage',
+        name: 'CreateTaskPage',
         data() {
             return {
                 title: '',
@@ -35,7 +35,7 @@
             }
         },
         components: {
-            EditTaskPage,
+            TaskEditForm,
             vButton
         },
         methods: {
@@ -64,6 +64,8 @@
                 }
             },
             autoSelectList(id) {
+                console.log(id);
+                console.log('id');
                 this.selectedOption = this.getList(id);
             }
         },
