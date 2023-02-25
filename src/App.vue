@@ -8,7 +8,23 @@
             </transition>
 
             <choose-modal :isOpen="isChooseModalOpen" @closeModal="toggleChooseModal">
-                075943785943789574389
+                <template #title>What do you want to do?</template>
+                <template #options>
+                    <router-link 
+                        to="/create-list" 
+                        class="btn btn--no-border btn--full-width btn--text-left p15px"
+                        @click.native="toggleChooseModal"
+                    >
+                        New List
+                    </router-link>
+                    <router-link 
+                        to="/create-task" 
+                        class="btn btn--no-border btn--full-width btn--text-left p15px" 
+                        @click.native="toggleChooseModal"
+                    >
+                        New Task
+                    </router-link>
+                </template>
             </choose-modal>
         </main>
     </div>

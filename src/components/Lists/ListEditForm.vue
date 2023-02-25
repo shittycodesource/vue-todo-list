@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-page-header :link="link"/>
+        <v-page-header/>
         <template v-if="!notFound">
             <v-input 
                 @input="$emit('emitInput', titleValue)"
@@ -15,7 +15,7 @@
             <v-textarea
                 @input="$emit('emitTextarea', textValue)"
                 class="mb20px"
-                label="Text:" 
+                label="Description:" 
                 :value="textValue" 
                 v-model="textValue" 
                 ref="textarea"
@@ -31,28 +31,10 @@
                         : linesMessage
                 "
             />
-            <v-tags-input 
-                label="Tags:"
-                class="mb20px"
-                :tags="tags" 
-                :isEditable="true"
-                placeholder="Your tags here..."
-                @addTag="emitTags"
-            />
-
-            <v-select
-                v-if="listSelect"
-                :options="selectOptions"
-                :selectedOption="selectedOption"
-                label="List:"
-                defaultTitle="Choose which list to put it in"
-                class="mb20px"
-                @selectOption="emitOption"
-            />
             <slot name="button"></slot>
         </template>
         <template v-else>
-            <p>This task is not found or deleted</p>
+            <p>This list is not found or deleted</p>
         </template>
     </v-container>
 </template>
@@ -62,43 +44,29 @@
     import vContainer from '../app/vContainer.vue';
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
-    import vTagsInput from '../Inputs/vTagsInput.vue';
-    import vSelect from '../Inputs/vSelect.vue';
 
     export default {
-        name: 'TaskEditForm',
+        name: 'ListEditForm',
         data() {
             return {
-                maxCharacters: 2048,
-                maxLines: 48,
+                maxCharacters: 120,
+                maxLines: 8,
                 titleValue: this.title,
                 textValue: this.text,
-                tagsValue: this.tags
             }
         },
+        components: {vContainer, vPageHeader, vInput, vTextarea },
         props: {
-            link: { type: [String, Object] },
-            notFound: { type: Boolean, default: false },
-            listSelect: { type: Boolean, default: false, },
-            selectedOption: {
-                type: [Object, Boolean], // if prop is boolean then sets default title
-            },
-            selectOptions: { type: Array },
-            title: { type: String, default: '' },
+            notFound: { type: Boolean,  default: false },
+            title: { type: String,  default: '' },
             text: { type: String, default: '' },
-            tags: { type: Array, required: true }
         },
-        components: { vContainer, vPageHeader, vInput, vTextarea, vTagsInput, vSelect },
         methods: {
             reset() {
                 this.titleValue = '';
                 this.textValue = '';
-                this.tagsValue = [];
 
                 this.$refs.textarea.resetTextarea();
-            },
-            emitTags(arr) {
-                this.$emit('throwTags', arr);
             },
             emitOption(option) {
                 this.$emit('emitOption', option)

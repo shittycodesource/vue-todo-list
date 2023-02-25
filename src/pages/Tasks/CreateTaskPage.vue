@@ -1,6 +1,6 @@
 <template>
     <task-edit-form
-        ref="editPage"
+        ref="editForm"
         :title="title" 
         :text="text"
         :tags="tags"
@@ -34,10 +34,7 @@
                 selectedOption: {}
             }
         },
-        components: {
-            TaskEditForm,
-            vButton
-        },
+        components: { TaskEditForm, vButton },
         methods: {
             ...mapActions([
                 'addTask'
@@ -60,7 +57,7 @@
                     this.tags = [];
                     this.selectedOption = {};
 
-                    this.$refs.editPage.reset();
+                    this.$refs.editForm.reset();
                 }
             },
             autoSelectList(id) {
