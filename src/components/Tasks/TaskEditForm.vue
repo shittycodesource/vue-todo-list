@@ -64,9 +64,11 @@
     import vTextarea from '../Inputs/vTextarea.vue';
     import vTagsInput from '../Inputs/vTagsInput.vue';
     import vSelect from '../Inputs/vSelect.vue';
+    import editFormMixin from '../../mixins/editFormMixin';
 
     export default {
         name: 'TaskEditForm',
+        mixins: [ editFormMixin ], // computed properties and emit option methods
         data() {
             return {
                 maxCharacters: 2048,
@@ -100,28 +102,7 @@
             emitTags(arr) {
                 this.$emit('throwTags', arr);
             },
-            emitOption(option) {
-                this.$emit('emitOption', option)
-            }
         },
-        computed: {
-            lineCount() {
-                return this.textValue.split('\n').length;
-            },
-            isMaxLines() {
-                return this.lineCount >= this.maxLines;
-            },
-            linesMessage() {
-                if (this.textValue.length) {
-                    return `${this.textValue.length} / ${this.maxCharacters}`;
-                }
-            },
-            maxLinesMessage() {
-                if (this.textValue.length) {
-                    return `(${this.maxLines} lines max)`;
-                }
-            }
-        }
     }
 </script>
 

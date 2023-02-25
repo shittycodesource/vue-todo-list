@@ -44,9 +44,11 @@
     import vContainer from '../app/vContainer.vue';
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
+    import editFormMixin from '../../mixins/editFormMixin';
 
     export default {
         name: 'ListEditForm',
+        mixins: [ editFormMixin ],  // computed properties and emit option methods
         data() {
             return {
                 maxCharacters: 120,
@@ -68,27 +70,6 @@
 
                 this.$refs.textarea.resetTextarea();
             },
-            emitOption(option) {
-                this.$emit('emitOption', option)
-            }
-        },
-        computed: {
-            lineCount() {
-                return this.textValue.split('\n').length;
-            },
-            isMaxLines() {
-                return this.lineCount >= this.maxLines;
-            },
-            linesMessage() {
-                if (this.textValue.length) {
-                    return `${this.textValue.length} / ${this.maxCharacters}`;
-                }
-            },
-            maxLinesMessage() {
-                if (this.textValue.length) {
-                    return `(${this.maxLines} lines max)`;
-                }
-            }
         }
     }
 </script>
