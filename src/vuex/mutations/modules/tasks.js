@@ -1,22 +1,4 @@
 export default {
-    CHANGE_COLOR_THEME(state, name) {
-        state.colorTheme = name;
-    },
-
-    ADD_LIST(state, data) {
-        state.lists.push(data);
-    },
-
-    UPDATE_LIST(state, {data, listIndex}) {
-        const list = state.lists[listIndex];
-        list.name = data.name;
-        list.description = data.description;
-    },
-
-    DELETE_LIST(state, listIndex) {
-        state.lists.splice(listIndex, 1);
-    },
-
     ADD_TASK(state, {obj, listIndex}) {
         state.lists[listIndex].tasks.unshift(obj);
     },
@@ -51,5 +33,4 @@ export default {
         const task = state.lists[listIndex].tasks[taskIndex];
         task.completed = !task.completed;
     }
-
 }

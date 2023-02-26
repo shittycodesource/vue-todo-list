@@ -10,7 +10,6 @@ import CreateTaskPage from '@/pages/Tasks/CreateTaskPage';
 import EditTaskPage from '@/pages/Tasks/EditTaskPage';
 import SearchPage from '@/pages/SearchPage';
 import SettingsPage from '@/pages/SettingsPage';
-// import ListsPage from '@/pages/ListsPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 Vue.use(VueRouter);

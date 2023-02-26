@@ -1,5 +1,5 @@
 // import tasks from './state_tasks.js';
-import lists from './state/state_lists.js';
+import lists from './data/state_lists.js';
 
 
 export default {
