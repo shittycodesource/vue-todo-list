@@ -11,7 +11,16 @@ export default {
             document.documentElement.removeAttribute('data-theme', 'dark');
         }
 
+        localStorage.setItem('theme_color', name);
         commit('CHANGE_COLOR_THEME', name);
+    },
+    applyColorTheme({dispatch, getters}) {
+        const theme = getters.getColorThemeFromLocalStorage;
+        console.log(theme)
+
+        if (theme) {
+            dispatch('changeColorTheme', theme);
+        }
     },
 
     ...lists,

@@ -34,23 +34,24 @@
 import vSidebar from './components/app/vSidebar.vue';
 import vIconsSprites from './components/app/vIconsSprites.vue';
 import ChooseModal from './components/Modals/ChooseModal.vue';
+import { mapActions } from 'vuex';
 
 export default {
     name: "App",
-    components: {
-        vSidebar,
-        vIconsSprites,
-        ChooseModal
-    },
+    components: { vSidebar, vIconsSprites, ChooseModal },
     data() {
         return {
             isChooseModalOpen: false,
         }
     },
     methods: {
+        ...mapActions([ 'applyColorTheme' ]),
         toggleChooseModal() {
             this.isChooseModalOpen = !this.isChooseModalOpen;
         }
+    },
+    created() {
+        this.applyColorTheme();
     }
 };
 </script>
