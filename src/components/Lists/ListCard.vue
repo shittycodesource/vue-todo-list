@@ -13,7 +13,12 @@
 				></v-icon>
 
 				<template #dropdown-items>
-					<button class="dropdown__btn">Edit</button>
+					<router-link 
+						class="dropdown__btn"
+						:to="{ name: 'edit list', query: { listId: list.id } }"
+					>
+						Edit
+					</router-link>
 					<button class="dropdown__btn">Delete</button>
 				</template>
 

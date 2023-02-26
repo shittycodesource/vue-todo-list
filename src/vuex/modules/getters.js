@@ -3,11 +3,11 @@ export default {
 
     getList: (state) => (listId) => state.lists.find(el => el.id == listId),
 
-    getListsNamesAndIdArray: (state) => {
+    getListsData: (state) => {
         const arr = [];
         
         state.lists.forEach(list => {
-            arr.push({ name: list.name, id: list.id });
+            arr.push({ name: list.name, description: list.description, id: list.id });
         })
 
         return arr;

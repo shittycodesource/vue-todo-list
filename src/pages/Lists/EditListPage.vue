@@ -1,6 +1,7 @@
 <template>
     <list-edit-form
         ref="editForm"
+        :notFound="notFound"
         :name="name" 
         :description="description"
 
@@ -8,7 +9,7 @@
         @emitTextarea="(newDescription) => description = newDescription"
     >
         <template #button>
-            <v-button @click.native="createNewList">Create</v-button>
+            <v-button @click.native="updateList">Edit</v-button>
         </template>
     </list-edit-form>
 </template>
@@ -16,22 +17,31 @@
 <script>
     import ListEditForm from '../../components/Lists/ListEditForm.vue';
     import vButton from '../../components/app/vButton.vue';
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
 
     export default {
-        name: 'CreateListPage',
+        name: 'EditListPage',
         components: { ListEditForm, vButton },
         data() {
             return {
                 name: '',
                 description: '',
+                notFound: false,
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'getList'
+            ]),
+            theList() {
+                return this.getList(this.$route.query.listId);
             }
         },
         methods: {
             ...mapActions([
-                'addList'
+                'editList'
             ]),
-            createNewList() {
+            updateList() {
                 const _name  = this.name;
                 const _description = this.description;
 
@@ -39,14 +49,21 @@
                     const data = {
                         name: this.name,
                         description: this.description,
-                        tasks: []
+                        id: this.theList.id
                     };
 
-                    this.addList(data);
-                    this.name = '';
-                    this.description = '';
-                    this.$refs.editForm.reset();
+                    console.log('dfsdfkiljghsdkfhsdk')
+
+                    this.editList(data);
                 }
+            }
+        },
+        created() {
+            if (this.theList) {
+                this.name = this.theList.name;
+                this.description = this.theList.description;
+            } else {
+                this.notFound = true;
             }
         }
     }

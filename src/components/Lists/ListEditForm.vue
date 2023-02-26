@@ -5,10 +5,10 @@
             <v-input 
                 @input="$emit('emitInput', titleValue)"
                 class="mb20px"
-                label="Title:" 
+                label="Name:" 
                 :value="titleValue" 
                 v-model="titleValue" 
-                placeholder="Your title here..."
+                placeholder="Type name here..."
                 :maxLength="48"
             />
 
@@ -19,7 +19,7 @@
                 :value="textValue" 
                 v-model="textValue" 
                 ref="textarea"
-                placeholder="Your text here..."
+                placeholder="Type description here..."
                 :maxLength="
                     isMaxLines 
                         ? textValue.length.toString() 
@@ -53,15 +53,15 @@
             return {
                 maxCharacters: 120,
                 maxLines: 8,
-                titleValue: this.title,
-                textValue: this.text,
+                titleValue: this.name,
+                textValue: this.description,
             }
         },
         components: {vContainer, vPageHeader, vInput, vTextarea },
         props: {
             notFound: { type: Boolean,  default: false },
-            title: { type: String,  default: '' },
-            text: { type: String, default: '' },
+            name: { type: String,  default: '' },
+            description: { type: String, default: '' },
         },
         methods: {
             reset() {

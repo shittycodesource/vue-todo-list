@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage';
 import TasksPage from '@/pages/Tasks/TasksPage';
 import TaskPage from '@/pages/Tasks/TaskPage';
 import CreateListPage from '@/pages/Lists/CreateListPage';
+import EditListPage from '@/pages/Lists/EditListPage';
 import CreateTaskPage from '@/pages/Tasks/CreateTaskPage';
 import EditTaskPage from '@/pages/Tasks/EditTaskPage';
 import SearchPage from '@/pages/SearchPage';
@@ -33,6 +34,11 @@ const routes = [
 		name: 'create list',
 		path: '/create-list',
 		component: CreateListPage
+	},
+	{
+		name: 'edit list',
+		path: '/edit-list',
+		component: EditListPage
 	},
 	{
 		name: 'create task',

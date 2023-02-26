@@ -1,4 +1,14 @@
 export default {
+    ADD_LIST(state, data) {
+        state.lists.push(data);
+    },
+
+    UPDATE_LIST(state, {data, listIndex}) {
+        const list = state.lists[listIndex];
+        list.name = data.name;
+        list.description = data.description;
+    },
+
     ADD_TASK(state, {obj, listIndex}) {
         state.lists[listIndex].tasks.unshift(obj);
     },

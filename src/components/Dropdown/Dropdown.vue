@@ -60,7 +60,7 @@
         background: #fff;
         box-shadow: $baseBoxShadow;
 
-        button, span {
+        button, span, a {
             display: block;
 
             width: 100%;
@@ -76,6 +76,8 @@
             font-family: inherit;
             font-size: inherit;
             color: inherit;
+            text-align: center;
+            text-decoration: none;
 
             &:hover {
                 background: lighten($mainColor, 15%);
