@@ -2,4 +2,4 @@
 ```
 just a small project to learn how to work with git and github
 ```
-1.0.7: update home page, search
+1.0.8: added lists creating, editing, deleting
