@@ -35,14 +35,14 @@
         &__link {
             margin: 10px 0;
 
-            color: $textColor;
+            color: var(--textColor);
             text-decoration: none;
 
             transition: color .2s linear;
 
             &:hover,
             &.active {
-                color: $mainColor;
+                color: var(--mainTextColor);
             }
         }
     }

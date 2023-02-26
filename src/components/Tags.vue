@@ -55,7 +55,7 @@
 
 		padding: 5px 20px;
 
-		border: 1px solid $tagColor;
+		border: 1px solid var(--tagColor);
 		background: transparent;
 		border-radius: 4px;
 		cursor: pointer;
@@ -63,7 +63,7 @@
 		font-family: inherit;
 		font-size: 14px;
 		line-height: 1.1;
-		color: $textColor;
+		color: var(--textColor);
 		text-align: center;
 
 		&__text {
@@ -81,15 +81,15 @@
 			margin-right: -5px;
 			width: 12px;
 			height: 12px;
-			fill: $textColor;
+			fill: var(--textColor);
 
 			&:hover {
-				fill: darken($textColor, 10%);
+				fill: var(--tagColorHover);
 			}
 		}
 
 		&:hover {
-			border-color: darken($tagColor, 10%);
+			border-color: var(--tagColorHover);
 		}
 	}
 </style>

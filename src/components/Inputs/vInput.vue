@@ -71,13 +71,13 @@ export default {
         border: none;
 
         font-family: inherit;
-        color: $textColor;
+        color: var(--textColor);
         font-size: inherit;
 
         transition: border-bottom-left-radius .2s, border-bottom-right-radius .2s;
         
         &::placeholder {
-            color: #767676;
+            color: var(--inputPlaceholderColor);
         }
 
         &:focus {
@@ -90,7 +90,7 @@ export default {
 
             padding: 8px 0px;
 
-            color: $textColor;
+            color: var(--textColor);
             font-weight: 400;
         }
     }

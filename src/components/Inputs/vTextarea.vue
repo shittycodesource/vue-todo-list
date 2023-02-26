@@ -80,7 +80,7 @@ export default {
 
 		font-family: inherit;
 		font-size: inherit;
-		color: #000;
+		color: var(--mainTextColor);
 
 		&:focus {
 			outline: none;

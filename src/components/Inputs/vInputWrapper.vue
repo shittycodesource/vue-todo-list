@@ -21,7 +21,7 @@ export default {
 
         & > span {
             display: block;
-            color: $textColor;
+            color: var(--textColor);
             margin-bottom: 10px;
         }
 
@@ -40,9 +40,9 @@ export default {
 
         padding: 13px 15px;
 
-        background: #fff;
+        background: var(--blockBackgroundColor);
         border: none;
-        border: 1px solid #F5F5F5;
+        border: 1px solid var(--blockBorderColor);
         border-radius: 18px;
         box-shadow: $baseBoxShadow;
     }

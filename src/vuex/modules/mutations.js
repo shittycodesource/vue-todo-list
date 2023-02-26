@@ -1,4 +1,8 @@
 export default {
+    CHANGE_COLOR_THEME(state, name) {
+        state.colorTheme = name;
+    },
+
     ADD_LIST(state, data) {
         state.lists.push(data);
     },

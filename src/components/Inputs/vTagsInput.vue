@@ -105,13 +105,13 @@ export default {
         width: 100%;
 
         font-family: inherit;
-        color: $textColor;
+        color: var(--textColor);
         font-size: inherit;
 
         transition: border-bottom-left-radius .2s, border-bottom-right-radius .2s;
         
         &::placeholder {
-            color: #767676;
+            color: var(--inputPlaceholderColor);
         }
 
         &:focus {

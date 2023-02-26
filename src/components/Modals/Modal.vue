@@ -33,8 +33,8 @@
         margin-top: 80px;
 
         border-radius: 15px;    
-        background: white;
-        border: 1px solid $blockBorderColor;
+        background: var(--blockBackgroundColor);
+        border: 1px solid var(--blockBorderColor);
 
         overflow: hidden;
 
@@ -45,19 +45,21 @@
 
             padding: 5px 15px;
 
-            box-shadow: 0px 1px 0px 0px $textColor;
+            box-shadow: 0 0 0px 1px var(--blockBorderColor);
+            position: relative;
         }
 
         &__title {
             font-size: 15px;
             font-weight: 400;
             line-height: 1;
-            color: $mainColor;
+            color: var(--mainTextColor);
         }
 
         &__close {
             width: 24px;
             height: 24px;
+            fill: var(--mainTextColor);
             cursor: pointer;
         }
 

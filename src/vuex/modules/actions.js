@@ -1,6 +1,17 @@
 import { format } from 'date-fns'; 
 
 export default {
+    changeColorTheme({commit}, name) {
+        
+        if (name == 'Dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme', 'dark');
+        }
+
+        commit('CHANGE_COLOR_THEME', name);
+    },
+
     async addList({commit, dispatch}, data) {
         try {
             const isAlreadyUsed = await dispatch('checkListName', data.name);

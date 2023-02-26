@@ -38,7 +38,7 @@
             width: 100%;
             height: 2px;
 
-            background: #000;
+            background: var(--mainTextColor);
 
             position: absolute;
             left: 0;

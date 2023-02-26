@@ -35,7 +35,3 @@ import TasksList from './TasksList.vue';
         },
     }
 </script>
-
-<style lang="scss">
-
-</style>

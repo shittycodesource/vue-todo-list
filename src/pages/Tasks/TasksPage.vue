@@ -16,10 +16,7 @@
 
 	export default {
 		name: 'TasksPage',
-		components: {
-	        vContainer,
-	        Tasks
-	    },
+		components: { vContainer, Tasks },
 		computed: {
 			...mapGetters([
 				'getIncompleteTasksNumber',

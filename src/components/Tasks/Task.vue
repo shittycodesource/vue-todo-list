@@ -52,15 +52,13 @@
                 const prevTagsQuery = this.$route.query.tags ? JSON.parse(this.$route.query.tags) : [];
 
                 if (!prevTagsQuery.includes(name) && prevTagsQuery.length < 6) {
-                    const queryObject =  { text: '', tags: JSON.stringify([name, ...prevTagsQuery]) };
+                    const queryObject = { text: '', tags: JSON.stringify([name, ...prevTagsQuery]) };
 
                     this.$router.push({ path: 'search', query: queryObject });
                 }
             }
         },
-        components: {
-            Tags
-        }
+        components: { Tags }
     }
 </script>
 
@@ -76,8 +74,9 @@
         margin: 0 auto;
         padding: 15px;
 
-        background: $blockBackgroundColor;
+        background: var(--blockBackgroundColor);
         box-shadow: $baseBoxShadow;
+        border: 1px solid var(--blockBorderColor);
         border-radius: 18px;
 
         &__header {
@@ -89,7 +88,7 @@
         &__title {
             line-height: 0;
             font-weight: 500;
-            color: $mainColor;
+            color: var(--mainTextColor);
         }
 
         &__content {
@@ -106,7 +105,7 @@
             font-size: 14px;
             line-height: calc(14 * 1.5 / 10);
 
-            color: $textColor;
+            color: var(--textColor);
         }
 
         &__footer,
@@ -128,7 +127,7 @@
         }
 
         &__date {
-            color: $mainColor;
+            color: var(--mainTextColor);
         }
 
         &__tags {
@@ -146,7 +145,7 @@
             }
         }
         &__open-tags {
-            color: $textColor;
+            color: var(--textColor);
             letter-spacing: 1px;
             cursor: pointer;
             letter-spacing: 1px;
@@ -154,7 +153,7 @@
             transition: color .2s linear;
 
             &:hover {
-                color: $mainColor;
+                color: var(--mainTextColor);
             }
         }
 

@@ -70,13 +70,17 @@
             defaultTitle: {
                 type: String,
                 default: 'Select one of the options'
+            },
+            preventOptionReset: {
+                type: Boolean,
+                default: false,
             }
         },
         methods: {
             selectOption(option) {
                 this.isOpen = false;
 
-                if (option == this.selectedOption) {
+                if (option == this.selectedOption && !this.preventOptionReset) {
                     this.$emit('selectOption', false);
                     return;
                 }
@@ -113,9 +117,9 @@
             top: calc(100% + 5px);
             left: 0;
 
-            background: $blockBackgroundColor;
+            background: var(--blockBackgroundColor);
             box-shadow: $baseBoxShadow;
-            border: 1px solid $blockBorderColor;
+            border: 1px solid var(--blockBorderColor);
             border-radius: 15px;
 
             overflow: hidden;
@@ -130,19 +134,19 @@
 
             font-family: inherit;
             font-size: 12px;
-            color: $textColor;
+            color: var(--textColor);
             text-align: left;
 
             transition: background .2s ease-in-out, color .2s ease-in-out;
 
             &.active {
-                background: #1f1f1f;
-                color: #fff;
+                background: var(--dropdownItemColorActive);
+                color: var(--dropdownItemTextColorActive);
             }
 
             &:hover {
-                background: #000;
-                color: #fff;
+                background: var(--dropdownItemColorHover);;
+                color: var(--dropdownItemTextColorHover);
             }
         }
     }

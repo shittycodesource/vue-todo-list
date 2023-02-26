@@ -90,7 +90,7 @@ import vButton from '../app/vButton.vue';
         &__separator {
             margin: 10px 0;
             width: 100%;
-            color: #7a7a7a;
+            color: var(--textColor);
             text-align: center;
         }
     }

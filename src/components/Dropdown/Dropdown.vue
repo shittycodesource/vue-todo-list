@@ -57,7 +57,8 @@
 
         z-index: 100;
 
-        background: #fff;
+        background: var(--blockBackgroundColor);
+        border: 1px solid var(--blockBorderColor);
         box-shadow: $baseBoxShadow;
 
         button, span, a {
@@ -69,24 +70,24 @@
             padding: 10px 20px;
 
             border: none;
-            background: #fff;
+            background: var(--blockBackgroundColor);
             cursor: pointer;
             box-shadow: none;
 
             font-family: inherit;
             font-size: inherit;
-            color: $textColor;
+            color: var(--textColor);
             text-align: center;
             text-decoration: none;
 
             &:hover {
-                background: lighten($mainColor, 15%);
-                color: #fff;
+                background: var(--dropdownItemColorHover);
+                color: var(--dropdownItemTextColorHover);
             }
 
             &.active {
-                background: $mainColor;
-                color: #fff;
+                background: var(--dropdownItemColorActive);
+                color: var(--dropdownItemTextColorHover);
             }
         }
     }

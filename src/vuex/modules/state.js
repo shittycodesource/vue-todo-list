@@ -6,4 +6,5 @@ export default {
     lists: lists,
     // tasks: tasks,
     sortTasksBy: false,
+    colorTheme: 'Light',
 }

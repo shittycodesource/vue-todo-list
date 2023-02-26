@@ -16,8 +16,8 @@
 		<choose-modal :isOpen="isOpen" @closeModal="toggleChooseModal">
 			<template #title>Delete this list?</template>
 			<template #options>
-				<v-button class="btn--no-border btn--full-width btn--text-left p15px" @click.native="deleteTheList">Confirm</v-button>
-				<v-button class="btn--no-border btn--full-width btn--text-left p15px" @click.native="cancelDelete">Cancel</v-button>
+				<v-button class="btn--choose" @click.native="deleteTheList">Confirm</v-button>
+				<v-button class="btn--choose" @click.native="cancelDelete">Cancel</v-button>
 			</template>
 		</choose-modal>
 	</v-container>
@@ -74,7 +74,7 @@
 
 <style lang="scss">
 	.lists__header {
-		color: $textColor;
+		color: var(--textColor);
 		font-size: 20px;
 		margin-bottom: 15px;
 	}

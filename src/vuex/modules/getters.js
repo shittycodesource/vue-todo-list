@@ -1,4 +1,6 @@
 export default {
+    getColorTheme: (state) => state.colorTheme,
+
     getLists: (state) => state.lists,
 
     getList: (state) => (listId) => state.lists.find(el => el.id == listId),

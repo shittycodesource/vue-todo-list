@@ -6,7 +6,7 @@
         :tags="tags"
         :listSelect="true"
         :selectedOption="selectedOption"
-        :selectOptions="getListsNamesAndIdArray"
+        :selectOptions="getListsData"
 
         @emitInput="(newTitle) => title = newTitle"
         @emitTextarea="(newText) => text = newText"
@@ -69,7 +69,7 @@
         computed: {
             ...mapGetters([
                 'getList',
-                'getListsNamesAndIdArray'
+                'getListsData'
             ])
         },
         beforeRouteEnter(to, from, next) {
@@ -85,7 +85,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-
-</style>

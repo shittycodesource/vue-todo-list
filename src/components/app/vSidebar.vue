@@ -31,6 +31,7 @@
                     { name: 'Home', to: '/', exact: true },
                     { name: 'Create New Task', to: "/create-task", exact: false },
                     { name: 'Search', to: "/search", exact: false },
+                    { name: 'Settings', to: "/settings", exact: false },
                     { name: '404 Page', to: "/404", exact: false }
                 ]
             }
@@ -62,8 +63,9 @@
 
         z-index: 1000;
 
-        background: $blockBackgroundColor;
+        background: var(--blockBackgroundColor);
         box-shadow: $baseBoxShadow;
+        border-right: 1px solid var(--blockBorderColor);
 
         transition: max-width .2s ease-in-out;
 
@@ -97,7 +99,7 @@
                 display: inline-block;
                 padding-left: 4px;
                 font-weight: 600;
-                color: $mainColor;
+                color: var(--mainTextColor);
                 font-size: 25px;
                 text-decoration: none;
                 cursor: pointer;

@@ -12,14 +12,14 @@
                 <template #options>
                     <router-link 
                         to="/create-list" 
-                        class="btn btn--no-border btn--full-width btn--text-left p15px"
+                        class="btn btn--choose"
                         @click.native="toggleChooseModal"
                     >
                         New List
                     </router-link>
                     <router-link 
                         to="/create-task" 
-                        class="btn btn--no-border btn--full-width btn--text-left p15px" 
+                        class="btn btn--choose" 
                         @click.native="toggleChooseModal"
                     >
                         New Task
@@ -44,7 +44,7 @@ export default {
     },
     data() {
         return {
-            isChooseModalOpen: false
+            isChooseModalOpen: false,
         }
     },
     methods: {
@@ -62,11 +62,11 @@ export default {
 
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
-        color: $textColor;
+        color: var(--textColor);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
-        background-color: $mainBackgroundColor;
+        background-color: var(--mainBackgroundColor);
     }
 
     *,*::before,*::after {

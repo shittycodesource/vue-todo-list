@@ -12,9 +12,7 @@
 
     export default {
         name: 'NotFoundPage',
-        components: {
-            vContainer
-        }
+        components: { vContainer }
     }
 </script>
 

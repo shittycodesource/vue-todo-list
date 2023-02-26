@@ -26,14 +26,14 @@
         margin-bottom: 80px;
 
         &__link {
-            color: $textColor;
+            color: var(--textColor);
             font-size: 20px;
             text-decoration: none;
 
             transition: color .2s linear;
 
             &:hover {
-                color: $mainColor;
+                color: var(--mainTextColor);
             }
         }
     }

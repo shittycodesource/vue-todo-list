@@ -16,40 +16,41 @@
 
         padding: 5px 20px;
 
-        border: 1px solid $mainColor;
+        border: 1px solid var(--buttonBorderColor);
         background: transparent;
         border-radius: 8px;
         cursor: pointer;
 
         font-family: inherit;
         font-size: 16px  ;
-        color: #000;
+        color: var(--buttonTextColor);
         text-decoration: none;
 
         transition: background .2s linear, color .2s linear;
 
-        &--no-border {
-            border: none;
-            border-radius: 0;
-        }
-
-        &--text-left {
-            text-align: left;
-        }
-
-        &--full-width {
-            width: 100%;
-        }
-
         &:hover,
         &:focus {
             outline: none;
-            background: $mainColor;
-            color: invert($mainColor);
+            background: var(--buttonBackgroundColorHover);
+            color: var(--buttonTextColorHover);
         }
         
         &.active {
-            background: darken(#fff, 10%);
+            background: var(--buttonBackgroundColorActive);
+        }
+
+        &--choose {
+            padding: 15px;
+            border: none;
+            border-radius: 0;
+            text-align: left;
+            width: 100%;
+            background: var(--blockBackgroundColor);
+
+            &:hover {
+                background: var(--dropdownItemColorHover);
+                color: var(--dropdownItemTextColorHover)
+            }
         }
     }
 </style>

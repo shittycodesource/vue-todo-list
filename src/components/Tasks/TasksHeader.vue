@@ -100,14 +100,14 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
 
         &__title {
             font-size: 20px;
-            color: $textColor;
+            color: var(--textColor);
 
             font-weight: 400;
             margin-right: 5px;
         }
 
         &__count {
-            color: #767676;
+            color: var(--textColor);
         }
     }
 
@@ -116,11 +116,11 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue';
         overflow: hidden;
 
         &-title {
-            color: $textColor;
+            color: var(--textColor);
             cursor: pointer;
 
             &:hover {
-                color: darken($textColor, 10%);
+                color: var(--textColorHover);
             }
         }
     }

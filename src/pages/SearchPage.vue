@@ -8,7 +8,7 @@
                 <v-select
                     defaultTitle="All Lists"
                     :selectedOption="selectedOption"
-                    :options="getListsNamesAndIdArray"
+                    :options="getListsData"
                     @selectOption="(option) => selectedOption = option"
                 />
             </div>
@@ -57,7 +57,7 @@
         computed: {
             ...mapGetters([
                 'getAllTasks',
-                'getListsNamesAndIdArray'
+                'getListsData'
             ])
         },
         methods: {
@@ -96,7 +96,7 @@
 
             text ? this.text = text.trim('') : '';
             tags ? this.tags = JSON.parse(tags) : '';
-            listId ? this.getListsNamesAndIdArray.filter(list => list.id == listId ? this.selectedOption = list : '') : ''; 
+            listId ? this.getListsData.filter(list => list.id == listId ? this.selectedOption = list : '') : ''; 
 
             this.startSearch();
         }

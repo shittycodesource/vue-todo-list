@@ -80,9 +80,9 @@
 
 		padding: 15px;
 
-		background: $blockBackgroundColor;
+		background: var(--blockBackgroundColor);
 		border-radius: 11px;
-		border: 1px solid #F3F3F3;
+		border: 1px solid var(--blockBorderColor);
 		box-shadow: $baseBoxShadow;
 
 		transition: background.2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
@@ -98,12 +98,16 @@
 		&__title {
 			font-size: 20px;
 			font-weight: 400;
-			color: $mainColor;
+			color: var(--mainTextColor);
+			max-width: 180px;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		&__icon {
 			width: 25px;
 			height: 22px;
+			fill: var(--mainTextColor);
 			cursor: pointer;
 		}
 
@@ -111,7 +115,7 @@
 			flex-grow: 1;
 
 			font-size: 13px;
-			color: $textColor;
+			color:var(--textColor);
 		}
 
 		&__footer {
@@ -120,21 +124,21 @@
 			justify-content: space-between;
 
 			font-size: 13px;
-			color: $textColor;
+			color: var(--textColor);
 		}
 
 		&__link {
-			color: $textColor;
+			color: var(--textColor);
 			text-decoration: none;
 
 			&:hover {
-				color: darken($textColor, 10%);
+				color: var(--textColorHover);
 			}
 		}
 
 		&:hover {
-			background: darken($blockBackgroundColor, 3%);
-			border-color: lighten(#F3F3F3, 10%);
+			background: var(--listCardColorHover);
+			border-color: var(--listCardBorderColorHover);
 			box-shadow: $baseBoxShadowHover;
 		}
 	}
