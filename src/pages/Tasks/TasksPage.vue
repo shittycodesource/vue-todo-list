@@ -1,9 +1,11 @@
 <template>
 	<v-container>
-        <Tasks 
+        <Tasks
+			v-if="getList($route.query.listId)" 
 			:activeCount="getIncompleteTasksNumber(getList($route.query.listId).tasks)"
 			:list="getList($route.query.listId)"
-		/>	
+		/>
+		<p class="center text-color" v-else>This list not found</p>	
     </v-container>
 </template>
 
