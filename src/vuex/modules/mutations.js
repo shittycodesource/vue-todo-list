@@ -9,6 +9,10 @@ export default {
         list.description = data.description;
     },
 
+    DELETE_LIST(state, listIndex) {
+        state.lists.splice(listIndex, 1);
+    },
+
     ADD_TASK(state, {obj, listIndex}) {
         state.lists[listIndex].tasks.unshift(obj);
     },

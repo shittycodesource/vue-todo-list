@@ -62,7 +62,7 @@ export default {
 
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
-        color: #000;
+        color: $textColor;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 

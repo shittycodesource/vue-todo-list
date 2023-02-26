@@ -89,6 +89,7 @@
         &__title {
             line-height: 0;
             font-weight: 500;
+            color: $mainColor;
         }
 
         &__content {

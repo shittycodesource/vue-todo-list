@@ -75,7 +75,7 @@
 
             font-family: inherit;
             font-size: inherit;
-            color: inherit;
+            color: $textColor;
             text-align: center;
             text-decoration: none;
 

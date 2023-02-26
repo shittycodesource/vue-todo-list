@@ -19,7 +19,7 @@
 					>
 						Edit
 					</router-link>
-					<button class="dropdown__btn">Delete</button>
+					<button class="dropdown__btn" @click="$emit('deleteList', list)">Delete</button>
 				</template>
 
 			</Dropdown>
@@ -98,6 +98,7 @@
 		&__title {
 			font-size: 20px;
 			font-weight: 400;
+			color: $mainColor;
 		}
 
 		&__icon {

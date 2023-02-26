@@ -35,6 +35,11 @@ export default {
         }
     },
 
+    deleteList({commit, getters}, list) {
+        const listIndex = getters.getListIndex(list.id);
+        commit('DELETE_LIST', listIndex);
+    },
+
     checkListName({getters}, name) {
         const lists = getters.getListsData;
         let isAlreadyUsed = false;
