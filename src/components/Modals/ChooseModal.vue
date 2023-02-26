@@ -32,6 +32,10 @@
 <style lang="scss">
     .modal--choose {
         max-width: 600px;
+
+        @media (max-width: $mobileBP) {
+            max-width: calc(100% - 100px);
+        }
     }
 
 </style>

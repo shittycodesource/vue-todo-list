@@ -36,10 +36,7 @@
                 ]
             }
         },
-        components: {
-            vBurgerMenu,
-            vNav
-        },
+        components: { vBurgerMenu,  vNav },
         methods: {
             toggleSidebar() {
                 this.isOpen = !this.isOpen;

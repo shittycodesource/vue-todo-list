@@ -78,5 +78,11 @@ export default {
         padding-top: 50px;
         padding-bottom: 50px;
         padding-left: $sidebarWidth;
+
+        @media (max-width: $mobileBP) {
+            padding-top: 20px;
+            padding-left: 60px;
+            // padding-right: 20px;
+        }
     }
 </style>

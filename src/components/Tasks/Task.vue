@@ -181,11 +181,21 @@
         }
 
         @media (max-width: $tabletBP) {
-            width: calc(50% - 15px);
+            width: 100%;
         }
 
         @media (max-width: $mobileBP) {
             width: 100%;
+
+            &__header {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 15px;
+            }
+
+            &__content {
+                margin-bottom: 15px;
+            }
         }
     }
 </style>

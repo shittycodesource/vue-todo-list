@@ -141,5 +141,13 @@
 			border-color: var(--listCardBorderColorHover);
 			box-shadow: $baseBoxShadowHover;
 		}
+
+		@media (max-width: $tabletBP) {
+            max-width: calc(100% / 2 - 10px);
+        }
+
+		@media (max-width: $mobileBP) {
+			max-width: 100%;
+        }
 	}
 </style>

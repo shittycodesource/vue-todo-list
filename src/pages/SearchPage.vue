@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <form class="search-form">
-            <div class="flex items-center gap10px">
+            <div class="search-form__header">
 
                 <v-input placeholder="Title" :value="text" v-model="text" :maxLength="48" />
 
@@ -118,5 +118,17 @@
     .search-form {
         display: flex;
         flex-direction: column;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            @media (max-width: $mobileBP) {
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 5px;
+            }
+        }
     }
 </style>

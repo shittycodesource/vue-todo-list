@@ -11,10 +11,7 @@ import TasksList from './TasksList.vue';
 
     export default {
         name: 'Tasks',
-        components: {
-            TasksHeader,
-            TasksList
-        },
+        components: { TasksHeader, TasksList },
         props: {
             list: {
                 type: Object,
