@@ -80,7 +80,8 @@ export default {
             }
         },
         deleteTag(index) {
-        	this.tags.splice(index, 1);
+            this.tags.splice(index, 1);
+            this.$emit('deleteTag');
         },
         removePrevTag(event) {
         	if (event.target.value.length === 0 && this.tags.length) {

@@ -16,6 +16,7 @@
             <v-tags-input 
                 placeholder="Tags"
                 @addTag="(tagsArr) => tags = tagsArr"
+                @deleteTag="startSearch"
                 :tags="tags"
                 ref="tagsInput"
              />
@@ -77,28 +78,38 @@
                         };
                         
                         this.foundTasks = await this.searchTasks(dataForSearch);
-                        
+
                         const queryObject = { text: this.text, tags: JSON.stringify(this.tags) };
 
                         if (this.$route.query.text != queryObject.text || this.$route.query.tags != queryObject.tags) {
                             this.$router.push({ query: queryObject});
-                        } // lol i don't know how i did all of this works because this whole page is a piece of shit but it works
+                        } // lol i don't know how i did all of this work because this whole page is a piece of shit but it works
                     }
                 } catch (error) {
                     throw error;
                 }
             },
+            setData() {
+                const text = this.$route.query.text;
+                const tags = this.$route.query.tags;
+                const listId = this.$route.query.listId;
+
+                text ? this.text = text.trim('') : '';
+                tags ? this.tags = JSON.parse(tags) : '';
+                listId ? this.getListsData.filter(list => list.id == listId ? this.selectedOption = list : '') : ''; 
+            },
         },
         mounted() {
-            const text = this.$route.query.text;
-            const tags = this.$route.query.tags;
-            const listId = this.$route.query.listId;
-
-            text ? this.text = text.trim('') : '';
-            tags ? this.tags = JSON.parse(tags) : '';
-            listId ? this.getListsData.filter(list => list.id == listId ? this.selectedOption = list : '') : ''; 
-
+            this.setData();
             this.startSearch();
+        },
+        watch: {
+            '$route.query': {
+                handler() {
+                    this.setData()
+                    this.startSearch(); 
+                }
+            }
         }
     }
 </script>
