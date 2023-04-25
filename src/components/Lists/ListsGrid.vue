@@ -14,6 +14,6 @@
     .lists__grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 40px;
     }
 </style>

@@ -22,10 +22,18 @@ export default {
     },
 
     getIncompleteTasksNumber: () => (arr) => {
+        console.log('gitn', arr)
         let counter = 0;
         arr.forEach(el => el.completed != true ? counter++ : '');
         
         return counter;
+    },
+
+    getCompleteTasksNumber: (state, getters) => (arr = []) => {
+        const IncompeleteTasksNum = getters.getIncompleteTasksNumber(arr);
+        const CompleteTasksNum = arr.length - IncompeleteTasksNum;
+
+        return CompleteTasksNum;
     },
 
     getSortedTasks: (state, getters) => (list) => {

@@ -3,7 +3,7 @@
         <slot></slot>
         <transition name="dropdown-transition">
             <div class="dropdown" v-if="isOpen" v-click-outside="emitClick">
-                <slot name="dropdown-items"></slot>
+                <slot name="options"></slot>
             </div>
         </transition>
     </div>
@@ -45,7 +45,14 @@
         &-wrapper {
             display: inline-flex;
             position: relative;
+
+            &:hover {
+                color: #000;
+            }
         }
+
+        min-width: 100px;
+        text-align: center;
 
         display: flex;
         flex-direction: column;
@@ -57,11 +64,11 @@
 
         z-index: 100;
 
-        background: var(--blockBackgroundColor);
-        border: 1px solid var(--blockBorderColor);
-        box-shadow: $baseBoxShadow;
+        background: var(--block-background-color);
+        border: 1px solid var(--block-border-color);
+        box-shadow: var(--block-box-shadow);
 
-        button, span, a {
+        button, span, a, div {
             display: block;
 
             width: 100%;
@@ -70,24 +77,24 @@
             padding: 10px 20px;
 
             border: none;
-            background: var(--blockBackgroundColor);
+            background: var(--block-background-color);
             cursor: pointer;
             box-shadow: none;
 
             font-family: inherit;
             font-size: inherit;
-            color: var(--textColor);
+            color: var(--secondary-text);
             text-align: center;
             text-decoration: none;
 
             &:hover {
-                background: var(--dropdownItemColorHover);
-                color: var(--dropdownItemTextColorHover);
+                background: var(--blue);
+                color: var(--main-text-alt);
             }
 
             &.active {
-                background: var(--dropdownItemColorActive);
-                color: var(--dropdownItemTextColorHover);
+                background: var(--blue-active);
+                color: var(--main-text-alt);
             }
         }
     }

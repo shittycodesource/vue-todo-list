@@ -14,4 +14,9 @@ export default {
     },
 
     getListIndex: (state, getters) => (listId) => state.lists.indexOf( getters.getList(listId) ),
+
+    getListProgress: (state, getters) => (arr = []) => {
+        const completed = getters.getCompleteTasksNumber(arr);
+        return (completed / arr.length) * 100;
+    }
 }

@@ -16,7 +16,7 @@
             <Dropdown :isOpened="isDropdownOpen" @clickOutside="isDropdownOpen = !isDropdownOpen">
                 <div @click="toggleDropdown" class="dropdown-title">Sort by</div>
 
-                <template #dropdown-items>
+                <template #options>
                     <button
                         class="dropdown__btn"
                         v-for="btn in buttons"
@@ -36,7 +36,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Dropdown from '@/components/Dropdown/Dropdown.vue';
+import Dropdown from '@/components/Dropdown.vue';
 
     export default {
         name: 'TasksHeader',

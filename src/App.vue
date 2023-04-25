@@ -52,6 +52,13 @@ export default {
     },
     created() {
         this.applyColorTheme();
+
+        const v = this;
+        window.addEventListener('keydown', event => {
+            if (event.keyCode == 191) {
+                v.toggleChooseModal();
+            }
+        })
     }
 };
 </script>
@@ -61,13 +68,13 @@ export default {
         margin: 0;
         padding: 0;
 
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 16px;
         color: var(--textColor);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
-        background-color: var(--mainBackgroundColor);
+        background-color: var(--main-background-color);
     }
 
     *,*::before,*::after {

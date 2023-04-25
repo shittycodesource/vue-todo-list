@@ -2,11 +2,13 @@
     <aside class="sidebar" :class="{'open': isOpen}">
         <div class="sidebar__inner">
             <div class="sidebar__header">
-                <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/>
+                <!-- <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/> -->
+                <h2 class="sidebar__title">Senseless</h2>
+                <div class="sidebar__version">1.1.1</div>
             </div>
             <div class="sidebar__content">
                 <transition name="nav">
-                    <v-nav v-if="isOpen" :links="links" @linkClick="toggleSidebar"/>
+                    <v-nav v-if="isOpen" :links="links"/>
                 </transition>
             </div>
             <div class="sidebar__footer">
@@ -26,7 +28,7 @@
         name: 'vSidebar',
         data() {
             return {
-                isOpen: false,
+                isOpen: true,
                 links: [
                     { name: 'Home', to: '/', exact: true },
                     { name: 'Create New Task', to: "/create-task", exact: false },
@@ -51,7 +53,7 @@
         width: 100%;
         height: 100vh;
 
-        padding: 17px;
+        padding: 15px;
 
         position: fixed;
         top: 0;
@@ -60,14 +62,14 @@
 
         z-index: 1000;
 
-        background: var(--blockBackgroundColor);
+        background: var(--sidebar-background-color);
         box-shadow: $baseBoxShadow;
         border-right: 1px solid var(--blockBorderColor);
 
         transition: max-width .2s ease-in-out;
 
         &__inner {
-            width: 300px;
+            width: 100%;
             height: 100%;
 
             display: flex;
@@ -79,8 +81,19 @@
 
         &__header {
             display: flex;
-            // justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        &__title {
+            font-weight: 400;
+            font-size: 20px;
+            color: var(--main-text);
+        }
+
+        &__version {
+            font-size: 14px;
+            color: var(--main-text);
         }
 
         &__content {
@@ -103,8 +116,8 @@
             }
         }
 
-        &.open {
-            max-width: 300px;
-        }
+        // &.open {
+        //     max-width: 300px;
+        // }
     }
 </style>
