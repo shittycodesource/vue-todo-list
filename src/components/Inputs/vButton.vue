@@ -46,6 +46,7 @@
 
         &--flat {
             border: 1px solid var(--button-flat-color);
+            box-shadow: none;
             color: var(--button-flat-color);
 
             &:hover,
@@ -53,6 +54,7 @@
                 border-color: var(--button-flat-color-hover);
                 color: var(--button-flat-color-hover);
                 background: transparent;
+                box-shadow: none;
             }
         }
 
@@ -68,6 +70,33 @@
                 background: var(--dropdownItemColorHover);
                 color: var(--dropdownItemTextColorHover)
             }
+        }
+
+        &--with-icon {
+            display: flex;
+            align-items: center;
+
+            svg {
+                margin-right: 5px;
+                width: 16px;
+                height: 16px;
+                fill: var(--secondary-text);
+
+                transition: fill .2s linear;
+            }
+
+            &:hover {
+                svg {
+                    fill: var(--main-text);
+                }
+            }
+        }
+
+        &--big {
+            padding: 15px;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
         }
     }
 </style>

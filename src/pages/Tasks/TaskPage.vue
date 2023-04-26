@@ -18,7 +18,7 @@
 	import vPageHeader from '../../components/app/vPageHeader.vue';
 	import Task from '../../components/Tasks/Task.vue';
 	import vContainer from '../../components/app/vContainer.vue';
-	import vButton from '../../components/app/vButton.vue';
+	import vButton from '../../components/Inputs/vButton.vue';
 	import { mapActions, mapGetters } from 'vuex';
 
 	export default {

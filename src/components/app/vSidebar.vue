@@ -7,9 +7,23 @@
                 <div class="sidebar__version">1.1.1</div>
             </div>
             <div class="sidebar__content">
-                <transition name="nav">
-                    <v-nav v-if="isOpen" :links="links"/>
-                </transition>
+                 <v-sidebar-block>
+                    <template #title>CREATE NEW LIST OR TASK</template>
+                    <template #content>
+                        <div class="mr20px ml20px">
+                            <v-button class="btn--flat btn--gray btn--with-icon btn--big mr20px">
+                                <v-icon name="#plus-circle"/>
+                                Create
+                            </v-button>
+                        </div>
+                    </template>
+                </v-sidebar-block>
+                <v-sidebar-block>
+                    <template #title>NAVIGATION</template>
+                    <template #content>
+                        <v-nav v-if="isOpen" :links="links"/>
+                    </template>
+                </v-sidebar-block>
             </div>
             <div class="sidebar__footer">
                 <transition name="nav">
@@ -22,23 +36,32 @@
 
 <script>
     import vBurgerMenu from './vBurgerMenu.vue';
+    import vSidebarBlock from './vSidebarBlock.vue';
     import vNav from './vNav.vue';
+    import vButton from '../Inputs/vButton.vue';
+    import vIcon from './vIcon.vue';
 
     export default {
         name: 'vSidebar',
         data() {
             return {
                 isOpen: true,
+                // links: [
+                //     { name: 'Home', to: '/', exact: true, iconName: '#home' },
+                //     { name: 'Create New Task', to: "/create-task", exact: false },
+                //     { name: 'Search', to: "/search", exact: false },
+                //     { name: 'Settings', to: "/settings", exact: false },
+                //     { name: '404 Page', to: "/404", exact: false }
+                // ]
                 links: [
-                    { name: 'Home', to: '/', exact: true },
-                    { name: 'Create New Task', to: "/create-task", exact: false },
-                    { name: 'Search', to: "/search", exact: false },
-                    { name: 'Settings', to: "/settings", exact: false },
-                    { name: '404 Page', to: "/404", exact: false }
+                    { name: 'Home', to: '/', exact: true, iconName: '#home' },
+                    { name: 'Search', to: "/search", exact: false, iconName: '#search' },
+                    { name: 'Settings', to: "/settings", exact: false, iconName: '#settings' },
+                    { name: '404 Page', to: "/404", exact: false, iconName: '#trash' }
                 ]
             }
         },
-        components: { vBurgerMenu,  vNav },
+        components: { vBurgerMenu,  vNav, vSidebarBlock, vButton, vIcon },
         methods: {
             toggleSidebar() {
                 this.isOpen = !this.isOpen;
@@ -53,7 +76,7 @@
         width: 100%;
         height: 100vh;
 
-        padding: 15px;
+        // padding: 15px;
 
         position: fixed;
         top: 0;
@@ -63,8 +86,8 @@
         z-index: 1000;
 
         background: var(--sidebar-background-color);
-        box-shadow: $baseBoxShadow;
-        border-right: 1px solid var(--blockBorderColor);
+        // box-shadow: $baseBoxShadow;
+        border-right: 1px solid var(--sidebar-borders-color);
 
         transition: max-width .2s ease-in-out;
 
@@ -83,6 +106,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            
+            padding: 0 15px;
+
+            border-bottom: 1px solid var(--sidebar-borders-color);
         }
 
         &__title {
@@ -98,7 +125,8 @@
 
         &__content {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            // align-items: center;
             flex-grow: 1;
         }
 

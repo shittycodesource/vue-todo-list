@@ -16,7 +16,7 @@
 
 <script>
     import ListEditForm from '../../components/Lists/ListEditForm.vue';
-    import vButton from '../../components/app/vButton.vue';
+    import vButton from '../../components/Inputs/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
 
     export default {

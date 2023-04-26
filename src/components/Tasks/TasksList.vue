@@ -33,7 +33,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Task from './Task.vue';
-import vButton from '../app/vButton.vue';
+import vButton from '../Inputs/vButton.vue';
 
     export default {
         name: 'TasksList',

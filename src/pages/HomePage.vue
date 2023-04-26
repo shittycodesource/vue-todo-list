@@ -50,7 +50,7 @@
 	import ListsGrid from '../components/Lists/ListsGrid.vue';
 	import ListCard from '../components/Cards/ListCard.vue';
 	import ChooseModal from '../components/Modals/ChooseModal.vue';
-	import vButton from '../components/app/vButton.vue';
+	import vButton from '../components/Inputs/vButton.vue';
 	import { mapActions, mapGetters } from 'vuex';
 
 	import Card from '../components/Cards/Card.vue';

@@ -14,7 +14,7 @@
 <script>
     import vContainer from '../components/app/vContainer.vue';
     import vSelect from '../components/Inputs/vSelect.vue';
-    import vButton from '../components/app/vButton.vue';
+    import vButton from '../components/Inputs/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
     
     export default {

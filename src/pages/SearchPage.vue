@@ -38,7 +38,7 @@
     import vInput from '../components/Inputs/vInput.vue';
     import vTagsInput from '../components/Inputs/vTagsInput.vue';
     import vSelect from '../components/Inputs/vSelect.vue';
-    import vButton from '../components/app/vButton.vue';
+    import vButton from '../components/Inputs/vButton.vue';
     import TasksList from '../components/Tasks/TasksList.vue';
     import { mapGetters, mapActions } from 'vuex';
 

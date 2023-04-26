@@ -20,8 +20,8 @@
 </template>
 
 <script>
-    import TaskEditForm from '@/components/Tasks/TaskEditForm.vue';
-    import vButton from '@/components/app/vButton.vue';
+    import TaskEditForm from '../../components/Tasks/TaskEditForm.vue';
+    import vButton from '../../components/Inputs/vButton.vue';
     import { mapActions, mapGetters } from 'vuex';
 
     export default {

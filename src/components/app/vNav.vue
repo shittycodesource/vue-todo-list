@@ -8,15 +8,19 @@
             active-class="active"
             class="nav__link"
             @click.native="$emit('linkClick')"
-        >
+        >   
+            <v-icon :name="link.iconName" class="nav__icon"/>
             {{ link.name }}
         </router-link>
     </nav>
 </template>
 
 <script>
+    import vIcon from './vIcon.vue';
+
     export default {
         name: 'vNav',
+        components: { vIcon },
         props: {
             links: {
                 type: Array,
@@ -32,17 +36,60 @@
         display: flex;
         flex-direction: column;
 
+        &__icon {
+            width: 18px;
+            height: 18px;
+
+            margin-right: 10px;
+
+            fill: var(--secondary-text);
+        }
+
         &__link {
-            margin: 10px 0;
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 10px;
+            padding: 10px;
 
             color: var(--textColor);
             text-decoration: none;
 
-            transition: color .2s linear;
+            background: var(--link-background-color);
 
-            &:hover,
+            position: relative;
+
+            transition: color .2s linear, background .2s linear;
+
+            &::after {
+                content: '';
+                height: 100%;
+                width: 3px;
+
+                background: var(--blue);
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+
+                opacity: 0;
+
+                transition: opacity .2s linear;
+            }
+
             &.active {
-                color: var(--mainTextColor);
+                color: var(--main-text);
+
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            &:hover {
+                background: var(--link-background-color-active);
             }
         }
     }
