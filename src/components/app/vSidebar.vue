@@ -1,45 +1,58 @@
 <template>
     <aside class="sidebar" :class="{'open': isOpen}">
         <div class="sidebar__inner">
-            <div class="sidebar__header">
+            <header class="sidebar__header">
                 <!-- <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/> -->
                 <h2 class="sidebar__title">Senseless</h2>
                 <div class="sidebar__version">1.1.1</div>
-            </div>
+            </header>
+
             <div class="sidebar__content">
-                 <v-sidebar-block>
+
+                <v-block>
                     <template #title>CREATE NEW LIST OR TASK</template>
                     <template #content>
                         <div class="mr20px ml20px">
-                            <v-button class="btn--flat btn--gray btn--with-icon btn--big mr20px">
-                                <v-icon name="#plus-circle"/>
-                                Create
+                            <v-button class="btn--flat btn--gray btn--with-icon btn--big" @click.native="$emit('openChooseModal')">
+                                <v-icon name="#plus-circle"/> Create
                             </v-button>
                         </div>
                     </template>
-                </v-sidebar-block>
-                <v-sidebar-block>
+                </v-block>
+
+                <v-block>
                     <template #title>NAVIGATION</template>
+                    <template #content> <v-nav v-if="isOpen" :links="links"/> </template>
+                </v-block>
+
+                <v-block>
+                    <template #title>LISTS</template>
+                    <template #content> <lists-nav /> </template>
+                </v-block>
+
+            </div>
+
+            <footer class="sidebar__footer">
+                <v-block>
+                    <template #title>THEME</template>
                     <template #content>
-                        <v-nav v-if="isOpen" :links="links"/>
+                        <v-theme-changer/>
                     </template>
-                </v-sidebar-block>
-            </div>
-            <div class="sidebar__footer">
-                <transition name="nav">
-                    <span @click="$emit('openChooseModal')" v-if="!isOpen">+</span>
-                </transition>
-            </div>
+                </v-block>
+            </footer>
+
         </div>
     </aside>
 </template>
 
 <script>
     import vBurgerMenu from './vBurgerMenu.vue';
-    import vSidebarBlock from './vSidebarBlock.vue';
+    import vBlock from './vBlock.vue';
     import vNav from './vNav.vue';
     import vButton from '../Inputs/vButton.vue';
     import vIcon from './vIcon.vue';
+    import vThemeChanger from './vThemeChanger.vue';
+    import ListsNav from '../Lists/ListsNav.vue';
 
     export default {
         name: 'vSidebar',
@@ -61,7 +74,7 @@
                 ]
             }
         },
-        components: { vBurgerMenu,  vNav, vSidebarBlock, vButton, vIcon },
+        components: { vBurgerMenu,  vNav, vBlock, vButton, vIcon, vThemeChanger, ListsNav },
         methods: {
             toggleSidebar() {
                 this.isOpen = !this.isOpen;
@@ -106,6 +119,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            min-height: $headerHeight;
             
             padding: 0 15px;
 
@@ -131,6 +146,8 @@
         }
 
         &__footer {
+            border-top: 1px solid var(--lite);
+            
             min-height: 40px;
 
             span {

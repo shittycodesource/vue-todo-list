@@ -1,9 +1,9 @@
 <template>
-    <div class="sidebar-block">
-        <h5 class="sidebar-block__title">
+    <div class="block">
+        <h5 class="block__title">
             <slot name="title"></slot>
         </h5>
-        <div class="sidebar-block__content">
+        <div class="block__content">
             <slot name="content"></slot>
         </div>
     </div>
@@ -11,12 +11,12 @@
 
 <script>
     export default {
-        name: 'vSidebarBlock'
+        name: 'vBlock'
     }
 </script>
 
 <style lang="scss">
-    .sidebar-block {
+    .block {
         padding-top: 15px;
         padding-bottom: 15px;
         border-bottom: 1px solid var(--sidebar-borders-color);
@@ -32,6 +32,8 @@
 
         }
 
-
+        &:last-child {
+            border-bottom: none;
+        }
     }
 </style>

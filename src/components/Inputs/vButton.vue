@@ -50,7 +50,8 @@
             color: var(--button-flat-color);
 
             &:hover,
-            &:focus {
+            &:focus,
+            &.active {
                 border-color: var(--button-flat-color-hover);
                 color: var(--button-flat-color-hover);
                 background: transparent;
@@ -93,7 +94,7 @@
         }
 
         &--big {
-            padding: 15px;
+            padding: 12px;
             width: 100%;
             text-align: center;
             justify-content: center;

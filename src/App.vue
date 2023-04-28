@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <v-icons-sprites/>
+        <v-header/>
         <v-sidebar @openChooseModal="toggleChooseModal"/>
         <main class="main">
             <transition name="page" mode="out-in">
@@ -32,13 +33,14 @@
 
 <script>
 import vSidebar from './components/app/vSidebar.vue';
+import vHeader from './components/app/vHeader.vue';
 import vIconsSprites from './components/app/vIconsSprites.vue';
 import ChooseModal from './components/Modals/ChooseModal.vue';
 import { mapActions } from 'vuex';
 
 export default {
     name: "App",
-    components: { vSidebar, vIconsSprites, ChooseModal },
+    components: { vSidebar, vIconsSprites, ChooseModal, vHeader },
     data() {
         return {
             isChooseModalOpen: false,
@@ -82,7 +84,7 @@ export default {
     }
 
     .main {
-        padding-top: 50px;
+        padding-top: $headerHeight + 15px;
         padding-bottom: 50px;
         padding-left: $sidebarWidth;
 

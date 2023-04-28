@@ -70,8 +70,8 @@
 <style lang="scss">
 	.card--list {
 		min-height: 250px;
-		max-width: 320px;
-		width: calc(33.333% - 40px);
+		// max-width: 320px;
+		width: calc(33.333% - 30px);
 
 		.menu-icon {
 			height: 6px;
