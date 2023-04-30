@@ -77,6 +77,8 @@ export default {
         -moz-osx-font-smoothing: grayscale;
 
         background-color: var(--main-background-color);
+
+        overflow: hidden;
     }
 
     *,*::before,*::after {

@@ -13,7 +13,7 @@
         </div>
         <div class="tasks__right">
 
-            <Dropdown :isOpened="isDropdownOpen" @clickOutside="isDropdownOpen = !isDropdownOpen">
+            <Dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
                 <div @click="toggleDropdown" class="dropdown-title">Sort by</div>
 
                 <template #options>
@@ -35,11 +35,13 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import Dropdown from '@/components/Dropdown.vue';
+    import { mapActions, mapGetters } from 'vuex';
+    import Dropdown from '@/components/Dropdown.vue';
+    import dropdownMixin from '../../mixins/dropdownMixin';
 
     export default {
         name: 'TasksHeader',
+        mixins: [ dropdownMixin ],
         data() {
             return {
                 buttons: [
@@ -47,7 +49,6 @@ import Dropdown from '@/components/Dropdown.vue';
                     { name: 'Complete', handler: () => this.sortTaskBy('complete') },
                     { name: 'Incomplete', handler: () => this.sortTaskBy('incomplete') },
                 ],
-                isDropdownOpen: false,
             }
         },
         props: {
@@ -74,9 +75,6 @@ import Dropdown from '@/components/Dropdown.vue';
             ]),
             sortTaskBy(name) {
                 this.sortTasks(name);
-            },
-            toggleDropdown() {
-                this.isDropdownOpen = !this.isDropdownOpen
             },
         }
     }

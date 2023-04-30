@@ -80,6 +80,7 @@
             background: var(--block-background-color);
             cursor: pointer;
             box-shadow: none;
+            border-radius: none;
 
             font-family: inherit;
             font-size: inherit;

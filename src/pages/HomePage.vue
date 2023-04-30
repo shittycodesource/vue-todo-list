@@ -25,7 +25,7 @@
 				</template>
 			</card> -->
 			<v-progress :fill="25"/>
-			<dropdown :isOpened="isDropdownOpened" @clickOutside="toggleDropdown">
+			<dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
 				<div @click="toggleDropdown">Click here</div>
 				<template #options>
 					<div>1</div>
@@ -56,9 +56,12 @@
 	import Card from '../components/Cards/Card.vue';
 	import vProgress from '../components/vProgress.vue';
 	import Dropdown from '../components/Dropdown.vue';
+	import dropdownMixin from '../mixins/dropdownMixin';
+
 
 	export default {
 		name: 'HomePage',
+		mixins: [ dropdownMixin ],
 		components: {vContainer, ListsGrid, ListCard, ChooseModal, vButton, Card, vProgress, Dropdown },
 		computed: {
 			...mapGetters([
@@ -69,7 +72,6 @@
 			return {
 				listForDelete: false,
 				isOpen: false,
-				isDropdownOpened: false,
 			}
 		},
 		methods: {
@@ -95,9 +97,6 @@
 			toggleChooseModal() {
 				this.isOpen = !this.isOpen;
 			},
-			toggleDropdown() {
-				this.isDropdownOpened = !this.isDropdownOpened;
-			}
 		},
 	}
 </script>
