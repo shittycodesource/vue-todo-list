@@ -67,6 +67,7 @@ const routes = [
 	// },
 	{
 		path: '*',
+		name: '404',
 		component: NotFoundPage
 	}
 
@@ -76,5 +77,9 @@ const router = new VueRouter({
 	mode: 'history',
 	routes
 });
+
+// router.beforeEach((to, from, next) => {
+// 	console.log(next)
+// })
 
 export default router;

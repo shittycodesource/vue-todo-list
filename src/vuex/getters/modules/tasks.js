@@ -22,7 +22,6 @@ export default {
     },
 
     getIncompleteTasksNumber: () => (arr) => {
-        console.log('gitn', arr)
         let counter = 0;
         arr.forEach(el => el.completed != true ? counter++ : '');
         

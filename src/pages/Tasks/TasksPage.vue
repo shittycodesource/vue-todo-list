@@ -12,7 +12,7 @@
 <script>
 	import Tasks from '../../components/Tasks/Tasks.vue';
 	import vContainer from '../../components/app/vContainer.vue';
-	import { mapGetters } from 'vuex';
+	import { mapGetters, mapActions } from 'vuex';
 
 	export default {
 		name: 'TasksPage',
@@ -21,7 +21,26 @@
 			...mapGetters([
 				'getIncompleteTasksNumber',
 				'getList'
+			]),
+			getListName() {
+				const name = this.getList(this.$route.query.listId).name;
+				return name;
+			}
+		},
+		methods: {
+			...mapActions([
+				'setHeaderTitle'
 			])
+		},
+		created() {
+			this.setHeaderTitle(this.getListName);
+		},
+		watch: {
+			'$route.query': {
+				handler() {
+					this.setHeaderTitle(this.getListName);
+				}
+			}
 		},
 	}
 </script>

@@ -50,4 +50,8 @@ export default {
 
         return isAlreadyUsed;
     },
+
+    setOpenedListName({commit}, name) {
+        commit('SET_OPENED_LIST_NAME', name);
+    }
 }

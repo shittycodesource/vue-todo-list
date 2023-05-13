@@ -12,4 +12,8 @@ export default {
     DELETE_LIST(state, listIndex) {
         state.lists.splice(listIndex, 1);
     },
+    
+    SET_OPENED_LIST_NAME(state, name) {
+        state.openedList = name;
+    }
 }

@@ -58,8 +58,7 @@
                 const list = this.getList(this.$route.query.listId);
                 return list.tasks;
             }
-            
-        }
+        },
     }
 </script>
 

@@ -1,6 +1,7 @@
 import lists from './modules/lists';
 import search from './modules/search';
 import tasks from './modules/tasks';
+import header from './modules/header';
 
 export default {
     changeColorTheme({commit}, name) {
@@ -26,4 +27,5 @@ export default {
     ...lists,
     ...search,
     ...tasks,
+    ...header
 };

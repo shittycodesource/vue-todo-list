@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <v-icons-sprites/>
-        <v-header/>
+        <v-header :key="$route.fullPath"/>
         <v-sidebar @openChooseModal="toggleChooseModal"/>
         <main class="main">
             <transition name="page" mode="out-in">
@@ -47,7 +47,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions([ 'applyColorTheme' ]),
+        ...mapActions([ 'applyColorTheme', 'setHeaderTitle' ]),
         toggleChooseModal() {
             this.isChooseModalOpen = !this.isChooseModalOpen;
         }
@@ -61,6 +61,13 @@ export default {
                 v.toggleChooseModal();
             }
         })
+    },
+    watch: {
+        '$route.fullPath': {
+            handler() {
+                this.setHeaderTitle();
+            }
+        }
     }
 };
 </script>
