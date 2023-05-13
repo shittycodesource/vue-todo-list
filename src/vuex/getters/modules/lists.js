@@ -1,6 +1,4 @@
 export default {
-    getOpenedListName: (state) => state.openedList,
-
     getLists: (state) => state.lists,
 
     getList: (state) => (listId) => state.lists.find(el => el.id == listId),
