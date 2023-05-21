@@ -63,7 +63,7 @@
 </script>
 
 <style lang="scss">
-    .task {
+    .task1 {
         display: flex;
         justify-content: space-between;
         flex-direction: column;

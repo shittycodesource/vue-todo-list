@@ -1,6 +1,6 @@
 <template>
     <div class="tasks">
-        <TasksHeader :count="activeCount" :title="list.name"/>
+        <!-- <TasksHeader :count="activeCount" :title="list.name"/> -->
         <TasksList :list="list.tasks" :emptyListText="emptyListText"/>
     </div>
 </template>

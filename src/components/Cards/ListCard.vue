@@ -4,7 +4,7 @@
 		<template #header-right>
 
 			<dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
-				<v-icon class="menu-icon" name="#horizontal-menu" @click.native="toggleDropdown"/>
+				<v-icon class="card-dropdown-icon" name="#horizontal-menu" @click.native="toggleDropdown"/>
 				<template #options>
 					<router-link 
 						class="btn btn--choose"
@@ -40,16 +40,13 @@
 	import vProgress from '../vProgress.vue';
 	import Dropdown from '../Dropdown.vue';
 	import vButton from '../Inputs/vButton.vue';
+	import dropdownMixin from '../../mixins/dropdownMixin';
 	import { mapGetters } from 'vuex';
 
 	export default {
 		name: 'ListCard',
 		components: { Card, vIcon, vProgress, Dropdown, vButton },
-		data() {
-			return {
-				isDropdownOpen: false,
-			}
-		},
+		mixins: [ dropdownMixin ],
 		props: {
 			list: {
 				type: Object,
@@ -59,11 +56,6 @@
 		computed: {
 			...mapGetters(['getListProgress'])
 		},
-		methods: {
-			toggleDropdown() {
-				this.isDropdownOpen = !this.isDropdownOpen;
-			}
-		}
 	}
 </script>
 
@@ -72,13 +64,6 @@
 		min-height: 250px;
 		// max-width: 320px;
 		width: calc(33.333% - 30px);
-
-		.menu-icon {
-			height: 6px;
-			width: 28px;
-
-			cursor: pointer;
-		}
 
 		&__description {
 			flex-grow: 1;

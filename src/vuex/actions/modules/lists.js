@@ -15,7 +15,7 @@ export default {
 
     async editList({commit, getters, dispatch}, data) {
         try {
-            const list = getters.getList(data.id)
+            const list = getters.getList(data.id);
             let isAlreadyUsed = false;
 
             if (list.name != data.name) {

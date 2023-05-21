@@ -24,7 +24,7 @@
 					Card Footer
 				</template>
 			</card> -->
-			<v-progress :fill="25"/>
+			<!-- <v-progress :fill="25"/>
 			<dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
 				<div @click="toggleDropdown">Click here</div>
 				<template #options>
@@ -32,7 +32,7 @@
 					<div>2</div>
 					<div>3</div>
 				</template>
-			</dropdown>
+			</dropdown> -->
 		</div>
 
 		<choose-modal :isOpen="isOpen" @closeModal="toggleChooseModal">

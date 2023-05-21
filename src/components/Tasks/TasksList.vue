@@ -9,7 +9,7 @@
                     </div>
                 </template>
 
-                <Task
+                <!-- <Task
                     :data="task_data"
                     :key="task_data.id"
                 >
@@ -20,7 +20,12 @@
                         <v-button @click.native="completeThisTask(task_data)" class="btn--flat">Complete</v-button>
                         <v-button @click.native="deleteThisTask(task_data)" class="btn--flat">Delete</v-button>
                     </template>
-                </Task>
+                </Task> -->
+
+                <task-card 
+                    :data="task_data" 
+                    :key="task_data.id"
+                />
 
             </template>
         </template>
@@ -33,14 +38,12 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Task from './Task.vue';
+import TaskCard from '../Cards/TaskCard.vue';
 import vButton from '../Inputs/vButton.vue';
 
     export default {
         name: 'TasksList',
-        components: {
-            Task,
-            vButton
-        },
+        components: { Task, vButton, TaskCard },
         props: {
             list: {
                 type: Array,

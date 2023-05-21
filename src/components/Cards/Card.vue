@@ -51,6 +51,13 @@
 
 		transition: border-color .2s linear, box-shadow .2s linear;
 
+		.card-dropdown-icon {
+			height: 6px;
+			width: 28px;
+
+			cursor: pointer;
+		}
+
 		&__header {
 			display: flex;
 			justify-content: space-between;

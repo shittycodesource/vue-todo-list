@@ -4,7 +4,7 @@
             <header class="sidebar__header">
                 <!-- <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/> -->
                 <h2 class="sidebar__title">Senseless</h2>
-                <div class="sidebar__version">1.1.1</div>
+                <div class="sidebar__version">Almost 1.1.1</div>
             </header>
 
             <div class="sidebar__content">
@@ -59,13 +59,6 @@
         data() {
             return {
                 isOpen: true,
-                // links: [
-                //     { name: 'Home', to: '/', exact: true, iconName: '#home' },
-                //     { name: 'Create New Task', to: "/create-task", exact: false },
-                //     { name: 'Search', to: "/search", exact: false },
-                //     { name: 'Settings', to: "/settings", exact: false },
-                //     { name: '404 Page', to: "/404", exact: false }
-                // ]
                 links: [
                     { name: 'Home', to: '/', exact: true, iconName: '#home' },
                     { name: 'Search', to: "/search", exact: false, iconName: '#search' },

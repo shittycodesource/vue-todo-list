@@ -54,6 +54,7 @@ export default {
     },
     created() {
         this.applyColorTheme();
+        this.setHeaderTitle();
 
         const v = this;
         window.addEventListener('keydown', event => {
