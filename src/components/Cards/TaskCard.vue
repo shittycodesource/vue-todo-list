@@ -77,6 +77,10 @@
 		&__title {
 			display: flex;
 			align-items: center;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 
 		&__arrow {

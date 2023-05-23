@@ -39,7 +39,7 @@
         <!-- Left -->
         <svg display="none">
             <symbol id="left" viewBox="0 0 18 31">
-                <path d="M18 29.0359L16.227 31L0 15.5L16.227 0L18 1.96407L3.8295 15.5L18 29.0359Z" fill="black"/>
+                <path d="M18 29.0359L16.227 31L0 15.5L16.227 0L18 1.96407L3.8295 15.5L18 29.0359Z"/>
             </symbol>
         </svg>
 
