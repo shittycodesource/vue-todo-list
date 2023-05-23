@@ -1,24 +1,34 @@
 <template>
     <header class="header">
         <div class="header__inner">
-            <h5 class="header__title">{{ getHeaderTitle }}</h5>
-            <div class="header__center" v-if="isListOpened">
+            <h5 class="header__title">
+                {{ getHeaderTitle }}
+            </h5>
+            <div class="header__center" v-if="isListOpened && getListTasks.length">
                 <div class="really-important">
                     <span>Boss Healtbar</span><v-icon name="#right" height="16px" width="22px"/>
                 </div>
-                {{ getListProgress(getListTasks) }}%
+
+                <div class="header__percents">{{ getListProgress(getListTasks) }}%</div>
+
                 <v-progress :fill="getListProgress(getListTasks)" class="header__progress"/>
-                {{ getIncompleteTasksNumber(getList($route.query.listId).tasks) }} Tasks Left
+
+                <div class="header__tasks-info">
+                    <span>{{ getIncompleteTasksNumber(getListTasks) }} </span>
+                    <span v-if="getIncompleteTasksNumber(getListTasks) == 1">Task </span>
+                    <span v-else>Tasks </span> 
+                    left
+                </div>
             </div>
             <div class="header__actions" v-if="isListOpened">
-                <dropdown :isOpened="isDropdownOpen">
+                <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
                     <template><div class="dropdown-title" @click="toggleDropdown">Sort By</div></template>
                     <template #options>
                         <v-button
                             class="btn--choose"
                             v-for="btn in buttons"
                             :key="btn.name" 
-                            @click="btn.handler"
+                            @click.native="btn.handler"
                             :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
                         >
                             {{ btn.name }}
@@ -36,7 +46,7 @@
     import vProgress from '../vProgress.vue'
     import dropdownMixin from '../../mixins/dropdownMixin';
     import vIcon from './vIcon.vue';
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapActions } from 'vuex';
 
     export default {
         name: 'vHeader',
@@ -52,7 +62,7 @@
             }
         },
         computed: {
-            ...mapGetters(['getList', 'getListProgress', 'getHeaderTitle', 'getIncompleteTasksNumber']),
+            ...mapGetters(['getList', 'getTasksSortType', 'getListProgress', 'getHeaderTitle', 'getIncompleteTasksNumber']),
             isListOpened() {
                 if (this.$route.name == 'tasks') {
                     return true;
@@ -63,8 +73,16 @@
             getListTasks() {
                 const list = this.getList(this.$route.query.listId);
                 return list.tasks;
-            }
+            },
         },
+        methods: {
+            ...mapActions([
+                'sortTasks'
+            ]),
+            sortTaskBy(name) {
+                this.sortTasks(name);
+            },
+        }
     }
 </script>
 
@@ -105,7 +123,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 500px;
+            width: 750px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -121,6 +139,8 @@
         &__progress {
             max-width: 300px;
             width: 100%;   
+            margin: 0 10px;
         }
+
     }
 </style>

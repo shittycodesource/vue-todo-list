@@ -8,12 +8,19 @@
             Light
         </v-button>
         <v-button class="btn--with-icon btn--flat btn--big"
+            @click.native="changeTheme('Light')" 
+            :class="{'active': getColorTheme == 'Light'}"
+        >
+            <v-icon name="#sun" />
+            Light
+        </v-button>
+        <!-- <v-button class="btn--with-icon btn--flat btn--big"
             @click.native="changeTheme('Dark')" 
             :class="{'active': getColorTheme == 'Dark'}"
         >
             <v-icon name="#moon" />
             Dark
-        </v-button>
+        </v-button> -->
     </div>
 </template>
 
