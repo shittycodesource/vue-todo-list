@@ -41,9 +41,8 @@
             ]),
             createTask() {
                 const _title = this.title;
-                const _text = this.text;
 
-                if (_title.trim().length && _text.trim().length && this.selectedOption.id) {
+                if (_title.trim().length &&  this.selectedOption.id) {
                     const data = {
                         title: this.title,
                         text: this.text,

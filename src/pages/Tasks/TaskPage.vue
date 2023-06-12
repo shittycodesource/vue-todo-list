@@ -1,15 +1,22 @@
 <template>
 	<v-container>
 		<!-- <v-page-header :link="{ name: 'tasks', query: { listId: $route.query.listId } }"  /> -->
-		<Task class="task--page-task" :data="theTask" v-if="theTask">
+		<task :data="theTask" v-if="theTask">
 			<template #task-actions>
-				<v-button @click.native="completeThisTask">Complete</v-button>
-				<router-link class="btn" :to="{ name: 'edit task',  query: { listId: $route.query.listId, id: theTask.id } }">
-                    Edit
+				<v-button class="btn--flat btn--with-icon" @click.native="completeThisTask">
+					<v-icon class="action__icon" name="#done" width="17px" height="11px"/>
+					Complete
+				</v-button>
+				<router-link class="btn btn--flat btn--with-icon" :to="{ name: 'edit task',  query: { listId: $route.query.listId, id: theTask.id } }">
+                    <v-icon class="action__icon" name="#edit" width="17px" height="17px"/>
+					Edit
                 </router-link>
-				<v-button @click.native="deleteThisTask">Delete</v-button>
+				<v-button class="btn--flat btn--with-icon" @click.native="deleteThisTask">
+					<v-icon class="action__icon" name="#trash" width="17px" height="17px"/>
+					Delete
+				</v-button>
 			</template>
-		</Task>
+		</task>
 		<p v-else>This task is not found or deleted</p>
     </v-container>
 </template>
@@ -19,16 +26,12 @@
 	import Task from '../../components/Tasks/Task.vue';
 	import vContainer from '../../components/app/vContainer.vue';
 	import vButton from '../../components/Inputs/vButton.vue';
+	import vIcon from '../../components/app/vIcon.vue';
 	import { mapActions, mapGetters } from 'vuex';
 
 	export default {
 		name: 'TaskPage',
-		components: {
-			Task,
-			vContainer,
-			vButton,
-			vPageHeader
-	    },
+		components: { Task, vContainer, vButton, vPageHeader, vIcon },
 		computed: {
 			...mapGetters([
 				'getTask'

@@ -16,7 +16,12 @@
                 ref="input"
             ></textarea>
             <transition name="fade">
-                <div class="input-message" v-if="message">{{ message }}</div>
+                <div class="textarea__info" v-if="message">
+                    <div class="input-message">{{ message }}</div>
+                    <div class="input-clear">
+                        <v-icon name="#close" @click.native="clearTextarea"/>
+                    </div>
+                </div>
             </transition>
         </template>
     </v-input-wrapper>
@@ -24,34 +29,17 @@
 
 <script>
 import vInputWrapper from './vInputWrapper.vue';
+import vIcon from '../app/vIcon.vue';
 
 export default {
     name: "vTextarea",
-    components: {
-        vInputWrapper
-    },
+    components: { vInputWrapper, vIcon },
     props: {
-        maxLength: {
-            type: String,
-            default: ''
-        },
-        message: {
-            type: String,
-            default: '',
-        },
-        placeholder: {
-            type: String,
-            default: ''
-        },
-        label: {
-            type: String,
-            default: '',
-        },
-        value: {
-            type: String,
-            default: '',
-            required: true
-        },
+        maxLength: { type: String, default: '' },
+        message: { type: String, default: '', },
+        placeholder: { type: String, default: '' },
+        label: { type: String, default: '', },
+        value: { type: String, default: '', required: true },
     },
     methods: {
         onInput(event) {
@@ -59,6 +47,10 @@ export default {
         },
         resetTextarea() {
             this.$refs.input.removeAttribute('style');
+        },
+        clearTextarea() {
+            this.$emit('input', '');
+            this.resetTextarea();
         }
     },
     mounted() {
@@ -74,16 +66,31 @@ export default {
     .input--textarea {
         margin: 0;
 
-		height: 25px;
+		height: 23px;
         overflow: hidden;
         resize: none;
-
-		font-family: inherit;
-		font-size: inherit;
-		color: var(--mainTextColor);
 
 		&:focus {
 			outline: none;
 		}
 	}
+
+    .textarea__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input-clear {
+            svg {
+                fill: var(--light-text);
+                width: 11px;
+                height: 11px;
+                cursor: pointer;
+
+                &:hover {
+                    fill: var(--secondary-text);
+                }
+            }
+        }
+    }
 </style>

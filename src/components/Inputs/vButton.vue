@@ -24,7 +24,7 @@
 
         font-family: inherit;
         font-size: 16px  ;
-        color: var(--buttonTextColor);
+        color: var(--main-text);
         text-decoration: none;
 
         transition: background .2s linear, color .2s linear, border-color .2s linear, box-shadow .2s linear;

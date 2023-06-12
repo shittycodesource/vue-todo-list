@@ -1,6 +1,6 @@
 <template>
-    <div class="task" :class="{'completed': data.completed}">
-        <header class="task__header">
+    <card class="task task--page" :class="{'completed': data.completed}">
+        <!-- <header class="task__header">
             <h3 class="task__title">{{ data.title }}</h3>
             <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
         </header>
@@ -26,11 +26,34 @@
                     +{{ data.tags.length - tagsShow }}...
                 </span> 
             </div>
-        </footer>
-    </div>
+        </footer> -->
+
+        <template #title>
+            <h3 class="task__title">{{ data.title }}</h3>
+        </template>
+
+        <template #header-right>
+            <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
+        </template>
+
+        <template #content>
+            <div class="task__content">
+                {{data.text}}
+            </div>
+        </template>
+
+        <template #footer-left>
+            <div class="task__footer">
+                <div class="task__actions">
+                    <slot name="task-actions"></slot>
+                </div>
+            </div>
+        </template>
+    </card>
 </template>
 
 <script>
+    import Card from '../Cards/Card.vue';
     import Tags from '../Tags.vue';
 
     export default {
@@ -58,17 +81,18 @@
                 }
             }
         },
-        components: { Tags }
+        components: { Card, Tags }
     }
 </script>
 
 <style lang="scss">
-    .task1 {
+    .task.task--page {   
         display: flex;
         justify-content: space-between;
         flex-direction: column;
 
-        width: 900px;
+        max-width: 100%;
+        width: 1000px;
         min-height: 180px;
 
         margin: 0 auto;
@@ -77,124 +101,136 @@
         background: var(--blockBackgroundColor);
         box-shadow: $baseBoxShadow;
         border: 1px solid var(--blockBorderColor);
-        border-radius: 18px;
+        border-radius: 5px;
 
-        &__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        &__title {
-            line-height: 0;
-            font-weight: 500;
-            color: var(--mainTextColor);
-        }
-
-        &__content {
-            margin-bottom: 10px;
-
-            overflow: hidden;
-            -webkit-line-clamp: 3;
-            text-overflow: ellipsis;
-            word-break: break-word;
-            white-space: pre-line;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-
-            font-size: 14px;
-            line-height: calc(14 * 1.5 / 10);
-
-            color: var(--textColor);
-        }
-
-        &__footer,
-        &__actions {
-            display: flex;
-            align-content: center;
-        }
-
-        &__footer {
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        &__actions {
-            // width: 100%;
-            gap: 20px;
-            margin-right: 20px;
-        }
-
-        &__date {
-            color: var(--mainTextColor);
-        }
-
-        &__tags {
-            display: flex;
-            align-items: center;
-            
-            &.open {
-                .tags {
-                    flex-wrap: wrap;
-
-                    .tag {
-                        max-width: none;
-                    }
-                }
-            }
-        }
-        &__open-tags {
-            color: var(--textColor);
-            letter-spacing: 1px;
-            cursor: pointer;
-            letter-spacing: 1px;
-            margin-left: 10px;
-            transition: color .2s linear;
-
-            &:hover {
-                color: var(--mainTextColor);
-            }
-        }
-
-        &.completed {
-            box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, .1);
-            opacity: .6;
-        }      
-
-        &.completed &__content {
-            text-decoration: line-through;
-        } 
-
-        &--page-task {
+        .task {
             width: 100%;
-            height: unset;
-
-            .task__actions {
-                width: unset;
-                gap: 20px;
-            }
-
-            .task__content {
-                -webkit-line-clamp: unset;
-            }
-        }
-
-        @media (max-width: $tabletBP) {
-            width: 100%;
-        }
-
-        @media (max-width: $mobileBP) {
-            width: 100%;
+            border-radius: 0px;
 
             &__header {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            &__title {
+                line-height: 0;
+                font-size: 20px;
+                font-weight: 400;
+                color: var(--main-text);
+
+                &:hover {
+                    text-decoration: none;
+                }
             }
 
             &__content {
-                margin-bottom: 15px;
+                margin-bottom: 10px;
+
+                overflow: hidden;
+                -webkit-line-clamp: 3;
+                text-overflow: ellipsis;
+                word-break: break-word;
+                white-space: pre-line;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+
+                font-size: 14px;
+                line-height: calc(14 * 1.5 / 10);
+
+                color: var(--textColor);
+            }
+
+            &__footer,
+            &__actions {
+                display: flex;
+                align-content: center;
+            }
+
+            &__footer {
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            &__actions {
+                // width: 100%;
+                gap: 20px;
+                margin-right: 20px;
+            }
+
+            &__date {
+                color: var(--main-text);
+                font-weight: 300;
+                font-size: 16px;
+            }
+
+            &__tags {
+                display: flex;
+                align-items: center;
+                
+                &.open {
+                    .tags {
+                        flex-wrap: wrap;
+
+                        .tag {
+                            max-width: none;
+                        }
+                    }
+                }
+            }
+            &__open-tags {
+                color: var(--textColor);
+                letter-spacing: 1px;
+                cursor: pointer;
+                letter-spacing: 1px;
+                margin-left: 10px;
+                transition: color .2s linear;
+
+                &:hover {
+                    color: var(--mainTextColor);
+                }
+            }
+
+            &.completed {
+                box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, .1);
+                opacity: .6;
+            }      
+
+            &.completed &__content {
+                text-decoration: line-through;
+            } 
+
+            &--page-task {
+                width: 100%;
+                height: unset;
+
+                .task__actions {
+                    width: unset;
+                    gap: 20px;
+                }
+
+                .task__content {
+                    -webkit-line-clamp: unset;
+                }
+            }
+
+            @media (max-width: $tabletBP) {
+                width: 100%;
+            }
+
+            @media (max-width: $mobileBP) {
+                width: 100%;
+
+                &__header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-bottom: 15px;
+                }
+
+                &__content {
+                    margin-bottom: 15px;
+                }
             }
         }
     }

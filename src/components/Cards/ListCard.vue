@@ -21,7 +21,7 @@
 			<div class="card--list__description"><p>{{ list.description }}</p></div>
 			<v-progress :fill="getListProgress(list.tasks)"/>
 			<div class="progress-info">
-				<span>{{ getListProgress(list.tasks) }}% / 100%</span> <!-- All tasks - Incompleted Tasks -->
+				<span>{{ getListProgress(list.tasks) || 0 }}% / 100%</span> <!-- All tasks - Incompleted Tasks -->
 				<span>{{ list.tasks.length }} Tasks</span>
 			</div>
 		</template>

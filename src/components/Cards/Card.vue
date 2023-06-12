@@ -90,11 +90,6 @@
 			color: #000;
 		}
 
-		a {
-			color: #000;
-			text-decoration: none;
-		}
-
 		&:hover {
 			border-color: var(--block-border-color-hover);
 			box-shadow: var(--block-box-shadow-hover);

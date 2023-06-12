@@ -86,7 +86,7 @@ export default {
 
         background-color: var(--main-background-color);
 
-        overflow: hidden;
+        overflow-x: hidden;
     }
 
     *,*::before,*::after {

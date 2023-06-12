@@ -5,21 +5,21 @@
             <v-input 
                 @input="$emit('emitInput', titleValue)"
                 class="mb20px"
-                label="Title:" 
+                label="Title" 
                 :value="titleValue" 
                 v-model="titleValue" 
-                placeholder="Your title here..."
+                placeholder="Task title..."
                 :maxLength="48"
             />
 
             <v-textarea
                 @input="$emit('emitTextarea', textValue)"
                 class="mb20px"
-                label="Text:" 
+                label="Text" 
                 :value="textValue" 
                 v-model="textValue" 
                 ref="textarea"
-                placeholder="Your text here..."
+                placeholder="Task text..."
                 :maxLength="
                     isMaxLines 
                         ? textValue.length.toString() 
@@ -32,11 +32,11 @@
                 "
             />
             <v-tags-input 
-                label="Tags:"
+                label="Tags"
                 class="mb20px"
                 :tags="tags" 
                 :isEditable="true"
-                placeholder="Your tags here..."
+                placeholder="Task tags..."
                 @addTag="emitTags"
             />
 
@@ -44,7 +44,7 @@
                 v-if="listSelect"
                 :options="selectOptions"
                 :selectedOption="selectedOption"
-                label="List:"
+                label="List"
                 defaultTitle="Choose which list to put it in"
                 class="mb20px"
                 @selectOption="emitOption"

@@ -1,6 +1,8 @@
 <template>
     <label class="input-block">
-        <slot name="label"></slot>
+        <div class="input-label">
+            <slot name="label"></slot>
+        </div>
         <span class="input-wrapper">
             <slot name="input"></slot>
         </span>
@@ -21,14 +23,28 @@ export default {
 
         & > span {
             display: block;
-            color: var(--textColor);
+            color: var(--secondary-text);
             margin-bottom: 10px;
+        }
+
+        .input-label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--secondary-text);
         }
 
         &--tags {
             .input-wrapper {
                 display: flex;
                 align-items: center;
+            }
+        }
+
+        &.focus {
+            .input-wrapper {
+                border-color: var(--input-border-color-active);
+                color: var(--input-text-color-active);
             }
         }
     }
@@ -38,12 +54,24 @@ export default {
 
         width: 100%;
 
-        padding: 13px 15px;
+        padding: 15px 15px;
 
-        background: var(--blockBackgroundColor);
+        background: var(--block-background-color);
         border: none;
-        border: 1px solid var(--blockBorderColor);
-        border-radius: 18px;
-        box-shadow: $baseBoxShadow;
+        border: 1px solid var(--input-border-color);
+        border-radius: 9px;
+        box-shadow: var(--block-box-shadow);
+
+        color: var(--light-text);
+
+        .input {
+            font-size: 14px;
+            font-weight: 300;
+            color: inherit;
+        }
+
+        &.focus {
+            opacity: .5;
+        }
     }
 </style>

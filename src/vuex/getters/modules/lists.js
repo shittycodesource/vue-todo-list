@@ -17,6 +17,6 @@ export default {
 
     getListProgress: (state, getters) => (arr = []) => {
         const completed = getters.getCompleteTasksNumber(arr);
-        return (completed / arr.length) * 100;
+        return Math.trunc((completed / arr.length) * 100);
     }
 }

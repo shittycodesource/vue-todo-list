@@ -8,7 +8,7 @@
             :to="{ name: 'tasks', query: { listId: list.id } }"
         >
             <div class="circle"></div>
-            {{ list.name }}
+            <span>{{ list.name }}</span>
         </router-link>
     </nav>
 </template>
@@ -28,6 +28,8 @@
     .lists-nav {
         display: flex;
         flex-direction: column;
+        max-height: calc(5 * (39px + 10px));
+        overflow-y: scroll;
     
         &__btn {
             display: flex;
@@ -55,6 +57,12 @@
                 transition: background-color .2s linear;
             }
 
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(100% - 30px);
+            }
+
             &:hover {
                 background-color: var(--link-background-color-active);
             }
@@ -67,6 +75,41 @@
                     background-color: var(--main-text);
                 }
             }
+        }
+
+
+        scrollbar-width: thin;
+        scrollbar-color: #ffffff #FFFFFF;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background-color: #FFFFFF;
+        }
+
+        &::-webkit-scrollbar-track:hover {
+            background-color: #ffffff;
+        }
+
+        &::-webkit-scrollbar-track:active {
+            background-color: #ffffff;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #dcdcdc;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #8E8E8E;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: #383838;
         }
     }
 

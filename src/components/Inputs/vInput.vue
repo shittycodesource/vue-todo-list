@@ -1,9 +1,8 @@
 <template>
-    <v-input-wrapper>
+    <v-input-wrapper :class="{'focus': isFocused}">
         <template #label>
             <span v-if="label">{{ label }}</span>
         </template>
-    
         <template #input>
             <input
                 class="input"
@@ -11,6 +10,8 @@
                 type="text"
                 :placeholder="placeholder"
                 :value="value" 
+                @blur="onBlur"
+                @focus="onFocus"
                 @input="onInput"
                 @keydown.enter="onEnter"
                 :maxlength="maxLength ? maxLength : ''"
@@ -27,6 +28,11 @@ export default {
     name: "vInput",
     components: {
         vInputWrapper
+    },
+    data() {
+        return {
+            isFocused: false
+        }
     },
     props: {
         message: {
@@ -56,6 +62,12 @@ export default {
         },
         onEnter(event) {
             this.$emit('enter', event.target.value);
+        },
+        onFocus() {
+            this.isFocused = true
+        },
+        onBlur() {
+            this.isFocused = false
         }
     }
 };
@@ -71,13 +83,12 @@ export default {
         border: none;
 
         font-family: inherit;
-        color: var(--textColor);
-        font-size: inherit;
+        font-size: 14px;
 
         transition: border-bottom-left-radius .2s, border-bottom-right-radius .2s;
         
         &::placeholder {
-            color: var(--inputPlaceholderColor);
+            font-weight: 300;
         }
 
         &:focus {
@@ -90,8 +101,9 @@ export default {
 
             padding: 8px 0px;
 
-            color: var(--textColor);
+            color: var(--secondary-text);
             font-weight: 400;
+            font-size: 12px;
         }
     }
 </style>

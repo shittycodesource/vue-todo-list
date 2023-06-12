@@ -25,7 +25,8 @@
                 <task-card 
                     :data="task_data" 
                     :key="task_data.id"
-                    @deleteList="deleteThisTask(task_data)"
+                    @completeTask="completeThisTask(task_data)"
+                    @deleteTask="deleteThisTask(task_data)"
                 />
 
             </template>

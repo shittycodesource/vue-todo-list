@@ -4,22 +4,24 @@
             <h5 class="header__title">
                 {{ getHeaderTitle }}
             </h5>
-            <div class="header__center" v-if="isListOpened && getListTasks.length">
-                <div class="really-important">
-                    <span>Boss Healtbar</span><v-icon name="#right" height="16px" width="22px"/>
+            <transition name="fade" mode="out-in">
+                <div class="header__center" v-if="isListOpened && getListTasks.length">
+                    <!-- <div class="really-important">
+                        <span>Boss Healtbar</span><v-icon name="#right" height="16px" width="22px"/>
+                    </div> -->
+
+                    <div class="header__percents">{{ getListProgress(getListTasks) }}%</div>
+
+                    <v-progress :fill="getListProgress(getListTasks)" class="header__progress"/>
+
+                    <div class="header__tasks-info">
+                        <span>{{ getIncompleteTasksNumber(getListTasks) }} </span>
+                        <span v-if="getIncompleteTasksNumber(getListTasks) == 1">Task </span>
+                        <span v-else>Tasks </span> 
+                        left
+                    </div>
                 </div>
-
-                <div class="header__percents">{{ getListProgress(getListTasks) }}%</div>
-
-                <v-progress :fill="getListProgress(getListTasks)" class="header__progress"/>
-
-                <div class="header__tasks-info">
-                    <span>{{ getIncompleteTasksNumber(getListTasks) }} </span>
-                    <span v-if="getIncompleteTasksNumber(getListTasks) == 1">Task </span>
-                    <span v-else>Tasks </span> 
-                    left
-                </div>
-            </div>
+            </transition>
             <div class="header__actions" v-if="isListOpened">
                 <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
                     <template><div class="dropdown-title" @click="toggleDropdown">Sort By</div></template>
@@ -95,10 +97,11 @@
         // width: calc(100% - $sidebarWidth);
         height: $headerHeight;
 
-        position: absolute;
+        position: fixed;
         top: 0;
         left: $sidebarWidth; 
         right: 0;
+        z-index: $headerZIndex;
 
         background: #fff;
         border-bottom: 1px solid var(--lite);
