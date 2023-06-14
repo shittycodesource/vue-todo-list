@@ -14,7 +14,7 @@
     .btn {
         display: block;
 
-        padding: 5px 20px;
+        padding: 8px 20px;
 
         background: var(--button-background-color);
         border-radius: 5px;

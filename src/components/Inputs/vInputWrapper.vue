@@ -64,10 +64,16 @@ export default {
 
         color: var(--light-text);
 
+        transition: color .2s linear, border-color .2s linear;
+
         .input {
             font-size: 14px;
             font-weight: 300;
             color: inherit;
+
+            &::placeholder {
+                color: var(--light-text);
+            }
         }
 
         &.focus {

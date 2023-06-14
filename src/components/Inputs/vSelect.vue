@@ -1,12 +1,12 @@
 <template>
-    <v-input-wrapper class="select-wrapper">
+    <v-input-wrapper class="select-wrapper" :class="{'focus': isFocused}">
         <template #label>
             <span v-if="label">{{ label }}</span>
         </template>
         
         <template #input>
             <div class="select">
-                <div class="select__active" @click="isOpen = !isOpen">
+                <div class="select__active" :class="{'withOption': selectedOption.name}" @click="focusSelect" v-click-outside="blurSelect">
                     <template v-if="selectedOption.name">
                         {{ selectedOption.name }}
                     </template> 
@@ -44,8 +44,10 @@
         data() {
             return {
                 isOpen: false,
+                isFocused: false
             }
         },
+        components: { vInputWrapper },
         props: {
             selectedOption: {
                 type: [Object, Boolean], // if prop is boolean then sets default title. Made for reset after click on the same option
@@ -87,9 +89,14 @@
 
                 this.$emit('selectOption', option);
             },
-        },
-        components: {
-            vInputWrapper,
+            focusSelect() {
+                this.isOpen = !this.isOpen;
+                this.isFocused = !this.isFocused;
+            },
+            blurSelect() {
+                this.isOpen = false;
+                this.isFocused = false;
+            }
         },
     }
 </script>
@@ -103,7 +110,15 @@
         // position: relative;
 
         &__active {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--light-text);
+            
             cursor: pointer;
+
+            &.withOption {
+                color: var(--main-text);
+            }
         }
 
         &__options {
@@ -133,20 +148,21 @@
             cursor: pointer;
 
             font-family: inherit;
-            font-size: 12px;
-            color: var(--textColor);
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--secondary-text);
             text-align: left;
 
             transition: background .2s ease-in-out, color .2s ease-in-out;
 
             &.active {
-                background: var(--dropdownItemColorActive);
-                color: var(--dropdownItemTextColorActive);
+                background: var(--main-text);
+                color: var(--main-text-alt);
             }
 
             &:hover {
-                background: var(--dropdownItemColorHover);;
-                color: var(--dropdownItemTextColorHover);
+                background: var(--input-select-option-hover);
+                color: var(--main-text);
             }
         }
     }

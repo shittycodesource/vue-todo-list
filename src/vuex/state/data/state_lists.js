@@ -83,7 +83,7 @@ export default [
                 "listId": 1685669665257,
                 "date": 1685669752580,
                 "dayValue": "2 June 2023",
-                "completed": false,
+                "completed": true,
                 "id": 1685669752580
             },
             {

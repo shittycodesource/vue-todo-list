@@ -10,6 +10,9 @@
         @emitTextarea="(newText) => text = newText"
         @emitTags="(newTagsew) => tags = newTags"
     >
+        <template #form-title>
+            Edit Task
+        </template>
         <template #button>
             <v-button @click.native="editTask">Edit</v-button>
         </template>

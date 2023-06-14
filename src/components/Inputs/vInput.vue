@@ -23,16 +23,13 @@
 
 <script>
 import vInputWrapper from './vInputWrapper.vue';
+import inputFocusMixin from '../../mixins/inputFocusMixin';
 
 export default {
     name: "vInput",
+    mixins: [ inputFocusMixin ],
     components: {
         vInputWrapper
-    },
-    data() {
-        return {
-            isFocused: false
-        }
     },
     props: {
         message: {
@@ -62,12 +59,6 @@ export default {
         },
         onEnter(event) {
             this.$emit('enter', event.target.value);
-        },
-        onFocus() {
-            this.isFocused = true
-        },
-        onBlur() {
-            this.isFocused = false
         }
     }
 };

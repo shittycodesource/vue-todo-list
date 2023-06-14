@@ -1,5 +1,5 @@
 <template>
-    <v-input-wrapper class="input-block--tags">
+    <v-input-wrapper :class="{'focus': isFocused}" class="input-block--tags">
         <template #label>
         	<span v-if="label">{{ label }}</span>
         </template>
@@ -19,6 +19,8 @@
 	            :placeholder="!isDisabled ? placeholder : ''"
 	            @keydown="addTag"
 	            @keydown.delete="removePrevTag"
+                @blur="onBlur"
+                @focus="onFocus"
 	            maxlength="20"
             />
 	        <div class="input-message" v-if="message">{{ message }}</div>
@@ -29,13 +31,12 @@
 <script>
 import vInputWrapper from './vInputWrapper.vue';
 import Tags from '../Tags.vue';
+import inputFocusMixin from '../../mixins/inputFocusMixin';
 
 export default {
     name: "vTagsInput",
-    components: {
-        vInputWrapper,
-        Tags
-    },
+    mixins: [ inputFocusMixin ],
+    components: { vInputWrapper, Tags },
     props: {
         value: {
             type: String,

@@ -1,5 +1,5 @@
 <template>
-    <v-input-wrapper>
+    <v-input-wrapper :class="{'focus': isFocused}">
         <template #label>
             <span v-if="label">{{ label }}</span>
         </template>
@@ -12,6 +12,8 @@
                 :value="value" 
                 :maxlength="maxLength"
                 @input="onInput"
+                @blur="onBlur"
+                @focus="onFocus"
                 v-textarea
                 ref="input"
             ></textarea>
@@ -30,9 +32,11 @@
 <script>
 import vInputWrapper from './vInputWrapper.vue';
 import vIcon from '../app/vIcon.vue';
+import inputFocusMixin from '../../mixins/inputFocusMixin';
 
 export default {
     name: "vTextarea",
+    mixins: [ inputFocusMixin ],
     components: { vInputWrapper, vIcon },
     props: {
         maxLength: { type: String, default: '' },

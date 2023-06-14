@@ -13,6 +13,9 @@
         @emitTags="(newTags) => tags = newTags"
         @emitOption="(option) => selectedOption = option"
     >
+        <template #form-title>
+            Create New Task
+        </template>
         <template #button>
             <v-button @click.native="createTask">Create</v-button>
         </template>
