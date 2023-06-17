@@ -8,7 +8,7 @@
 			@click="$emit('tagClick', tag)"
 		>
 			<span class="tag__text">{{ tag }}</span>
-			<v-icon class="tag__icon" name="#cancel" @click.native="$emit('deleteTag', index)" v-if="isEditable"/>
+			<v-icon class="tag__icon" name="#close" @click.native="$emit('deleteTag', index)" v-if="isEditable"/>
 		</button>
 	</div>
 </template>
@@ -43,27 +43,27 @@
 	.tags {
 		display: flex;
 		align-items: center;
-		gap: 15px;
+		gap: 10px;
 	}
 
 	.tag {
 		display: flex;
 		align-items: center;
 
-	    max-width: 140px;
+	    // max-width: 140px;
     	width: max-content;
 
-		padding: 5px 20px;
+		padding: 10px 20px;
 
-		border: 1px solid var(--tagColor);
+		border: 1px solid var(--secondary-text);
 		background: transparent;
-		border-radius: 4px;
+		border-radius: 8px;
 		cursor: pointer;
 
 		font-family: inherit;
 		font-size: 14px;
 		line-height: 1.1;
-		color: var(--textColor);
+		color: var(--secondary-text);
 		text-align: center;
 
 		&__text {
@@ -79,17 +79,18 @@
 		&__icon {
 			margin-left: 5px;
 			margin-right: -5px;
-			width: 12px;
-			height: 12px;
-			fill: var(--textColor);
+			width: 10px;
+			height: 10px;
+			fill: var(--secondary-text);
 
 			&:hover {
-				fill: var(--tagColorHover);
+				fill: var(--main-text);
 			}
 		}
 
 		&:hover {
-			border-color: var(--tagColorHover);
+			border-color: var(--main-text);
+			color: var(--main-text);
 		}
 	}
 </style>

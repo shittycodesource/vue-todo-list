@@ -49,6 +49,7 @@
             font-weight: 900;
             color: var(--main-text);
             letter-spacing: 10px;
+            text-transform: uppercase;
 
             user-select: none;
         }

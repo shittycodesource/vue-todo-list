@@ -17,7 +17,7 @@
 				</v-button>
 			</template>
 		</task>
-		<p v-else>This task is not found or deleted</p>
+		<p v-else class="not-found medium-text">This task is not found or deleted</p>
     </v-container>
 </template>
 

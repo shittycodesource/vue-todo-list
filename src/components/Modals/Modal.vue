@@ -5,7 +5,7 @@
                 <slot name="modal-title"></slot>
             </h3>
 
-            <v-icon class="modal__close" name="#cancel" @click.native="$emit('closeModal')"></v-icon>
+            <v-icon class="modal__close" name="#close" @click.native="$emit('closeModal')"></v-icon>
         </header>
         <div class="modal__content">
             <slot name="modal-content"></slot>
@@ -32,7 +32,7 @@
 
         margin-top: 80px;
 
-        border-radius: 15px;    
+        border-radius: 10px;    
         background: var(--blockBackgroundColor);
         border: 1px solid var(--blockBorderColor);
 
@@ -43,7 +43,7 @@
             align-items: center;
             justify-content: space-between;
 
-            padding: 5px 15px;
+            padding: 15px 15px;
 
             box-shadow: 0 0 0px 1px var(--blockBorderColor);
             position: relative;
@@ -53,13 +53,13 @@
             font-size: 15px;
             font-weight: 400;
             line-height: 1;
-            color: var(--mainTextColor);
+            color: var(--main-text);
         }
 
         &__close {
-            width: 24px;
-            height: 24px;
-            fill: var(--mainTextColor);
+            width: 13px;
+            height: 13px;
+            fill: var(--main-text);
             cursor: pointer;
         }
 

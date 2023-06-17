@@ -1,41 +1,47 @@
 <template>
     <v-container>
-        <v-page-header/>
-        <template v-if="!notFound">
-            <v-input 
-                @input="$emit('emitInput', titleValue)"
-                class="mb20px"
-                label="Name:" 
-                :value="titleValue" 
-                v-model="titleValue" 
-                placeholder="Type name here..."
-                :maxLength="48"
-            />
+        <form class="form">
+            <template v-if="!notFound">
+                <h3 class="form__title">
+                    <slot name="form-title"></slot>
+                </h3>
+                <v-input 
+                    @input="$emit('emitInput', titleValue)"
+                    class="mb20px"
+                    label="Name:" 
+                    :value="titleValue" 
+                    v-model="titleValue" 
+                    placeholder="Type name here..."
+                    :maxLength="48"
+                />
 
-            <v-textarea
-                @input="$emit('emitTextarea', textValue)"
-                class="mb20px"
-                label="Description:" 
-                :value="textValue" 
-                v-model="textValue" 
-                ref="textarea"
-                placeholder="Type description here..."
-                :maxLength="
-                    isMaxLines 
-                        ? textValue.length.toString() 
-                        : maxCharacters.toString()
-                "
-                :message="
-                    isMaxLines
-                        ? linesMessage + maxLinesMessage
-                        : linesMessage
-                "
-            />
-            <slot name="button"></slot>
-        </template>
-        <template v-else>
-            <p>This list is not found or deleted</p>
-        </template>
+                <v-textarea
+                    @input="$emit('emitTextarea', textValue)"
+                    class="mb20px"
+                    label="Description:" 
+                    :value="textValue" 
+                    v-model="textValue" 
+                    ref="textarea"
+                    placeholder="Type description here..."
+                    :maxLength="
+                        isMaxLines 
+                            ? textValue.length.toString() 
+                            : maxCharacters.toString()
+                    "
+                    :message="
+                        isMaxLines
+                            ? linesMessage + maxLinesMessage
+                            : linesMessage
+                    "
+                />
+                <div class="flex content-center">
+                    <slot name="button"></slot>
+                </div>
+            </template>
+            <template v-else>
+                <p>This list is not found or deleted</p>
+            </template>
+        </form>
     </v-container>
 </template>
 

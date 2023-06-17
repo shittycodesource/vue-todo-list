@@ -26,7 +26,7 @@
 			</div>
 		</template>
 		<template #footer-left>
-			<router-link :to="{ name: 'tasks', query: { listId: list.id } }">
+			<router-link :to="{ name: 'tasks', query: { listId: list.id } }" class="card__link">
 				Open
 				<v-icon class="open-icon" name="#right"/>
 			</router-link>	

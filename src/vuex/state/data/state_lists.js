@@ -7,6 +7,16 @@ export default [
         id: 1685669665257,
         tasks: [
             {
+                "title":"Fix modal window",
+                "text":"There's old design",
+                "tags":[],
+                "listId":1685669665257,
+                "date":1686961060795,
+                "dayValue":"17 June 2023",
+                "completed":true,
+                "id":1686961060795
+            },
+            {
                 "title": "Make page animation",
                 "text": ".",
                 "tags": [],
@@ -53,7 +63,7 @@ export default [
                 "listId": 1685669665257,
                 "date": 1685670019418,
                 "dayValue": "2 June 2023",
-                "completed": false,
+                "completed": true,
                 "id": 1685670019418
             },
             {
@@ -63,7 +73,7 @@ export default [
                 "listId": 1685669665257,
                 "date": 1685669972532,
                 "dayValue": "2 June 2023",
-                "completed": false,
+                "completed": true,
                 "id": 1685669972532
             },
             {

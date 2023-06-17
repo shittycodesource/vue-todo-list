@@ -5,25 +5,28 @@
         </template>
     	
     	<template #input>
-    		<tags 
-    			:tags="tags" 
-    			:isEditable="editTags"
-    			@deleteTag="deleteTag"
-    		/>
-	        <input
-	            class="input"
-                ref="input"
-	            :class="{'input--with-message': message, 'input--tags': tags.length}"
-	            type="text"
-	            :disabled="isDisabled"
-	            :placeholder="!isDisabled ? placeholder : ''"
-	            @keydown="addTag"
-	            @keydown.delete="removePrevTag"
-                @blur="onBlur"
-                @focus="onFocus"
-	            maxlength="20"
-            />
-	        <div class="input-message" v-if="message">{{ message }}</div>
+    		<div class="input-container custom-scrollbar" :class="{'notEmpty': tags.length}" ref="scrollbar">
+                <tags 
+                    :tags="tags" 
+                    :isEditable="editTags"
+                    @deleteTag="deleteTag"
+                />
+                <input
+                    v-if="tags.length != 6"
+                    class="input"
+                    ref="input"
+                    :class="{'input--with-message': message, 'input--tags': tags.length}"
+                    type="text"
+                    :disabled="isDisabled"
+                    :placeholder="!isDisabled ? placeholder : ''"
+                    @keydown="addTag"
+                    @keydown.delete="removePrevTag"
+                    @blur="onBlur"
+                    @focus="onFocus"
+                    maxlength="20"
+                />
+                <div class="input-message" v-if="message">{{ message }}</div>
+            </div>
     	</template>
     </v-input-wrapper>
 </template>
@@ -37,38 +40,25 @@ export default {
     name: "vTagsInput",
     mixins: [ inputFocusMixin ],
     components: { vInputWrapper, Tags },
-    props: {
-        value: {
-            type: String,
-            default: ''
-        },
-        message: {
-            type: String,
-            default: '',
-        },
-        placeholder: {
-            type: String,
-            default: ''
-        },
-        label: {
-            type: String,
-            default: '',
-        },
-        tags: {
-            type: Array,
-            default: () => [],
-        },
-        editTags: {
-        	type: Boolean,
-        	default: true
+    data() {
+        return {
+            scrollCounter: 0,
         }
+    },
+    props: {
+        value: { type: String, default: '' },
+        message: { type: String, default: '' },
+        placeholder: { type: String, default: '' },
+        label: { type: String, default: '' },
+        tags: { type: Array, default: () => [], },
+        editTags: { type: Boolean, default: true }
     },
     methods: {
         addTag(event) {
         	if (event.code == 'Comma' || event.code == 'Enter') {
                 event.preventDefault();
         		this.pushTag();
-        	}
+            }
         },
         pushTag() {
             let val = this.$refs.input.value.trim();
@@ -78,6 +68,12 @@ export default {
                 this.$refs.input.value = '';
 
                 this.$emit('addTag', this.tags);
+
+                if (this.tags.length != 6) {
+                    setTimeout(() => {
+                        this.$refs.scrollbar.scrollTo({ left: this.$refs.scrollbar.scrollWidth, behavior: 'smooth' })
+                    }, 0);
+                }
             }
         },
         deleteTag(index) {
@@ -105,6 +101,7 @@ export default {
         display: block;
 
         width: 100%;
+        min-width: fit-content;
 
         font-family: inherit;
         color: var(--textColor);
@@ -122,6 +119,28 @@ export default {
 
         &--tags {
         	margin-left: 10px;
+        }
+    }
+
+    .input-block--tags {
+        .input-container {
+            display: flex;
+            align-items: center;
+            overflow-x: overlay;
+
+            &.notEmpty {
+                .tags,
+                .input {
+                    margin-bottom: 5px;
+                    padding-bottom: 5px;
+                }
+            }
+
+            &.custom-scrollbar {
+                &::-webkit-scrollbar {
+                    height: 4px;
+                }
+            }
         }
     }
 </style>

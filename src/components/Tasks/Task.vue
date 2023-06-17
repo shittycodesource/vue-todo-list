@@ -1,33 +1,5 @@
 <template>
-    <card class="task task--page" :class="{'completed': data.completed}">
-        <!-- <header class="task__header">
-            <h3 class="task__title">{{ data.title }}</h3>
-            <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
-        </header>
-        <div class="task__content">
-            {{data.text}}
-        </div>
-        <footer class="task__footer">
-            <div class="task__actions">
-                <slot name="task-actions"></slot>
-            </div>
-            <div 
-                class="task__tags" 
-                :class="{'open': tagsShow > 3}" v-if="data.tags.length"
-            >
-                <tags 
-                    :tags="data.tags" 
-                    :show="tagsShow"
-                    @tagClick="searchByTag"
-                />
-                <span 
-                    v-if="data.tags.length > tagsShow" class="task__open-tags" 
-                    @click="tagsShow = 6">
-                    +{{ data.tags.length - tagsShow }}...
-                </span> 
-            </div>
-        </footer> -->
-
+    <card class="task task--page" :class="[{'completed': data.completed}]">
         <template #title>
             <h3 class="task__title">{{ data.title }}</h3>
         </template>
@@ -43,10 +15,26 @@
         </template>
 
         <template #footer-left>
-            <div class="task__footer">
-                <div class="task__actions">
-                    <slot name="task-actions"></slot>
-                </div>
+            <div class="task__actions">
+                <slot name="task-actions"></slot>
+            </div>
+        </template>
+
+        <template #footer-right>
+            <div 
+                class="task__tags" 
+                :class="{'open': tagsShow > 3}" v-if="data.tags.length"
+            >
+                <tags 
+                    :tags="data.tags" 
+                    :show="tagsShow"
+                    @tagClick="searchByTag"
+                />
+                <span 
+                    v-if="data.tags.length > tagsShow" class="task__open-tags" 
+                    @click="tagsShow = 6">
+                    +{{ data.tags.length - tagsShow }}...
+                </span> 
             </div>
         </template>
     </card>
@@ -103,6 +91,15 @@
         border: 1px solid var(--blockBorderColor);
         border-radius: 5px;
 
+        .card__footer {
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .card__left {
+                margin-right: 10px;
+            }
+        }
+
         .task {
             width: 100%;
             border-radius: 0px;
@@ -127,9 +124,9 @@
             &__content {
                 margin-bottom: 10px;
 
-                overflow: hidden;
-                -webkit-line-clamp: 3;
-                text-overflow: ellipsis;
+                overflow: unset;
+                -webkit-line-clamp: unset;
+                text-overflow: unset;
                 word-break: break-word;
                 white-space: pre-line;
                 display: -webkit-box;
@@ -141,7 +138,6 @@
                 color: var(--textColor);
             }
 
-            &__footer,
             &__actions {
                 display: flex;
                 align-content: center;
@@ -152,7 +148,7 @@
                 flex-wrap: wrap;
                 gap: 10px;
             }
-
+    
             &__actions {
                 // width: 100%;
                 gap: 20px;

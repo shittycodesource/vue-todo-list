@@ -90,6 +90,15 @@
 			color: #000;
 		}
 
+		&__link {
+			color: var(--main-text);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
 		&:hover {
 			border-color: var(--block-border-color-hover);
 			box-shadow: var(--block-box-shadow-hover);

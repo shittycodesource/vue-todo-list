@@ -6,7 +6,10 @@
 
         @emitInput="(newName) => name = newName"
         @emitTextarea="(newDescription) => description = newDescription"
-    >
+    >   
+        <template #form-title>
+            Create New List
+        </template>
         <template #button>
             <v-button @click.native="createNewList">Create</v-button>
         </template>

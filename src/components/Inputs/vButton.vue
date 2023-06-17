@@ -68,8 +68,8 @@
             background: var(--blockBackgroundColor);
 
             &:hover {
-                background: var(--dropdownItemColorHover);
-                color: var(--dropdownItemTextColorHover)
+                background: var(--input-select-option-hover);
+                color: var(--main-text)
             }
         }
 

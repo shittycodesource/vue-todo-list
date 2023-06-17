@@ -1,6 +1,5 @@
 <template>
     <v-container>
-        <!-- <v-page-header :link="link"/> -->
         <form class="form">
             <template v-if="!notFound">
                 <h3 class="form__title">
