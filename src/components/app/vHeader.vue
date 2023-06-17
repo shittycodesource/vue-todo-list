@@ -1,10 +1,11 @@
 <template>
-    <header class="header">
-        <div class="header__inner">
-            <h5 class="header__title">
-                {{ getHeaderTitle }}
-            </h5>
-            <transition name="fade" mode="out-in">
+    <transition class="header" :key="$router.fullPath" tag="header" name="fade" mode="out-in">
+        <header class="header">
+            <div class="header__inner">
+                <h5 class="header__title">
+                    {{ getHeaderTitle }}
+                </h5>
+
                 <div class="header__center" v-if="isListOpened && getListTasks.length">
                     <!-- <div class="really-important">
                         <span>Boss Healtbar</span><v-icon name="#right" height="16px" width="22px"/>
@@ -21,25 +22,26 @@
                         left
                     </div>
                 </div>
-            </transition>
-            <div class="header__actions" v-if="isListOpened">
-                <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
-                    <template><div class="dropdown-title" @click="toggleDropdown">Sort By</div></template>
-                    <template #options>
-                        <v-button
-                            class="btn--choose"
-                            v-for="btn in buttons"
-                            :key="btn.name" 
-                            @click.native="btn.handler"
-                            :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
-                        >
-                            {{ btn.name }}
-                        </v-button>
-                    </template>
-                </dropdown>
+
+                <div class="header__actions" v-if="isListOpened">
+                    <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
+                        <template><div class="dropdown-title" @click="toggleDropdown">Sort By</div></template>
+                        <template #options>
+                            <v-button
+                                class="btn--choose"
+                                v-for="btn in buttons"
+                                :key="btn.name" 
+                                @click.native="btn.handler"
+                                :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
+                            >
+                                {{ btn.name }}
+                            </v-button>
+                        </template>
+                    </dropdown>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
+    </transition>
 </template>
 
 <script>

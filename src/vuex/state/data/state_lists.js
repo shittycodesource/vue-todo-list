@@ -33,18 +33,8 @@ export default [
                 "listId": 1685669665257,
                 "date": 1685670125354,
                 "dayValue": "2 June 2023",
-                "completed": false,
+                "completed": true,
                 "id": 1685670125354
-            },
-            {
-                "title": "Probably change title's max-length",
-                "text": ".",
-                "tags": [],
-                "listId": 1685669665257,
-                "date": 1685670101667,
-                "dayValue": "2 June 2023",
-                "completed": false,
-                "id": 1685670101667
             },
             {
                 "title": "Make possible to create tasks without descriptio",
