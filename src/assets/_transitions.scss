@@ -4,7 +4,7 @@
 }
 
 .page-enter, .page-leave-to {
-    opacity: 0;
+    // opacity: 0;
     transform: translateY(-10px);
 }
 
@@ -97,6 +97,36 @@
         
         .modal {
             animation: selectOptionsAnimation .3s ease-in-out;
+        }
+    }
+}
+
+.listCards-transition {
+    &-leave-active {
+        animation: listCardsAnimation .1s ease-in-out reverse;
+    }
+
+    &-enter-active {
+        animation: listCardsAnimation .1s ease-in-out;
+    }
+}
+
+@keyframes listCardsAnimation {
+    0% {
+        .card--list {
+            transform: scale(5);
+        }
+    }   
+
+    80% {
+        .card--list {
+            transform: scale(5);
+        }
+    }
+
+    100% {
+        .card--list {
+            transform: scale(5);
         }
     }
 }

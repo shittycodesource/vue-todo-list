@@ -1,23 +1,77 @@
 html[data-theme='dark'] {
-    --mainBackgroundColor: #181818;
-    --mainTextColor: #FFFFFF;
-    --blockBackgroundColor: #1F1F1F;
-    --blockBorderColor: #2E2E2E;
-    --tagColor: #E6E6E6;
-    --textColor: #E6E6E6;
-    --textColorHover: #E8E8E8;
-    --inputPlaceholderColor: #959595;
-    --selectInputOptionColorHover: #393939;
-    --listCardColorHover: #242424;
-    --listCardBorderColorHover: #383838;
-    --dropdownItemColorHover: #393939;
-    --dropdownItemTextColorHover: #FFFFFF;
-    --dropdownItemColorActive: #4f4f4f;
-    --dropdownItemTextColorActive: #FFFFFF;
-    --buttonBorderColor: #FFFFFF;
-    --buttonTextColor: #FFFFFF;
-    --buttonTextColorHover: #000000;
-    --buttonBorderColorHover: #FFFFFF;
-    --buttonBackgroundColorHover: #FFFFFF;
-    --buttonBackgroundColorActive: #E1E1E1;
+    --main-background-color: #1f1f1f;
+    --sidebar-background-color: #222;
+    --sidebar-borders-color: #2f2f2f;
+
+    --header-background-color: #222;
+    --header-border-color: #2f2f2f;
+
+    --blue: #5D9CFA;
+    --blue-focus: #5D9CFA;
+    --blue-hover: #5D9CFA;
+    --blue-active: #2B78ED;
+
+    --main-text: #eee;
+    --main-text-alt: #1f1f1f;
+    --secondary-text: #b9b9b9;
+    --light-text: #929292;
+    --lite: #525252;
+    --lite-2: #F8F8F8;
+
+    --block-border-color: #2f2f2f;
+    --block-border-color-hover: #525252;
+    --block-background-color: #222;
+
+    --block-box-shadow: unset;
+    --block-box-shadow-hover: unset;
+    --button-box-shadow: 0px 0px 0px 1px var(--block-border-color);
+    --button-box-shadow-hover: transparent;
+    
+    --card-links-color: var(--secondary-text);
+    --card-links-color-hover: var(--main-text);
+
+    --task-complete-btn-background-color: #2D2D2D;
+    --task-complete-btn-icon-color: var(--secondary-text);
+    --task-complete-btn-border-color: #2f2f2f;
+
+    --task-complete-btn-background-color-active: linear-gradient(180deg, #7DB1FF, #CB89FF);;
+    --task-complete-btn-icon-color-active: #2f2f2f;
+    --task-complete-btn-border-color-active: var(--block-background-color);
+    
+    --button-background-color: var(--block-background-color);
+    --button-flat-color: var(--secondary-text);
+    --button-flat-color-hover: var(--secondary-text);
+    --button-flat-color-active: var(--main-text);
+    
+    --button-choose-background-color: var(--block-background-color);
+    --button-choose-color: var(--secondary-text);
+
+    --button-choose-background-color-hover: var(--blue);
+    --button-choose-color-hover: var(--block-background-color);
+
+    --nav-link-background-color: transparent;
+    --nav-link-background-color-active: transparent;
+    --nav-link-color-active: var(--blue);
+    --nav-link-color-hover: var(--main-text);
+
+    --progress-bar-background-color: #2D2D2D;
+    --progress-bar-color: linear-gradient(90deg, #7DB1FF, #CB89FF);
+
+    --input-background-color: var(--block-background-color);
+    --input-border-color: var(--block-border-color);
+    --input-text-color: #929292;
+
+    --input-text-color-active: var(--main-text);
+    --input-border-color-active: var(--block-border-color-hover);
+
+    --input-select-option-background-color-hover: var(--blue);
+    --input-select-option-color-hover: var(--block-background-color);
+
+    --custom-scrollbar-color: #222;
+    --custom-scrollbar-track-color: #222;
+    --custom-scrollbar-track-color-hover: #222;
+    --custom-scrollbar-track-color-active: #222;
+    --custom-scrollbar-thumb-color: #2d2d2d;
+    --custom-scrollbar-thumb-color-hover: var(--lite);
+    --custom-scrollbar-thumb-color-active: #383838;
 }

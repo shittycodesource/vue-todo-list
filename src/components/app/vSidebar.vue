@@ -4,7 +4,7 @@
             <header class="sidebar__header">
                 <!-- <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/> -->
                 <h2 class="sidebar__title">Senseless</h2>
-                <div class="sidebar__version">Almost 1.1.1</div>
+                <div class="sidebar__version">1.1.1</div>
             </header>
 
             <div class="sidebar__content">
@@ -139,7 +139,7 @@
         }
 
         &__footer {
-            border-top: 1px solid var(--lite);
+            border-top: 1px solid var(--sidebar-borders-color);
             
             min-height: 40px;
 

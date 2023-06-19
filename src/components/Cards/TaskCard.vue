@@ -2,7 +2,7 @@
 	<card class="task" :class="{'completed': data.completed}">
 		<template #title>
 			<router-link class="task__title" :to="{ name: 'task',  query: { listId: data.listId, id: data.id } }">
-				{{ data.title }} <v-icon name="#right" class="task__arrow"></v-icon>
+				<span>{{ data.title }}</span> <v-icon name="#right" class="task__arrow"></v-icon>
 			</router-link>
 		</template>
 
@@ -81,13 +81,29 @@
 		}
 
 		&__title {
+			margin-right: 10px;
+
 			display: flex;
 			align-items: center;
 			color: var(--main-text);
 			text-decoration: none;
 
+			svg {
+				fill: var(--main-text);
+			}
+
 			&:hover {
 				text-decoration: underline;
+			}
+
+			span {
+				display: -webkit-box;
+				overflow: hidden;
+				-webkit-line-clamp: 1;
+				text-overflow: ellipsis;
+				word-break: break-word;
+				white-space: pre-line;
+				-webkit-box-orient: vertical;
 			}
 		}
 
@@ -105,8 +121,8 @@
 			width: 30px; 
 			height: 30px;
 			border-radius: 5px;
-			border: 1px solid var(--main-text);
-			background: none;
+			border: 1px solid var(--task-complete-btn-border-color);
+			background: var(--task-complete-btn-background-color);
 			cursor: pointer;
 			
 			transition: transform .2s linear, background-color .2s linear, border-color .2s linear;
@@ -114,7 +130,7 @@
 			svg {
 				width: 21px;
 				height: 14px;
-				fill: var(--main-text);
+				fill: var(--task-complete-btn-icon-color);
 
 				transition: fill .2s linear;
 			}
@@ -129,11 +145,11 @@
 			text-decoration: line-through;
 
 			.task__complete {
-				background-color: #82EB80;
-				border-color: #82EB80;
+				background: var(--task-complete-btn-background-color-active);
+				border-color: var(--task-complete-btn-border-color-active);
 
 				svg {
-					fill: #33BA30;
+					fill: var(--task-complete-btn-icon-color-active);
 				}	
 			}
 		}

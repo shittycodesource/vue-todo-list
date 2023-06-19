@@ -10,29 +10,6 @@
 				/>
 			</lists-grid>
 			<p class="center" v-else>Looks like you don't have any list</p>
-			<!-- <card>
-				<template #title>
-					Card Title
-				</template>
-				<template #header-right>
-					:
-				</template>
-				<template #content>
-					Card Content
-				</template>
-				<template #footer-left>
-					Card Footer
-				</template>
-			</card> -->
-			<!-- <v-progress :fill="25"/>
-			<dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
-				<div @click="toggleDropdown">Click here</div>
-				<template #options>
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-				</template>
-			</dropdown> -->
 		</div>
 
 		<choose-modal :isOpen="isOpen" @closeModal="toggleChooseModal">

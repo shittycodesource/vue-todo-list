@@ -64,15 +64,20 @@
             }
 
             &:hover {
-                background-color: var(--link-background-color-active);
+                background-color: var(--nav-link-background-color-active);
+                color: var(--nav-link-color-hover);
+
+                .circle {
+                    color: var(--nav-link-color-hover);
+                }
             }
 
             &.active {
-                background-color: var(--link-background-color-active);
-                color: var(--main-text);
+                background-color: var(--nav-link-background-color-active);
+                color: var(--nav-link-color-active);
 
                 .circle {
-                    background-color: var(--main-text);
+                    background-color: var(--nav-link-color-active);
                 }
             }
         }

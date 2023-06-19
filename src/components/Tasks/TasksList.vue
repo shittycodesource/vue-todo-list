@@ -9,19 +9,6 @@
                     </div>
                 </template>
 
-                <!-- <Task
-                    :data="task_data"
-                    :key="task_data.id"
-                >
-                    <template #task-actions>
-                        <router-link class="btn  btn--flat" :to="{ name: 'task',  query: { listId: task_data.listId, id: task_data.id } }">
-                            Open
-                        </router-link>
-                        <v-button @click.native="completeThisTask(task_data)" class="btn--flat">Complete</v-button>
-                        <v-button @click.native="deleteThisTask(task_data)" class="btn--flat">Delete</v-button>
-                    </template>
-                </Task> -->
-
                 <task-card 
                     :data="task_data" 
                     :key="task_data.id"
@@ -95,7 +82,7 @@ import vButton from '../Inputs/vButton.vue';
         &__separator {
             margin: 10px 0;
             width: 100%;
-            color: var(--textColor);
+            color: var(--secondary-text);
             text-align: center;
         }
     }

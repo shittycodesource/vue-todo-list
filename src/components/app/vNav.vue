@@ -52,10 +52,10 @@
             margin-bottom: 10px;
             padding: 10px;
 
-            color: var(--textColor);
+            color: var(--secondary-text);
             text-decoration: none;
 
-            background: var(--link-background-color);
+            background: var(--nav-link-background-color);
 
             position: relative;
 
@@ -81,15 +81,20 @@
             }
 
             &.active {
-                color: var(--main-text);
+                color: var(--nav-link-color-active);
 
                 &::after {
                     opacity: 1;
                 }
+
+                svg {
+                    fill: var(--nav-link-color-active);
+                }
             }
 
             &:hover {
-                background: var(--link-background-color-active);
+                background: var(--nav-link-background-color-active);
+                color: var(--nav-link-color-hover);
             }
         }
     }

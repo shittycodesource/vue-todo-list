@@ -80,7 +80,7 @@ export default {
 
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
-        color: var(--textColor);
+        color: var(--secondary-text);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 

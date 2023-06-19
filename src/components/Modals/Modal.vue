@@ -33,8 +33,8 @@
         margin-top: 80px;
 
         border-radius: 10px;    
-        background: var(--blockBackgroundColor);
-        border: 1px solid var(--blockBorderColor);
+        background: var(--block-background-color);
+        border: 1px solid var(--block-border-color);
 
         overflow: hidden;
 
@@ -45,7 +45,7 @@
 
             padding: 15px 15px;
 
-            box-shadow: 0 0 0px 1px var(--blockBorderColor);
+            box-shadow: 0 0 0px 1px var(--block-border-color);
             position: relative;
         }
 

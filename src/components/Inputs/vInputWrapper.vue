@@ -57,12 +57,11 @@ export default {
         padding: 15px 15px;
 
         background: var(--block-background-color);
-        border: none;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--block-border-color);
         border-radius: 9px;
         box-shadow: var(--block-box-shadow);
 
-        color: var(--light-text);
+        color: var(--main-text);
 
         transition: color .2s linear, border-color .2s linear;
 

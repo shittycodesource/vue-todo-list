@@ -47,9 +47,15 @@
             position: relative;
 
             &:hover {
-                color: #000;
+                color: var(--main-text);
             }
         }
+
+        &__title {
+            cursor: pointer;
+        }
+
+        overflow: hidden;
 
         min-width: 100px;
         text-align: center;
@@ -67,6 +73,7 @@
         background: var(--block-background-color);
         border: 1px solid var(--block-border-color);
         box-shadow: var(--block-box-shadow);
+        border-radius: 8px;
 
         button, span, a, div {
             display: block;

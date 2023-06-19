@@ -15,7 +15,7 @@
 
                     <v-progress :fill="getListProgress(getListTasks)" class="header__progress"/>
 
-                    <div class="header__tasks-info">
+                    <div class="header__tasks-left">
                         <span>{{ getIncompleteTasksNumber(getListTasks) }} </span>
                         <span v-if="getIncompleteTasksNumber(getListTasks) == 1">Task </span>
                         <span v-else>Tasks </span> 
@@ -25,7 +25,9 @@
 
                 <div class="header__actions" v-if="isListOpened">
                     <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
-                        <template><div class="dropdown-title" @click="toggleDropdown">Sort By</div></template>
+                        <template>
+                            <div class="dropdown__title" @click="toggleDropdown">Sort By</div>
+                        </template>
                         <template #options>
                             <v-button
                                 class="btn--choose"
@@ -105,8 +107,8 @@
         right: 0;
         z-index: $headerZIndex;
 
-        background: #fff;
-        border-bottom: 1px solid var(--lite);
+        background: var(--header-background-color);
+        border-bottom: 1px solid var(--header-border-color);
     
         &__inner {
             display: flex;

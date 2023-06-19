@@ -14,7 +14,7 @@
         <div class="tasks__right">
 
             <Dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
-                <div @click="toggleDropdown" class="dropdown-title">Sort by</div>
+                <div @click="toggleDropdown" class="dropdown__title">Sort by</div>
 
                 <template #options>
                     <button
@@ -106,20 +106,6 @@
 
         &__count {
             color: var(--textColor);
-        }
-    }
-
-    .dropdown {
-        border-radius: 8px;
-        overflow: hidden;
-
-        &-title {
-            color: var(--textColor);
-            cursor: pointer;
-
-            &:hover {
-                color: var(--textColorHover);
-            }
         }
     }
 </style>

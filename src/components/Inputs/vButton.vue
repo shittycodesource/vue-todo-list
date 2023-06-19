@@ -19,7 +19,7 @@
         background: var(--button-background-color);
         border-radius: 5px;
         border: none;
-        box-shadow: var(--block-box-shadow);
+        box-shadow: var(--button-box-shadow);
         cursor: pointer;
 
         font-family: inherit;
@@ -33,6 +33,7 @@
         &:focus {
             outline: none;
             background: var(--blue);
+            box-shadow: var(--button-box-shadow-hover);
             color: var(--main-text-alt);
         }
 
@@ -50,26 +51,43 @@
             color: var(--button-flat-color);
 
             &:hover,
-            &:focus,
-            &.active {
+            &:focus {
                 border-color: var(--button-flat-color-hover);
                 color: var(--button-flat-color-hover);
                 background: transparent;
                 box-shadow: none;
+
+                svg {
+                    fill: var(--button-flat-color-hover);
+                }
+            }
+
+            &.active {
+                border-color: var(--button-flat-color-active);
+                color: var(--button-flat-color-active);
+                background: transparent;
+                box-shadow: none;
+
+                svg {
+                    fill: var(--button-flat-color-active);
+                }
             }
         }
 
         &--choose {
+            width: 100%;
             padding: 15px;
+
+            color: var(--button-choose-color);
+            text-align: left;
+            
             border: none;
             border-radius: 0;
-            text-align: left;
-            width: 100%;
-            background: var(--blockBackgroundColor);
+            background: var(--button-choose-background-color);
 
             &:hover {
-                background: var(--input-select-option-hover);
-                color: var(--main-text)
+                background: var(--button-choose-background-color-hover);
+                color: var(--button-choose-color-hover)
             }
         }
 
@@ -84,12 +102,6 @@
                 fill: var(--secondary-text);
 
                 transition: fill .2s linear;
-            }
-
-            &:hover {
-                svg {
-                    fill: var(--main-text);
-                }
             }
         }
 

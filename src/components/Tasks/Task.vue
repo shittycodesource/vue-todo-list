@@ -86,9 +86,9 @@
         margin: 0 auto;
         padding: 15px;
 
-        background: var(--blockBackgroundColor);
-        box-shadow: $baseBoxShadow;
-        border: 1px solid var(--blockBorderColor);
+        background: var(--block-background-color);
+        box-shadow: var(--block-box-shadow);
+        border: 1px solid var(--block-border-color);
         border-radius: 5px;
 
         .card__footer {
@@ -135,7 +135,7 @@
                 font-size: 14px;
                 line-height: calc(14 * 1.5 / 10);
 
-                color: var(--textColor);
+                color: var(--secondary-text);
             }
 
             &__actions {
@@ -176,15 +176,17 @@
                 }
             }
             &__open-tags {
-                color: var(--textColor);
-                letter-spacing: 1px;
-                cursor: pointer;
-                letter-spacing: 1px;
                 margin-left: 10px;
+                
+                color: var(--secondary-text);
+                letter-spacing: 1px;
+
+                cursor: pointer;
+                
                 transition: color .2s linear;
 
                 &:hover {
-                    color: var(--mainTextColor);
+                    color: var(--main-text);
                 }
             }
 

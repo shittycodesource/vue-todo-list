@@ -132,9 +132,9 @@
             top: calc(100% + 5px);
             left: 0;
 
-            background: var(--blockBackgroundColor);
-            box-shadow: $baseBoxShadow;
-            border: 1px solid var(--blockBorderColor);
+            background: var(--block-background-color);
+            box-shadow: var(--block-box-shadow);
+            border: 1px solid var(--block-border-color);
             border-radius: 15px;
 
             overflow: hidden;
@@ -161,8 +161,8 @@
             }
 
             &:hover {
-                background: var(--input-select-option-hover);
-                color: var(--main-text);
+                background: var(--input-select-option-background-color-hover);
+                color: var(--input-select-option-color-hover);
             }
         }
     }

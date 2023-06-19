@@ -17,16 +17,6 @@ export default [
                 "id":1686961060795
             },
             {
-                "title": "Make page animation",
-                "text": ".",
-                "tags": [],
-                "listId": 1685669665257,
-                "date": 1685670139170,
-                "dayValue": "2 June 2023",
-                "completed": false,
-                "id": 1685670139170
-            },
-            {
                 "title": "Make header's animation",
                 "text": ".",
                 "tags": [],
@@ -93,7 +83,7 @@ export default [
                 "listId": 1685669665257,
                 "date": 1685669695414,
                 "dayValue": "2 June 2023",
-                "completed": false,
+                "completed": true,
                 "id": 1685669695414
             }
         ],

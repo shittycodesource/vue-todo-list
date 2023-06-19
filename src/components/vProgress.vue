@@ -24,7 +24,7 @@
 		width: 100%;
 		height: 18px;
 
-		background: #E2E2E2;
+		background: var(--progress-bar-background-color);
 		border-radius: 10px;
 
 		position: relative;
@@ -39,7 +39,7 @@
 			top: 0;
 			left: 0;
 
-			background: linear-gradient(90deg, #8affbf, #9ee8ff);
+			background: var(--progress-bar-color);
 
 			transition: width .5s ease-in-out;
 		}

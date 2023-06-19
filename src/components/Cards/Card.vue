@@ -51,9 +51,10 @@
 
 		transition: border-color .2s linear, box-shadow .2s linear;
 
-		.card-dropdown-icon {
+		&-dropdown-icon {
 			height: 6px;
 			width: 28px;
+			fill: var(--main-text);
 
 			cursor: pointer;
 		}
@@ -66,9 +67,17 @@
 		}
 
 		&__title {
-			color: #000;
+			color: var(--main-text);
 			font-size: 18px;
 			font-weight: 400;
+
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-line-clamp: 1;
+			text-overflow: ellipsis;
+			word-break: break-word;
+			white-space: pre-line;
+			-webkit-box-orient: vertical;
 		}
 
 		&__content {
@@ -78,7 +87,7 @@
 
 			margin-bottom: 10px;
 
-			color: #525252;
+			color: var(--secondary-text);
 			font-weight: 300;
 		}
 
@@ -87,15 +96,24 @@
 			align-items: center;
 			justify-content: space-between;
 
-			color: #000;
+			color: var(--main-text);
 		}
 
 		&__link {
-			color: var(--main-text);
+			color: var(--card-links-color);
 			text-decoration: none;
 
+			svg {
+				fill: var(--card-links-color);
+			}
+
 			&:hover {
-				text-decoration: underline;
+				// text-decoration: underline;
+				color: var(--card-links-color-hover);
+
+				svg {
+					fill: var(--card-links-color-hover);
+				}
 			}
 		}
 
