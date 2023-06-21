@@ -53,6 +53,7 @@ export default {
             this.$refs.input.removeAttribute('style');
         },
         clearTextarea() {
+            this.$emit('input', '');
             this.resetTextarea();
         }
     },
