@@ -68,7 +68,7 @@
         left: 50%;
         transform: translate(-50%, 100%);
 
-        z-index: 100;
+        z-index: 1000;
 
         background: var(--block-background-color);
         border: 1px solid var(--block-border-color);

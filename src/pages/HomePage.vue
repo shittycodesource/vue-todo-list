@@ -13,10 +13,10 @@
 		</div>
 
 		<choose-modal :isOpen="isOpen" @closeModal="toggleChooseModal">
-			<template #title>Delete this list?</template>
+			<template #title>{{ 'DeleteListModalTitle' | localizeFilter }}</template>
 			<template #options>
-				<v-button class="btn--choose" @click.native="deleteTheList">Confirm</v-button>
-				<v-button class="btn--choose" @click.native="cancelDelete">Cancel</v-button>
+				<v-button class="btn--choose" @click.native="deleteTheList">{{ 'Confirm' | localizeFilter }}</v-button>
+				<v-button class="btn--choose" @click.native="cancelDelete">{{ 'Cancel' | localizeFilter }}</v-button>
 			</template>
 		</choose-modal>
 	</v-container>

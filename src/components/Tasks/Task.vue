@@ -111,7 +111,7 @@
             }
 
             &__title {
-                line-height: 0;
+                line-height: 1;
                 font-size: 20px;
                 font-weight: 400;
                 color: var(--main-text);

@@ -143,8 +143,19 @@
 		}
 
 		&.completed {
-			opacity: .7;
 			text-decoration: line-through;
+
+			.task__title {
+				opacity: .7;
+			}
+
+			.task__text {
+				opacity: .7;
+			}
+
+			.task__footer {
+				opacity: .7;
+			}
 
 			.task__complete {
 				background: var(--task-complete-btn-background-color-active);
