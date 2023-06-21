@@ -2,9 +2,10 @@
     <v-container>
         <div class="not-found">
             <h2 class="big-text">404</h2>
-            <h3 class="medium-text">NOT FOUND</h3>
+            <h3 class="medium-text">{{ 'Not Found' | localizeFilter }}</h3>
             <router-link to="/">
-                <v-icon name="#left" width="7px" height="11px"/>Back
+                <v-icon name="#left" width="7px" height="11px"/>
+                {{ 'Back' | localizeFilter }}
             </router-link>
         </div>
     </v-container>

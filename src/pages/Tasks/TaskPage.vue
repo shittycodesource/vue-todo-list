@@ -5,15 +5,15 @@
 			<template #task-actions>
 				<v-button class="btn--flat btn--with-icon" @click.native="completeThisTask">
 					<v-icon class="action__icon" name="#done" width="17px" height="11px"/>
-					Complete
+					{{ 'Complete' | localizeFilter }}
 				</v-button>
 				<router-link class="btn btn--flat btn--with-icon" :to="{ name: 'edit task',  query: { listId: $route.query.listId, id: theTask.id } }">
                     <v-icon class="action__icon" name="#edit" width="17px" height="17px"/>
-					Edit
+					{{ 'Edit' | localizeFilter }}
                 </router-link>
 				<v-button class="btn--flat btn--with-icon" @click.native="deleteThisTask">
 					<v-icon class="action__icon" name="#trash" width="17px" height="17px"/>
-					Delete
+					{{ 'Delete' | localizeFilter }}
 				</v-button>
 			</template>
 		</task>

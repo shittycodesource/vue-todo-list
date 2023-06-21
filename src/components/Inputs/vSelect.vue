@@ -138,6 +138,8 @@
             border-radius: 15px;
 
             overflow: hidden;
+
+            z-index: 10000;
         }
 
         &__option {
@@ -156,7 +158,7 @@
             transition: background .2s ease-in-out, color .2s ease-in-out;
 
             &.active {
-                background: var(--main-text);
+                background: var(--input-select-option-background-color-active);
                 color: var(--main-text-alt);
             }
 

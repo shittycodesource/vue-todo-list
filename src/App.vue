@@ -9,21 +9,21 @@
             </transition>
 
             <choose-modal :isOpen="isChooseModalOpen" @closeModal="toggleChooseModal">
-                <template #title>What do you want to do?</template>
+                <template #title>{{ 'CreateModalTitle' | localizeFilter}}</template>
                 <template #options>
                     <router-link 
                         to="/create-list" 
                         class="btn btn--choose"
                         @click.native="toggleChooseModal"
                     >
-                        New List
+                        {{ 'NewList' | localizeFilter }}
                     </router-link>
                     <router-link 
                         to="/create-task" 
                         class="btn btn--choose" 
                         @click.native="toggleChooseModal"
                     >
-                        New Task
+                        {{ 'NewTask' | localizeFilter }}
                     </router-link>
                 </template>
             </choose-modal>
@@ -37,6 +37,7 @@ import vHeader from './components/app/vHeader.vue';
 import vIconsSprites from './components/app/vIconsSprites.vue';
 import ChooseModal from './components/Modals/ChooseModal.vue';
 import { mapActions } from 'vuex';
+import localizeFilter from './filters/localize.filter';
 
 export default {
     name: "App",
@@ -47,13 +48,14 @@ export default {
         }
     },
     methods: {
-        ...mapActions([ 'applyColorTheme', 'setHeaderTitle' ]),
+        ...mapActions([ 'applyColorTheme', 'setHeaderTitle', 'applyLocale' ]),
         toggleChooseModal() {
             this.isChooseModalOpen = !this.isChooseModalOpen;
         }
     },
     created() {
         this.applyColorTheme();
+        this.applyLocale();
         this.setHeaderTitle();
 
         const v = this;

@@ -10,9 +10,10 @@
 						class="btn btn--choose"
 						:to="{ name: 'edit list', query: { listId: list.id } }"
 					>
-						Edit
+						{{ 'Edit' | localizeFilter }}
 					</router-link>
-					<v-button class="btn--choose" @click.native="$emit('deleteList', list)">Delete</v-button>
+					<v-button class="btn--choose" @click.native="$emit('deleteList', list)">	{{ 'Delete' | localizeFilter }}
+					</v-button>
 				</template>
 			</dropdown>
 
@@ -22,12 +23,12 @@
 			<v-progress :fill="getListProgress(list.tasks)"/>
 			<div class="progress-info">
 				<span>{{ getListProgress(list.tasks) || 0 }}% / 100%</span> <!-- All tasks - Incompleted Tasks -->
-				<span>{{ list.tasks.length }} Tasks</span>
+				<span>{{ list.tasks.length }} {{ 'Tasks' | localizeFilter }}</span>
 			</div>
 		</template>
 		<template #footer-left>
 			<router-link :to="{ name: 'tasks', query: { listId: list.id } }" class="card__link">
-				Open
+				{{ 'Open' | localizeFilter }}
 				<v-icon class="open-icon" name="#right"/>
 			</router-link>	
 		</template>

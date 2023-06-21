@@ -1,3 +1,5 @@
+import localizeFilter from '../filters/localize.filter.js'; 
+
 export default {
     methods: {
         emitOption(option) {
@@ -18,7 +20,7 @@ export default {
         },
         maxLinesMessage() {
             if (this.textValue.length) {
-                return `(${this.maxLines} lines max)`;
+                return ` (${this.maxLines} ${localizeFilter('maxLinesMessage')}) `;
             }
         }
     }

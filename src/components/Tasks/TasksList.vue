@@ -5,7 +5,7 @@
 
                  <template v-if="index == 0 || task_data.dayValue != getTasksList[index - 1].dayValue">
                     <div class="tasks__separator" :key="index">
-                        <span>{{ task_data.dayValue }}</span>
+                        <span>{{ task_data.date | dateFilter }}</span>
                     </div>
                 </template>
 

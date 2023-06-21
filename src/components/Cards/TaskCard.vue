@@ -11,9 +11,11 @@
 				<v-icon class="card-dropdown-icon" name="#horizontal-menu" @click.native="toggleDropdown"/>
 				<template #options>
 					<router-link class="btn btn--choose" :to="{ name: 'edit task',  query: { listId: data.listId, id: data.id } }">
-						Edit
+						{{ 'Edit' | localizeFilter }}
 					</router-link>
-					<v-button class="btn--choose" @click.native="$emit('deleteTask', listId)">Delete</v-button>
+					<v-button class="btn--choose" @click.native="$emit('deleteTask', listId)">
+						{{ 'Delete' | localizeFilter }}
+					</v-button>
 				</template>
 			</dropdown>
 		</template>
@@ -23,7 +25,7 @@
 		</template>
 
 		<template #footer-left>
-			<time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
+			<time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.date | dateFilter  }}</time>
 		</template>
 
 		<template #footer-right>

@@ -14,10 +14,10 @@
         @emitOption="(option) => selectedOption = option"
     >
         <template #form-title>
-            Create New Task
+            {{ 'CreateTaskFormTitle' | localizeFilter }}
         </template>
         <template #button>
-            <v-button @click.native="createTask">Create</v-button>
+            <v-button @click.native="createTask">{{ 'Create' | localizeFilter }}</v-button>
         </template>
     </task-edit-form>
 </template>

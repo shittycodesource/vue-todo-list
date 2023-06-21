@@ -10,13 +10,14 @@
             @click.native="$emit('linkClick')"
         >   
             <v-icon :name="link.iconName" class="nav__icon"/>
-            {{ link.name }}
+            {{ link.name | localizeFilter }}
         </router-link>
     </nav>
 </template>
 
 <script>
     import vIcon from './vIcon.vue';
+    import '../../filters/localize.filter.js';
 
     export default {
         name: 'vNav',

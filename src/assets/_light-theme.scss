@@ -64,7 +64,9 @@ html {
     --input-text-color-active: #353535;
     --input-border-color-active: #535353;
 
-    --input-select-option-hover: #F7F7F7;
+    --input-select-option-background-color-hover: #f7f7f7;
+    --input-select-option-color-hover: var(--main-text);
+    --input-select-option-background-color-active: var(--main-text);
 
     --custom-scrollbar-color: #ffffff;
     --custom-scrollbar-track-color: #ffffff;

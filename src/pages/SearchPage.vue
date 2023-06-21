@@ -3,10 +3,15 @@
         <form class="search-form">
             <div class="search-form__header">
 
-                <v-input placeholder="Title" :value="text" v-model="text" :maxLength="48" />
+                <v-input 
+                    :placeholder="inputPlaceholders[0]" 
+                    :value="text" 
+                    v-model="text" 
+                    :maxLength="48" 
+                />
 
                 <v-select
-                    defaultTitle="All Lists"
+                    :defaultTitle="inputPlaceholders[1]"
                     :selectedOption="selectedOption"
                     :options="getListsData"
                     @selectOption="(option) => selectedOption = option"
@@ -14,7 +19,7 @@
             </div>
 
             <v-tags-input 
-                placeholder="Tags"
+                :placeholder="inputPlaceholders[2]"
                 @addTag="(tagsArr) => tags = tagsArr"
                 @deleteTag="startSearch"
                 :tags="tags"
@@ -22,7 +27,9 @@
              />
 
             <div class="text-left">
-                <v-button @click.native="startSearch">Search</v-button>
+                <v-button @click.native="startSearch">
+                    {{ 'Search' | localizeFilter }}
+                </v-button>
             </div>
         </form>
 
@@ -41,12 +48,18 @@
     import vButton from '../components/Inputs/vButton.vue';
     import TasksList from '../components/Tasks/TasksList.vue';
     import { mapGetters, mapActions } from 'vuex';
+    import localizeFilter from '../filters/localize.filter.js';
 
     export default {
         name: 'SearchPage',
         components: { vContainer, vInput, vTagsInput, vSelect, vButton, TasksList },
         data() {
             return {
+                inputPlaceholders: [
+                    localizeFilter('Title'),
+                    localizeFilter('All Lists'),
+                    localizeFilter('Tags'),
+                ],
                 text: '',
                 tags: [],
                 selectedOption: false,

@@ -8,21 +8,21 @@
                 <v-input 
                     @input="$emit('emitInput', titleValue)"
                     class="mb20px"
-                    label="Title" 
+                    :label="inputLabels[0]" 
                     :value="titleValue" 
                     v-model="titleValue" 
-                    placeholder="Task title..."
+                    :placeholder="inputPlaceholders[0]"
                     :maxLength="48"
                 />
 
                 <v-textarea
                     @input="$emit('emitTextarea', textValue)"
                     class="mb20px"
-                    label="Text" 
+                    :label="inputLabels[1]" 
                     :value="textValue" 
                     v-model="textValue" 
                     ref="textarea"
-                    placeholder="Task text..."
+                    :placeholder="inputPlaceholders[1]"
                     :maxLength="
                         isMaxLines 
                             ? textValue.length.toString() 
@@ -35,11 +35,11 @@
                     "
                 />
                 <v-tags-input 
-                    label="Tags"
+                    :label="inputLabels[2]"
                     class="mb20px"
                     :tags="tags" 
                     :isEditable="true"
-                    placeholder="Task tags..."
+                    :placeholder="inputPlaceholders[2]"
                     @addTag="emitTags"
                 />
 
@@ -47,8 +47,8 @@
                     v-if="listSelect"
                     :options="selectOptions"
                     :selectedOption="selectedOption"
-                    label="List"
-                    defaultTitle="Choose which list to put it in"
+                    :label="inputLabels[3]"
+                    :defaultTitle="inputPlaceholders[3]"
                     class="mb20px"
                     @selectOption="emitOption"
                 />
@@ -71,12 +71,25 @@
     import vTagsInput from '../Inputs/vTagsInput.vue';
     import vSelect from '../Inputs/vSelect.vue';
     import editFormMixin from '../../mixins/editFormMixin';
+    import localizeFilter from '../../filters/localize.filter.js';
 
     export default {
         name: 'TaskEditForm',
         mixins: [ editFormMixin ], // computed properties and emit option methods
         data() {
             return {
+                inputLabels: [
+                    localizeFilter('Title'), 
+                    localizeFilter('Text'),
+                    localizeFilter('Tags'),
+                    localizeFilter('List'),
+                ],
+                inputPlaceholders: [
+                    localizeFilter('TaskTitleInputPlaceholder'), 
+                    localizeFilter('TaskTextInputPlaceholder'),
+                    localizeFilter('TaskTagsInputPlaceholder'),
+                    localizeFilter('TaskListInputPlaceholder'),
+                ],
                 maxCharacters: 2048,
                 maxLines: 48,
                 titleValue: this.title,

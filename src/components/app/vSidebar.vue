@@ -10,23 +10,23 @@
             <div class="sidebar__content">
 
                 <v-block>
-                    <template #title>CREATE NEW LIST OR TASK</template>
+                    <template #title>{{ 'SidebarBlockCreateTitle' | localizeFilter }}</template>
                     <template #content>
                         <div class="mr20px ml20px">
                             <v-button class="btn--flat btn--gray btn--with-icon btn--big" @click.native="$emit('openChooseModal')">
-                                <v-icon name="#plus-circle"/> Create
+                                <v-icon name="#plus-circle"/> {{ 'Create' | localizeFilter }}
                             </v-button>
                         </div>
                     </template>
                 </v-block>
 
                 <v-block>
-                    <template #title>NAVIGATION</template>
+                    <template #title>{{ 'SidebarBlockNavTitle' | localizeFilter }}</template>
                     <template #content> <v-nav v-if="isOpen" :links="links"/> </template>
                 </v-block>
 
                 <v-block>
-                    <template #title>LISTS</template>
+                    <template #title>{{ 'SidebarBlockListsTitle' | localizeFilter }}</template>
                     <template #content> <lists-nav /> </template>
                 </v-block>
 
@@ -34,7 +34,7 @@
 
             <footer class="sidebar__footer">
                 <v-block>
-                    <template #title>THEME</template>
+                    <template #title>{{ 'SidebarBlockThemesTitle' | localizeFilter }}</template>
                     <template #content>
                         <v-theme-changer/>
                     </template>
@@ -53,6 +53,7 @@
     import vIcon from './vIcon.vue';
     import vThemeChanger from './vThemeChanger.vue';
     import ListsNav from '../Lists/ListsNav.vue';
+    import localizeFilter from '../../filters/localize.filter.js';
 
     export default {
         name: 'vSidebar',
@@ -60,10 +61,10 @@
             return {
                 isOpen: true,
                 links: [
-                    { name: 'Home', to: '/', exact: true, iconName: '#home' },
-                    { name: 'Search', to: "/search", exact: false, iconName: '#search' },
-                    { name: 'Settings', to: "/settings", exact: false, iconName: '#settings' },
-                    { name: '404 Page', to: "/404", exact: false, iconName: '#trash' }
+                    { name: 'NavHome', to: '/', exact: true, iconName: '#home' },
+                    { name: 'NavSearch', to: "/search", exact: false, iconName: '#search' },
+                    { name: 'NavSettings', to: "/settings", exact: false, iconName: '#settings' },
+                    { name: 'NavNotFound', to: "/404", exact: false, iconName: '#trash' }
                 ]
             }
         },

@@ -3,7 +3,7 @@
         <header class="header">
             <div class="header__inner">
                 <h5 class="header__title">
-                    {{ getHeaderTitle }}
+                    {{ getHeaderTitle | localizeFilter(false) }}
                 </h5>
 
                 <div class="header__center" v-if="isListOpened && getListTasks.length">
@@ -17,16 +17,19 @@
 
                     <div class="header__tasks-left">
                         <span>{{ getIncompleteTasksNumber(getListTasks) }} </span>
-                        <span v-if="getIncompleteTasksNumber(getListTasks) == 1">Task </span>
-                        <span v-else>Tasks </span> 
-                        left
+                        <span v-if="getIncompleteTasksNumber(getListTasks) == 1">
+                            {{ 'Task left' | localizeFilter }}
+                        </span>
+                        <span v-else>
+                            {{ 'Tasks left' | localizeFilter }}
+                        </span> 
                     </div>
                 </div>
 
                 <div class="header__actions" v-if="isListOpened">
                     <dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
                         <template>
-                            <div class="dropdown__title" @click="toggleDropdown">Sort By</div>
+                            <div class="dropdown__title" @click="toggleDropdown">{{ 'Sort By' | localizeFilter }}</div>
                         </template>
                         <template #options>
                             <v-button
@@ -36,7 +39,7 @@
                                 @click.native="btn.handler"
                                 :class="{'active': getTasksSortType == btn.name.toLowerCase()}"
                             >
-                                {{ btn.name }}
+                                {{ btn.name | localizeFilter }}
                             </v-button>
                         </template>
                     </dropdown>
@@ -53,6 +56,7 @@
     import dropdownMixin from '../../mixins/dropdownMixin';
     import vIcon from './vIcon.vue';
     import { mapGetters, mapActions } from 'vuex';
+    import localizeFilter from '../../filters/localize.filter.js';
 
     export default {
         name: 'vHeader',
@@ -61,9 +65,9 @@
         data() {
             return {
                 buttons: [
-                    { name: 'Date', handler: () => this.sortTaskBy('date') },
-                    { name: 'Complete', handler: () => this.sortTaskBy('complete') },
-                    { name: 'Incomplete', handler: () => this.sortTaskBy('incomplete') },
+                    { name: 'SortByDate', handler: () => this.sortTaskBy('date') },
+                    { name: 'SortByComplete', handler: () => this.sortTaskBy('complete') },
+                    { name: 'SortByIncomplete', handler: () => this.sortTaskBy('incomplete') },
                 ],
             }
         },

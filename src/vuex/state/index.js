@@ -7,5 +7,6 @@ export default {
     // tasks: tasks,
     sortTasksBy: false,
     colorTheme: 'Light',
+    locale: 'En',
     headerTitle: 'Home',
 }

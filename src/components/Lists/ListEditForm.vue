@@ -8,21 +8,21 @@
                 <v-input 
                     @input="$emit('emitInput', titleValue)"
                     class="mb20px"
-                    label="Name:" 
+                    :label="inputLabels[0]" 
                     :value="titleValue" 
                     v-model="titleValue" 
-                    placeholder="Type name here..."
+                    :placeholder="inputPlaceholders[0]"
                     :maxLength="48"
                 />
 
                 <v-textarea
                     @input="$emit('emitTextarea', textValue)"
                     class="mb20px"
-                    label="Description:" 
+                    :label="inputLabels[1]" 
                     :value="textValue" 
                     v-model="textValue" 
                     ref="textarea"
-                    placeholder="Type description here..."
+                    :placeholder="inputPlaceholders[1]"
                     :maxLength="
                         isMaxLines 
                             ? textValue.length.toString() 
@@ -51,12 +51,21 @@
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
     import editFormMixin from '../../mixins/editFormMixin';
+    import localizeFilter from '../../filters/localize.filter.js';
 
     export default {
         name: 'ListEditForm',
         mixins: [ editFormMixin ],  // computed properties and emit option methods
         data() {
             return {
+                inputLabels: [
+                    localizeFilter('Title'),
+                    localizeFilter('Description')
+                ],
+                inputPlaceholders: [
+                    localizeFilter('ListTitleInputPlaceholder'),
+                    localizeFilter('ListDescriptionInputPlaceholder')
+                ],
                 maxCharacters: 120,
                 maxLines: 8,
                 titleValue: this.name,

@@ -5,14 +5,14 @@
             :class="{'active': getColorTheme == 'Light'}"
         >
             <v-icon name="#sun" />
-            Light
+            {{ 'Light' | localizeFilter }}
         </v-button>
         <v-button class="btn--with-icon btn--flat btn--big"
             @click.native="changeTheme('Dark')" 
             :class="{'active': getColorTheme == 'Dark'}"
         >
             <v-icon name="#moon" />
-            Dark
+            {{ 'Dark' | localizeFilter }}
         </v-button>
     </div>
 </template>

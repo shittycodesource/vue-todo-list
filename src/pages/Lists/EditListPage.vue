@@ -9,10 +9,10 @@
         @emitTextarea="(newDescription) => description = newDescription"
     >   
         <template #form-title>
-            Edit list
+            {{ 'EditListFormTitle' | localizeFilter }}
         </template>
         <template #button>
-            <v-button @click.native="updateList">Edit</v-button>
+            <v-button @click.native="updateList">{{ 'Edit' | localizeFilter }}</v-button>
         </template>
     </list-edit-form>
 </template>

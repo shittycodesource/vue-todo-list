@@ -4,14 +4,11 @@ export default {
     addTask({commit, getters}, data) {
         if (data) { // this if has no meaning
             const listIndex = getters.getListIndex(data.listId);
-
             const dateNow = Date.now();
-            const dayValue = format(new Date(), 'd MMMM yyyy');
 
             const obj = {
                 ...data, 
                 date: dateNow, 
-                dayValue,
                 completed: false,
                 id: dateNow,
             };

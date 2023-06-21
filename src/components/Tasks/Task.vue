@@ -5,7 +5,7 @@
         </template>
 
         <template #header-right>
-            <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.dayValue }}</time>
+            <time class="task__date" datetime="1231231231">{{ data.date | dateToHours }} | {{ data.date | dateFilter }}</time>
         </template>
 
         <template #content>

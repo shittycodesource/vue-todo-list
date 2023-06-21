@@ -11,10 +11,10 @@
         @emitTags="(newTagsew) => tags = newTags"
     >
         <template #form-title>
-            Edit Task
+            {{ 'EditTaskFormTitle' | localizeFilter }}
         </template>
         <template #button>
-            <v-button @click.native="editTask">Edit</v-button>
+            <v-button @click.native="editTask">{{ 'Edit' | localizeFilter }}</v-button>
         </template>
     </task-edit-form>
 </template>
