@@ -7,7 +7,7 @@
             :key="list.id"
             :to="{ name: 'tasks', query: { listId: list.id } }"
         >
-            <div class="circle"></div>
+            <div class="circle" :style="list.colorData ? { background: list.colorData.color } : 'unset'" ></div>
             <span>{{ list.name }}</span>
         </router-link>
     </nav>

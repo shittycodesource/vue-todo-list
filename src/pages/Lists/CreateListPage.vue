@@ -6,6 +6,7 @@
 
         @emitInput="(newName) => name = newName"
         @emitTextarea="(newDescription) => description = newDescription"
+        @emitColorData="(newColorData) => colorData = newColorData"
     >   
         <template #form-title>
             {{ 'CreateListFormTitle' | localizeFilter }}
@@ -28,6 +29,7 @@
             return {
                 name: '',
                 description: '',
+                colorData: { angle: 0, hue: 0 }
             }
         },
         methods: {
@@ -42,12 +44,14 @@
                     const data = {
                         name: this.name,
                         description: this.description,
-                        tasks: []
+                        tasks: [],
+                        colorData: this.colorData,
                     };
 
                     this.addList(data);
                     this.name = '';
                     this.description = '';
+                    this.colorData = { angle: 0, hue: 0 }
                     this.$refs.editForm.reset();
                 }
             }

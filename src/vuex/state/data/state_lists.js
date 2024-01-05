@@ -9,6 +9,7 @@ export default [
   {
     name: "Senseless 1.1.2 Update",
     description: "Things to add in 1.1.2",
+    colorData: { angle: 0, hue: 0 },
     tasks: [
       {
         title: "Fix bug at task page",
@@ -46,6 +47,7 @@ export default [
   {
     name: "Senseless 1.1.1 Update",
     description: "Things to update and fix",
+    colorData: { angle: 0, hue: 0 },
     id: 1685669665257,
     tasks: [
       {
@@ -133,11 +135,13 @@ export default [
   {
     name: "Gym",
     description: "goals",
+    colorData: { angle: 0, hue: 0 },
     id: 0,
     tasks: gymTasks,
   },
   {
     name: "Programming",
+    colorData: { angle: 0, hue: 0 },
     description: "languages",
     id: 1,
     tasks: programmingTasks,
@@ -145,13 +149,16 @@ export default [
   {
     name: "Books",
     description: "books to read",
+    colorData: { angle: 0, hue: 0 },
     id: 2,
     tasks: booksTasks,
   },
   {
     name: "Home",
     description: "housework",
+    colorData: { angle: 0, hue: 0 },
     id: 3,
     tasks: homeTasks,
   },
-];
+	{"name":"27Bit","description":"things to do","tasks":[{"title":"group chat create page","text":"","tags":[],"listId":1696317194127,"date":1699232869968,"completed":false,"id":1699232869968},{"title":"message deleting","text":"","tags":[],"listId":1696317194127,"date":1699232855488,"completed":false,"id":1699232855488},{"title":"message editing","text":"","tags":[],"listId":1696317194127,"date":1699232849007,"completed":false,"id":1699232849007},{"title":"chat dropdown","text":"","tags":[],"listId":1696317194127,"date":1699232839223,"completed":false,"id":1699232839223},{"title":"chat search","text":"","tags":[],"listId":1696317194127,"date":1699232832959,"completed":false,"id":1699232832959},{"title":"chat to json-server","text":"","tags":[],"listId":1696317194127,"date":1699232828399,"completed":false,"id":1699232828399},{"title":"chat drag and drop","text":"","tags":[],"listId":1696317194127,"date":1699232771593,"completed":true,"id":1699232771593},{"title":"image sending","text":"","tags":[],"listId":1696317194127,"date":1699232765825,"completed":true,"id":1699232765825},{"title":"profile about editing","text":"","tags":[],"listId":1696317194127,"date":1699232759136,"completed":true,"id":1699232759136},{"title":"messages divider","text":"","tags":[],"listId":1696317194127,"date":1699232753464,"completed":true,"id":1699232753464},{"title":"time filter (12:05)","text":"","tags":[],"listId":1696317194127,"date":1699232747736,"completed":true,"id":1699232747736},{"title":"add user components to chat card","text":"","tags":[],"listId":1696317194127,"date":1699232739497,"completed":true,"id":1699232739497},{"title":"group chat card","text":"","tags":[],"listId":1696317194127,"date":1699232732047,"completed":true,"id":1699232732047},{"title":"chat page","text":"","tags":[],"listId":1696317194127,"date":1699232725704,"completed":true,"id":1699232725704},{"title":"messages page","text":"","tags":[],"listId":1696317194127,"date":1699232717847,"completed":true,"id":1699232717847},{"title":"search 404","text":"","tags":[],"listId":1696317194127,"date":1699232712232,"completed":true,"id":1699232712232},{"title":"search page localize","text":"","tags":[],"listId":1696317194127,"date":1699232705970,"completed":true,"id":1699232705970},{"title":"saved preloaders","text":"","tags":[],"listId":1696317194127,"date":1699232698057,"completed":true,"id":1699232698057},{"title":"search page","text":"","tags":[],"listId":1696317194127,"date":1699232691112,"completed":true,"id":1699232691112},{"title":"collection deleting","text":"","tags":[],"listId":1696317194127,"date":1699232661688,"completed":true,"id":1699232661688},{"title":"collections editing","text":"","tags":[],"listId":1696317194127,"date":1699232651969,"completed":true,"id":1699232651969},{"title":"localize profile about and collections","text":"","tags":[],"listId":1696317194127,"date":1699232644049,"completed":true,"id":1699232644049},{"title":"empty collection background image","text":"","tags":[],"listId":1696317194127,"date":1699232636953,"completed":true,"id":1699232636953},{"title":"collection card","text":"","tags":[],"listId":1696317194127,"date":1699232630595,"completed":true,"id":1699232630595},{"title":"unfollow button fix","text":"","tags":[],"listId":1696317194127,"date":1696543979349,"completed":true,"id":1696543979349},{"title":"change css from px to rems and ems","text":"","tags":[],"listId":1696317194127,"date":1696543973108,"completed":false,"id":1696543973108},{"title":"make preloaders links not clickable","text":"","tags":[],"listId":1696317194127,"date":1696543965492,"completed":true,"id":1696543965492},{"title":"purple theme update","text":"","tags":[],"listId":1696317194127,"date":1696543958572,"completed":true,"id":1696543958572},{"title":"glowing notifications date fix","text":"","tags":[],"listId":1696317194127,"date":1696543951085,"completed":true,"id":1696543951085},{"title":"make auth pages work","text":"","tags":[],"listId":1696317194127,"date":1696543943987,"completed":true,"id":1696543943987},{"title":"modal effect update","text":"","tags":[],"listId":1696317194127,"date":1696543921190,"completed":true,"id":1696543921190},{"title":"Messages","text":"","tags":[],"listId":1696317194127,"date":1696317552869,"completed":true,"id":1696317552869},{"title":"Artworks saving","text":"","tags":[],"listId":1696317194127,"date":1696317546027,"completed":true,"id":1696317546027},{"title":"Profile about","text":"","tags":[],"listId":1696317194127,"date":1696317537131,"completed":true,"id":1696317537131},{"title":"Font changing","text":"","tags":[],"listId":1696317194127,"date":1696317527828,"completed":false,"id":1696317527828},{"title":"Search page","text":"","tags":[],"listId":1696317194127,"date":1696317519347,"completed":true,"id":1696317519347},{"title":"No auth app surfing","text":"","tags":[],"listId":1696317194127,"date":1696317510531,"completed":true,"id":1696317510531},{"title":"Localize notifications","text":"","tags":[],"listId":1696317194127,"date":1696317501243,"completed":true,"id":1696317501243},{"title":"Sort artworks by time","text":"","tags":[],"listId":1696317194127,"date":1696317493347,"completed":true,"id":1696317493347},{"title":"Show less button","text":"","tags":[],"listId":1696317194127,"date":1696317487132,"completed":true,"id":1696317487132},{"title":"Sort contacts by letters","text":"","tags":[],"listId":1696317194127,"date":1696317480196,"completed":true,"id":1696317480196},{"title":"Sort comments by time","text":"","tags":[],"listId":1696317194127,"date":1696317474620,"completed":true,"id":1696317474620},{"title":"Sort notifications by time","text":"","tags":[],"listId":1696317194127,"date":1696317467404,"completed":true,"id":1696317467404},{"title":"Week's best","text":"","tags":[],"listId":1696317194127,"date":1696317460020,"completed":true,"id":1696317460020},{"title":"Send notification about sending friend request","text":"","tags":[],"listId":1696317194127,"date":1696317446292,"completed":true,"id":1696317446292},{"title":"Send notification after someone liked artwork","text":"","tags":[],"listId":1696317194127,"date":1696317436524,"completed":true,"id":1696317436524},{"title":"Sign up, sign in pages","text":"only pages, no auth","tags":[],"listId":1696317194127,"date":1696317425765,"completed":true,"id":1696317425765},{"title":"Responsive pages","text":"* Profile edit\n* Contacts\n* Profile\n* Profile nav\n* Comments\n* Notifications\n* Settings\n* Preloaders","tags":[],"listId":1696317194127,"date":1696317406213,"completed":true,"id":1696317406213},{"title":"Notifications","text":"","tags":[],"listId":1696317194127,"date":1696317365869,"completed":true,"id":1696317365869},{"title":"Light theme","text":"(bsod instead of light theme)","tags":[],"listId":1696317194127,"date":1696317357326,"completed":true,"id":1696317357326},{"title":"Popup update","text":"","tags":[],"listId":1696317194127,"date":1696317345973,"completed":true,"id":1696317345973},{"title":"ru locale","text":"","tags":[],"listId":1696317194127,"date":1696317334845,"completed":true,"id":1696317334845},{"title":"Json-server","text":"* Profile page\n* Follow system\n* Settings Page","tags":[],"listId":1696317194127,"date":1696317327805,"completed":true,"id":1696317327805},{"title":"Tooltip","text":"","tags":[],"listId":1696317194127,"date":1696317302773,"completed":true,"id":1696317302773},{"title":"Contacts search","text":"","tags":[],"listId":1696317194127,"date":1696317296141,"completed":true,"id":1696317296141},{"title":"Popup","text":"","tags":[],"listId":1696317194127,"date":1696317266533,"completed":true,"id":1696317266533},{"title":"Friends system","text":"","tags":[],"listId":1696317194127,"date":1696317255293,"completed":true,"id":1696317255293},{"title":"Contacts page","text":"","tags":[],"listId":1696317194127,"date":1696317248694,"completed":true,"id":1696317248694},{"title":"Comments deleting","text":"","tags":[],"listId":1696317194127,"date":1696317240510,"completed":true,"id":1696317240510},{"title":"Comments editing","text":"","tags":[],"listId":1696317194127,"date":1696317232942,"completed":true,"id":1696317232942},{"title":"Artwork editing","text":"","tags":[],"listId":1696317194127,"date":1696317220590,"completed":true,"id":1696317220590}],"id":1696317194127}
+ ];

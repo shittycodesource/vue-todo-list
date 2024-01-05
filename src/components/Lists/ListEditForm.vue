@@ -34,6 +34,16 @@
                             : linesMessage
                     "
                 />
+
+                <v-color-picker
+                    :hue="+colorDataValue.angle || 0"
+                    :defaultIsWhite="true"
+                    v-model="colorDataValue"
+                    :light="60"
+                    @input="newColorData => $emit('emitColorData', newColorData)"
+                    :disabled="false"
+                />
+
                 <div class="flex content-center">
                     <slot name="button"></slot>
                 </div>
@@ -51,6 +61,7 @@
     import vInput from '../Inputs/vInput.vue';
     import vTextarea from '../Inputs/vTextarea.vue';
     import editFormMixin from '../../mixins/editFormMixin';
+    import vColorPicker from '../Inputs/vColorPicker.vue';
     import localizeFilter from '../../filters/localize.filter.js';
 
     export default {
@@ -70,13 +81,15 @@
                 maxLines: 8,
                 titleValue: this.name,
                 textValue: this.description,
+                colorDataValue: this.colorData
             }
         },
-        components: {vContainer, vPageHeader, vInput, vTextarea },
+        components: {vContainer, vPageHeader, vInput, vTextarea, vColorPicker },
         props: {
             notFound: { type: Boolean,  default: false },
             name: { type: String,  default: '' },
             description: { type: String, default: '' },
+            colorData: { type: Object, default: () =>  ({ angel: 0, color: 0 }) }
         },
         methods: {
             reset() {
