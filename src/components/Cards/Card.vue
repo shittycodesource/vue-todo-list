@@ -75,9 +75,16 @@
 			overflow: hidden;
 			-webkit-line-clamp: 1;
 			text-overflow: ellipsis;
-			word-break: break-word;
+			word-break: break-all;
 			white-space: pre-line;
 			-webkit-box-orient: vertical;
+
+			// display: flex;
+			// align-items: center;
+		
+			.circle {
+				margin-right: 5px;
+			}
 		}
 
 		&__content {

@@ -45,18 +45,6 @@
 
             transition: background-color .2s linear, color .2s linear;
 
-            .circle {
-                width: 10px;
-                height: 10px;
-
-                background: var(--secondary-text);;
-                border-radius: 50%;
-
-                margin-right: 15px;
-
-                transition: background-color .2s linear;
-            }
-
             span {
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -81,6 +69,20 @@
                 }
             }
         }
+    }
+
+    .circle {
+        width: 10px;
+        height: 10px;
+
+        background: var(--secondary-text);;
+        border-radius: 50%;
+
+        margin-right: 15px;
+
+        transition: background-color .2s linear;
+
+        display: inline-block;
     }
 
 </style>

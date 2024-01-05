@@ -1,6 +1,9 @@
 <template>
 	<card class="card--list">
-		<template #title>{{ list.name }}</template>
+		<template #title>
+			<div class="circle" v-if="list.colorData != undefined" :style="{ background: list.colorData.color }" ></div>
+			{{ list.name }}
+		</template>
 		<template #header-right>
 
 			<dropdown :isOpened="isDropdownOpen" @clickOutside="toggleDropdown">
