@@ -4,9 +4,7 @@ export default {
     },
 
     UPDATE_LIST(state, {data, listIndex}) {
-        const list = state.lists[listIndex];
-        list.name = data.name;
-        list.description = data.description;
+        state.lists[listIndex] = { ...state.lists[listIndex], ...data }
     },
 
     DELETE_LIST(state, listIndex) {

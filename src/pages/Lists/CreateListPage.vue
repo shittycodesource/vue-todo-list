@@ -3,6 +3,7 @@
         ref="editForm"
         :name="name" 
         :description="description"
+        :colorData="colorData"
 
         @emitInput="(newName) => name = newName"
         @emitTextarea="(newDescription) => description = newDescription"

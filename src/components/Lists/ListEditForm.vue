@@ -95,6 +95,7 @@
             reset() {
                 this.titleValue = '';
                 this.textValue = '';
+                this.colorData = { angle: 0, hue: 0 };
 
                 this.$refs.textarea.resetTextarea();
             },

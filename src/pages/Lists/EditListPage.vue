@@ -4,9 +4,11 @@
         :notFound="notFound"
         :name="name" 
         :description="description"
+        :colorData="colorData"
 
         @emitInput="(newName) => name = newName"
         @emitTextarea="(newDescription) => description = newDescription"
+        @emitColorData="(newColorData) => colorData = newColorData"
     >   
         <template #form-title>
             {{ 'EditListFormTitle' | localizeFilter }}
@@ -29,6 +31,7 @@
             return {
                 name: '',
                 description: '',
+                colorData: { angle: 0, hue: 0 },
                 notFound: false,
             }
         },
@@ -52,6 +55,7 @@
                     const data = {
                         name: this.name,
                         description: this.description,
+                        colorData: this.colorData,
                         id: this.theList.id
                     };
 
@@ -65,6 +69,7 @@
             if (this.theList) {
                 this.name = this.theList.name;
                 this.description = this.theList.description;
+                this.colorData = this.theList.colorData;
             } else {
                 this.notFound = true;
             }
