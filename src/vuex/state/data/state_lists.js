@@ -28,7 +28,7 @@ export default [
         listId: 1687190254280,
         date: 1687190344123,
         dayValue: "20 June 2023",
-        completed: false,
+        completed: true,
         id: 1687190344123,
       },
       {

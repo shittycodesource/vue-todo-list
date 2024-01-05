@@ -4,7 +4,7 @@
             <header class="sidebar__header">
                 <!-- <v-burger-menu @click.native="toggleSidebar" :isActive="isOpen"/> -->
                 <h2 class="sidebar__title">Senseless</h2>
-                <div class="sidebar__version">1.1.1</div>
+                <div class="sidebar__version">1.1.2</div>
             </header>
 
             <div class="sidebar__content">
